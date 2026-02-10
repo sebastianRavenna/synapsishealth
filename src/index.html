@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Synapsis Health — Donde la evidencia se transforma en decisión</title>
-  <meta name="description" content="Consultora especializada en evaluación de tecnologías sanitarias, análisis estructurado y apoyo a la toma de decisiones en salud.">
+  <title>Synapsis Health — Transformamos evidencia en decisiones sanitarias eficientes</title>
+  <meta name="description" content="Plataforma estratégica de Evaluación de Tecnologías Sanitarias para sistemas de salud complejos. Evidencia, gobernanza y acceso.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,6 @@
 
       <!-- Logo -->
       <a href="index.html" class="flex items-center gap-3 group">
-        <!-- ISOTIPO PLACEHOLDER: reemplazar con SVG del isotipo elegido -->
         <svg class="w-8 h-8" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="20" r="2.5" fill="#2D2D2D"/>
           <circle cx="20" cy="14" r="2" fill="#4A4A4A"/>
@@ -39,7 +38,6 @@
           <line x1="21.5" y1="25" x2="26" y2="21" stroke="#3D3D3D" stroke-width="1.2"/>
           <line x1="20" y1="16" x2="20" y2="24" stroke="#5C5C5C" stroke-width="1"/>
         </svg>
-        <!-- LOGOTIPO: cuando se tenga Canela, cambiar font-logo por la clase correspondiente -->
         <span class="font-logo text-xl tracking-wide text-graphite-800">
           Synapsis <span class="font-light text-graphite-400">Health</span>
         </span>
@@ -47,15 +45,24 @@
 
       <!-- Desktop Nav -->
       <div class="hidden md:flex items-center gap-10">
-        <a href="index.html" class="nav-link active">Inicio</a>
-        <a href="equipo.html" class="nav-link">Equipo</a>
-        <a href="servicios.html" class="nav-link">Servicios</a>
-        <a href="#contacto" class="nav-link">Contacto</a>
-        <a href="#contacto" class="btn-primary text-xs py-2.5 px-6">Contactanos</a>
+        <a href="index.html" class="nav-link active" data-i18n="nav.home">Inicio</a>
+        <a href="equipo.html" class="nav-link" data-i18n="nav.team">Equipo</a>
+        <a href="servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a>
+        <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
+
+        <!-- Language Toggle -->
+        <button id="lang-toggle" class="flex items-center gap-1.5 text-xs font-heading tracking-wider uppercase text-graphite-400 hover:text-graphite-800 transition-colors duration-300 border border-graphite-200 rounded-md px-3 py-1.5" aria-label="Cambiar idioma">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
+          </svg>
+          <span id="lang-label">EN</span>
+        </button>
+
+        <a href="#contacto" class="btn-primary text-xs py-2.5 px-6" data-i18n="nav.cta">Contactanos</a>
       </div>
 
       <!-- Mobile Toggle -->
-      <button id="menu-toggle" class="md:hidden p-2" aria-label="Abrir menú">
+      <button id="menu-toggle" class="md:hidden p-2" aria-label="Abrir menu">
         <svg class="w-6 h-6 text-graphite-800" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -67,19 +74,26 @@
   <div id="menu-overlay" class="hidden fixed inset-0 bg-graphite-900/50 z-50"></div>
   <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-white z-50 transform translate-x-full transition-transform duration-300 shadow-2xl">
     <div class="flex justify-end p-6">
-      <button id="menu-close" aria-label="Cerrar menú">
+      <button id="menu-close" aria-label="Cerrar menu">
         <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
     </div>
     <div class="flex flex-col gap-6 px-8 pt-4">
-      <a href="index.html" class="font-heading text-lg text-graphite-800 tracking-wide">Inicio</a>
-      <a href="equipo.html" class="font-heading text-lg text-graphite-500 tracking-wide">Equipo</a>
-      <a href="servicios.html" class="font-heading text-lg text-graphite-500 tracking-wide">Servicios</a>
-      <a href="#contacto" class="font-heading text-lg text-graphite-500 tracking-wide">Contacto</a>
-      <div class="pt-4 border-t border-graphite-100">
-        <a href="#contacto" class="btn-primary w-full text-center text-xs">Contactanos</a>
+      <a href="index.html" class="font-heading text-lg text-graphite-800 tracking-wide" data-i18n="nav.home">Inicio</a>
+      <a href="equipo.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.team">Equipo</a>
+      <a href="servicios.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.services">Servicios</a>
+      <a href="#contacto" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.contact">Contacto</a>
+      <div class="pt-4 border-t border-graphite-100 flex flex-col gap-4">
+        <!-- Mobile Language Toggle -->
+        <button id="lang-toggle-mobile" class="flex items-center justify-center gap-2 text-xs font-heading tracking-wider uppercase text-graphite-400 hover:text-graphite-800 transition-colors duration-300 border border-graphite-200 rounded-md px-3 py-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
+          </svg>
+          <span id="lang-label-mobile">EN</span>
+        </button>
+        <a href="#contacto" class="btn-primary w-full text-center text-xs" data-i18n="nav.cta">Contactanos</a>
       </div>
     </div>
   </div>
@@ -91,22 +105,24 @@
   <section class="relative min-h-[90vh] flex items-center gradient-hero overflow-hidden">
     <div class="container-site pt-20">
       <div class="max-w-2xl">
-        <p class="overline mb-6 reveal">Consultoría en evaluación de tecnologías sanitarias</p>
-        <h1 class="text-display-xl font-logo font-normal text-graphite-900 mb-6 reveal">
-          Donde la evidencia se transforma en decisión
+        <p class="overline mb-6 reveal" data-i18n="hero.overline">Evaluacion de Tecnologias Sanitarias</p>
+        <h1 class="text-display-xl font-logo font-normal text-graphite-900 mb-6 reveal" data-i18n="hero.headline">
+          Transformamos evidencia en decisiones sanitarias eficientes.
         </h1>
-        <p class="text-lg text-graphite-500 font-light leading-relaxed mb-10 max-w-lg reveal">
-          Evaluación, análisis estructurado y apoyo a la toma de decisiones en salud.
-          Donde los datos dialogan para decidir.
+        <p class="text-subtitle text-graphite-500 font-heading font-light mb-3 reveal" data-i18n="hero.subheadline">
+          Plataforma estrategica de Evaluacion de Tecnologias Sanitarias para sistemas de salud complejos.
+        </p>
+        <p class="text-lg text-graphite-500 font-light leading-relaxed mb-10 max-w-lg reveal" data-i18n="hero.text">
+          Integramos evidencia cientifica, analisis economico y gobernanza institucional para sostener decisiones sanitarias de alto impacto.
         </p>
         <div class="flex flex-wrap gap-4 reveal">
-          <a href="#contacto" class="btn-primary">Contactanos</a>
-          <a href="servicios.html" class="btn-secondary">Nuestros servicios</a>
+          <a href="#pilares" class="btn-primary" data-i18n="hero.cta">Conocer nuestro enfoque</a>
+          <a href="#que-hacemos" class="btn-secondary" data-i18n="hero.cta2">Areas de trabajo</a>
         </div>
       </div>
     </div>
 
-    <!-- Decorativo: isotipo grande de fondo. Reemplazar con SVG real -->
+    <!-- Decorativo: isotipo grande de fondo -->
     <div class="hidden lg:block absolute right-12 top-1/2 -translate-y-1/2 opacity-[0.03] pointer-events-none">
       <svg width="500" height="400" viewBox="0 0 120 100" fill="none">
         <g stroke="#2D2D2D" stroke-width="1.8" stroke-linecap="round">
@@ -140,38 +156,29 @@
 
 
   <!-- ============================================================
-       QUÉ ES SYNAPSIS HEALTH
+       PROBLEMA
        ============================================================ -->
-  <section class="section" id="quienes-somos">
+  <section class="section" id="problema">
     <div class="container-site">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <p class="overline mb-4 reveal">Synapsis Health</p>
-          <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal">
-            El punto de conexión entre la información y la acción
-          </h2>
-          <div class="line-accent mb-6 reveal"></div>
-          <p class="text-graphite-500 leading-relaxed mb-5 reveal">
-            Synapsis Health trabaja en el punto de conexión entre la evaluación de la tecnología,
-            datos, economía y política sanitaria, estructurando información compleja para apoyar
-            decisiones factibles, responsables y sostenibles en salud.
+      <div class="max-w-3xl mx-auto">
+        <p class="overline mb-4 reveal" data-i18n="problem.overline">El desafio</p>
+        <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="problem.title">
+          La complejidad ya no es tecnica. Es institucional.
+        </h2>
+        <div class="line-accent mb-8 reveal"></div>
+        <div class="space-y-5 text-graphite-500 leading-relaxed">
+          <p class="reveal" data-i18n="problem.text1">
+            Los sistemas de salud enfrentan tecnologias cada vez mas costosas, presion judicial creciente y decisiones politicamente sensibles.
           </p>
-          <p class="text-graphite-500 leading-relaxed mb-5 reveal">
-            La sinapsis no es el dato ni la tecnología en sí misma, sino el espacio donde la
-            información se analiza, se interpreta y se convierte en una decisión informada.
-            Somos ese espacio donde la evidencia se conecta para tomar decisiones en salud.
+          <p class="reveal" data-i18n="problem.text2">
+            En este escenario, la tecnica aislada no alcanza. La politica sin evidencia es fragil.
           </p>
-          <p class="text-graphite-500 leading-relaxed reveal">
-            Nuestro enfoque se centra en modelos de análisis rigurosos, redes de información
-            y flujos de datos estructurados que conectan la tecnología sanitaria con el sistema
-            de salud.
+          <p class="reveal" data-i18n="problem.text3">
+            Las decisiones sanitarias requieren hoy marcos solidos que integren ciencia, economia y gobernanza.
           </p>
-        </div>
-        <div class="reveal">
-          <!-- IMG: Imagen contextual (análisis de datos, reunión de equipo, o abstracta tipo network) -->
-          <div class="aspect-[4/3] bg-graphite-50 rounded-2xl border border-graphite-100 flex items-center justify-center">
-            <span class="overline text-graphite-200">Imagen institucional</span>
-          </div>
+          <p class="text-graphite-800 font-heading font-normal reveal" data-i18n="problem.text4">
+            Synapsis Health existe para cerrar esa brecha.
+          </p>
         </div>
       </div>
     </div>
@@ -179,34 +186,37 @@
 
 
   <!-- ============================================================
-       FILOSOFÍA / ENFOQUE
+       QUIENES SOMOS
        ============================================================ -->
-  <section class="section-dark relative overflow-hidden">
+  <section class="section-dark relative overflow-hidden" id="quienes-somos">
     <div class="container-site relative z-10">
       <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="order-2 md:order-1 reveal">
-          <!-- IMG: Imagen de contexto (datos, dashboards, análisis) -->
-          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center">
-            <span class="overline text-graphite-600">Imagen de referencia</span>
-          </div>
-        </div>
-        <div class="order-1 md:order-2">
-          <p class="overline text-graphite-400 mb-4 reveal">Nuestra filosofía</p>
-          <h2 class="text-display font-heading font-extralight text-white mb-6 reveal">
-            Neutralidad técnica y rigor analítico
+        <div>
+          <p class="overline text-graphite-400 mb-4 reveal" data-i18n="about.overline">Synapsis Health</p>
+          <h2 class="text-display font-heading font-extralight text-white mb-6 reveal" data-i18n="about.title">
+            Arquitectura de decision sanitaria
           </h2>
           <div class="line-accent bg-graphite-500 mb-6 reveal"></div>
-          <p class="text-graphite-300 leading-relaxed mb-5 reveal">
-            Cada decisión en salud involucra múltiples variables: evidencia clínica, impacto
-            económico, viabilidad operativa y contexto regulatorio. Nuestra metodología se
-            basa en frameworks de evaluación probados internacionalmente, adaptados al
-            contexto de cada sistema de salud.
-          </p>
-          <p class="text-graphite-300 leading-relaxed reveal">
-            Creemos que la transparencia del análisis es tan importante como sus conclusiones.
-            Nuestros entregables incluyen la trazabilidad completa del proceso de evaluación,
-            permitiendo que cada stakeholder comprenda el camino de la evidencia a la recomendación.
-          </p>
+          <div class="space-y-5">
+            <p class="text-graphite-300 leading-relaxed reveal" data-i18n="about.text1">
+              Synapsis Health es una plataforma estrategica especializada en Evaluacion de Tecnologias Sanitarias aplicada a contextos complejos.
+            </p>
+            <p class="text-graphite-300 leading-relaxed reveal" data-i18n="about.text2">
+              No operamos como una consultora tradicional. Construimos infraestructura tecnica e institucional para sostener decisiones defendibles.
+            </p>
+            <p class="text-graphite-300 leading-relaxed reveal" data-i18n="about.text3">
+              Nuestro trabajo conecta evidencia cientifica, politica publica y sostenibilidad financiera para transformar complejidad en capacidad de decision.
+            </p>
+            <p class="text-white font-heading font-normal reveal" data-i18n="about.text4">
+              No entregamos informes aislados. Construimos arquitectura de decision.
+            </p>
+          </div>
+        </div>
+        <div class="reveal">
+          <!-- IMG: Imagen institucional — arquitectura de decision, redes, conexiones -->
+          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center">
+            <span class="overline text-graphite-600">Imagen institucional</span>
+          </div>
         </div>
       </div>
     </div>
@@ -214,94 +224,313 @@
 
 
   <!-- ============================================================
-       SERVICIOS — Preview
+       PILARES
        ============================================================ -->
-  <section class="section" id="servicios-preview">
+  <section class="section" id="pilares">
     <div class="container-site">
       <div class="text-center mb-16">
-        <p class="overline mb-4 reveal">Lo que hacemos</p>
-        <h2 class="text-display font-heading font-extralight text-graphite-800 reveal">Nuestros servicios</h2>
+        <p class="overline mb-4 reveal" data-i18n="pillars.overline">Nuestro enfoque</p>
+        <h2 class="text-display font-heading font-extralight text-graphite-800 reveal" data-i18n="pillars.title">Nuestro enfoque</h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Servicio 1 -->
+        <!-- Pilar 1 — Evidencia -->
+        <div class="card reveal">
+          <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-1.47 4.306a2.25 2.25 0 01-2.133 1.544H8.603a2.25 2.25 0 01-2.134-1.544L5 14.5m14 0H5"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-3" data-i18n="pillars.evidence.title">
+            Evidencia
+          </h3>
+          <p class="text-graphite-500 leading-relaxed text-sm" data-i18n="pillars.evidence.text">
+            Evaluacion rigurosa de tecnologias sanitarias basada en estandares internacionales, adaptada a contextos reales de decision.
+          </p>
+        </div>
+
+        <!-- Pilar 2 — Gobernanza -->
+        <div class="card reveal">
+          <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-3" data-i18n="pillars.governance.title">
+            Gobernanza
+          </h3>
+          <p class="text-graphite-500 leading-relaxed text-sm" data-i18n="pillars.governance.text">
+            Marcos institucionales que permiten decisiones transparentes, defendibles y sostenibles en el tiempo.
+          </p>
+        </div>
+
+        <!-- Pilar 3 — Acceso -->
+        <div class="card reveal">
+          <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-3" data-i18n="pillars.access.title">
+            Acceso
+          </h3>
+          <p class="text-graphite-500 leading-relaxed text-sm" data-i18n="pillars.access.text">
+            Modelos de cobertura y acuerdos innovadores para tecnologias de alto impacto presupuestario.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       QUE HACEMOS
+       ============================================================ -->
+  <section class="section bg-graphite-50 border-y border-graphite-100" id="que-hacemos">
+    <div class="container-site">
+      <div class="text-center mb-16">
+        <p class="overline mb-4 reveal" data-i18n="services.overline">Que hacemos</p>
+        <h2 class="text-display font-heading font-extralight text-graphite-800 reveal" data-i18n="services.title">Areas de trabajo</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Bloque 1 — Evaluacion estrategica -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/>
             </svg>
           </div>
-          <h3 class="font-heading text-title font-light text-graphite-800 mb-3">
-            Evaluación de Tecnologías Sanitarias
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block1.title">
+            Evaluacion estrategica
           </h3>
-          <p class="text-graphite-500 leading-relaxed text-sm mb-6">
-            Análisis sistemático de la evidencia para fundamentar decisiones de incorporación,
-            financiamiento o desinversión en tecnologías de salud.
-          </p>
-          <a href="servicios.html" class="text-sm font-heading text-graphite-700 tracking-wide hover:text-graphite-900 transition-colors">
-            Ver más →
-          </a>
+          <ul class="space-y-2.5 text-graphite-500 text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block1.item1">Evaluacion de Tecnologias Sanitarias rapida y completa</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block1.item2">Analisis de impacto presupuestario</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block1.item3">Evaluacion de valor y priorizacion explicita</span>
+            </li>
+          </ul>
         </div>
 
-        <!-- Servicio 2 -->
+        <!-- Bloque 2 — Acceso gestionado -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/>
             </svg>
           </div>
-          <h3 class="font-heading text-title font-light text-graphite-800 mb-3">
-            Análisis de Datos en Salud
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block2.title">
+            Acceso gestionado
           </h3>
-          <p class="text-graphite-500 leading-relaxed text-sm mb-6">
-            Procesamiento y análisis estructurado de información sanitaria para identificar
-            patrones, evaluar resultados y generar indicadores de gestión.
-          </p>
-          <a href="servicios.html" class="text-sm font-heading text-graphite-700 tracking-wide hover:text-graphite-900 transition-colors">
-            Ver más →
-          </a>
+          <ul class="space-y-2.5 text-graphite-500 text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block2.item1">Diseno de acuerdos basados en valor</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block2.item2">Modelos de riesgo compartido</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block2.item3">Soporte tecnico en negociacion de tecnologias complejas</span>
+            </li>
+          </ul>
         </div>
 
-        <!-- Servicio 3 -->
+        <!-- Bloque 3 — Soporte institucional -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
             </svg>
           </div>
-          <h3 class="font-heading text-title font-light text-graphite-800 mb-3">
-            Apoyo a la Toma de Decisiones
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block3.title">
+            Soporte institucional
           </h3>
-          <p class="text-graphite-500 leading-relaxed text-sm mb-6">
-            Consultoría estratégica para organismos públicos, financiadores y empresas del
-            sector que necesitan fundamentar sus decisiones con evidencia.
-          </p>
-          <a href="servicios.html" class="text-sm font-heading text-graphite-700 tracking-wide hover:text-graphite-900 transition-colors">
-            Ver más →
-          </a>
+          <ul class="space-y-2.5 text-graphite-500 text-sm leading-relaxed">
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block3.item1">Diseno de marcos de cobertura</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block3.item2">Estrategias frente a judicializacion</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0"></span>
+              <span data-i18n="services.block3.item3">Construccion de capacidades publicas de decision</span>
+            </li>
+          </ul>
         </div>
-      </div>
-
-      <div class="text-center mt-14 reveal">
-        <a href="servicios.html" class="btn-secondary">Todos los servicios</a>
       </div>
     </div>
   </section>
 
 
   <!-- ============================================================
-       CONFIANZA / CLIENTES
+       DIFERENCIAL
        ============================================================ -->
-  <section class="py-16 bg-graphite-50 border-y border-graphite-100">
+  <section class="section" id="diferencial">
     <div class="container-site">
-      <p class="overline text-center mb-10 reveal">Confían en nosotros</p>
-      <div class="flex flex-wrap items-center justify-center gap-12 md:gap-18">
-        <!-- LOGOS: Reemplazar con logos reales de clientes en SVG o img con filter grayscale -->
-        <div class="h-8 w-24 bg-graphite-200 rounded opacity-40 reveal"></div>
-        <div class="h-8 w-28 bg-graphite-200 rounded opacity-40 reveal"></div>
-        <div class="h-8 w-20 bg-graphite-200 rounded opacity-40 reveal"></div>
-        <div class="h-8 w-26 bg-graphite-200 rounded opacity-40 reveal"></div>
-        <div class="h-8 w-24 bg-graphite-200 rounded opacity-40 reveal"></div>
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <!-- IMG: Imagen de diferencial — profesionalismo, confianza, rigor -->
+          <div class="aspect-[4/3] bg-graphite-50 rounded-2xl border border-graphite-100 flex items-center justify-center">
+            <span class="overline text-graphite-200">Imagen diferencial</span>
+          </div>
+        </div>
+        <div>
+          <p class="overline mb-4 reveal" data-i18n="differential.overline">Diferencial</p>
+          <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="differential.title">
+            Por que Synapsis
+          </h2>
+          <div class="line-accent mb-6 reveal"></div>
+          <ul class="space-y-3 text-graphite-500 leading-relaxed mb-6">
+            <li class="flex items-start gap-3 reveal">
+              <span class="w-1.5 h-1.5 rounded-full bg-graphite-400 mt-2 shrink-0"></span>
+              <span data-i18n="differential.item1">Experiencia directa en decisiones publicas de alto impacto.</span>
+            </li>
+            <li class="flex items-start gap-3 reveal">
+              <span class="w-1.5 h-1.5 rounded-full bg-graphite-400 mt-2 shrink-0"></span>
+              <span data-i18n="differential.item2">Diseno y negociacion de acuerdos innovadores de acceso.</span>
+            </li>
+            <li class="flex items-start gap-3 reveal">
+              <span class="w-1.5 h-1.5 rounded-full bg-graphite-400 mt-2 shrink-0"></span>
+              <span data-i18n="differential.item3">Comprension profunda del ecosistema politico-institucional.</span>
+            </li>
+            <li class="flex items-start gap-3 reveal">
+              <span class="w-1.5 h-1.5 rounded-full bg-graphite-400 mt-2 shrink-0"></span>
+              <span data-i18n="differential.item4">Integracion de academia, evidencia y gestion real.</span>
+            </li>
+            <li class="flex items-start gap-3 reveal">
+              <span class="w-1.5 h-1.5 rounded-full bg-graphite-400 mt-2 shrink-0"></span>
+              <span data-i18n="differential.item5">Marco etico explicito y gobernanza transparente.</span>
+            </li>
+          </ul>
+          <p class="text-graphite-500 leading-relaxed mb-4 reveal" data-i18n="differential.text1">
+            Synapsis Health combina credibilidad tecnica y legitimidad institucional. Cada proyecto se orienta a producir decisiones que resistan auditoria tecnica, escrutinio politico y evaluacion publica.
+          </p>
+          <div class="flex flex-wrap gap-4 text-sm font-heading text-graphite-800 reveal">
+            <span data-i18n="differential.tag1">Rigor metodologico.</span>
+            <span class="text-graphite-300">|</span>
+            <span data-i18n="differential.tag2">Independencia.</span>
+            <span class="text-graphite-300">|</span>
+            <span data-i18n="differential.tag3">Comprension institucional.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       VINCULACION ACADEMICA
+       ============================================================ -->
+  <section class="section-dark relative overflow-hidden" id="academica">
+    <div class="container-site relative z-10">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="order-2 md:order-1 reveal">
+          <!-- IMG: Imagen academica — universidad, formacion, investigacion -->
+          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center">
+            <span class="overline text-graphite-600">Imagen academica</span>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <p class="overline text-graphite-400 mb-4 reveal" data-i18n="academic.overline">Vinculacion academica</p>
+          <h2 class="text-display font-heading font-extralight text-white mb-6 reveal" data-i18n="academic.title">
+            Produccion de conocimiento y formacion
+          </h2>
+          <div class="line-accent bg-graphite-500 mb-6 reveal"></div>
+          <p class="text-graphite-300 leading-relaxed mb-5 reveal" data-i18n="academic.text1">
+            La produccion cientifica aplicada y la formacion ejecutiva son parte integral de nuestro modelo.
+          </p>
+          <p class="text-graphite-300 leading-relaxed mb-5 reveal" data-i18n="academic.text2">
+            Articulamos con universidades e instituciones academicas para fortalecer la capacidad de decision de los sistemas de salud.
+          </p>
+          <p class="text-white font-heading font-normal reveal" data-i18n="academic.text3">
+            Construimos capacidades publicas. No solo resolvemos problemas puntuales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       EQUIPO
+       ============================================================ -->
+  <section class="section" id="equipo">
+    <div class="container-site">
+      <div class="max-w-3xl mx-auto text-center">
+        <p class="overline mb-4 reveal" data-i18n="team.overline">Equipo</p>
+        <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="team.title">
+          Equipo fundador
+        </h2>
+        <div class="line-accent mx-auto mb-8 reveal"></div>
+        <p class="text-graphite-500 leading-relaxed mb-5 reveal" data-i18n="team.text1">
+          Synapsis Health esta liderada por profesionales con trayectoria directa en decisiones sanitarias de alto impacto, negociacion de tecnologias complejas y gestion publica.
+        </p>
+        <p class="text-graphite-500 leading-relaxed mb-8 reveal" data-i18n="team.text2">
+          Combinamos solidez tecnica, experiencia institucional y vision estrategica para acompanar decisiones que definen sistemas de salud.
+        </p>
+        <a href="equipo.html" class="btn-secondary reveal" data-i18n="team.cta">Conocer al equipo</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ETICA Y GOBERNANZA
+       ============================================================ -->
+  <section class="py-16 bg-graphite-50 border-y border-graphite-100" id="etica">
+    <div class="container-site">
+      <div class="max-w-3xl mx-auto">
+        <p class="overline mb-4 reveal" data-i18n="ethics.overline">Etica y gobernanza</p>
+        <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="ethics.title">
+          Independencia y transparencia
+        </h2>
+        <div class="line-accent mb-8 reveal"></div>
+        <p class="text-graphite-500 leading-relaxed mb-6 reveal" data-i18n="ethics.text">
+          Operamos bajo principios explicitos de independencia tecnica y resguardo institucional.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-4 mb-8">
+          <div class="flex items-center gap-3 reveal">
+            <svg class="w-5 h-5 text-graphite-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="text-graphite-600 text-sm" data-i18n="ethics.item1">Politicas de conflictos de interes</span>
+          </div>
+          <div class="flex items-center gap-3 reveal">
+            <svg class="w-5 h-5 text-graphite-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="text-graphite-600 text-sm" data-i18n="ethics.item2">Confidencialidad de la informacion</span>
+          </div>
+          <div class="flex items-center gap-3 reveal">
+            <svg class="w-5 h-5 text-graphite-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="text-graphite-600 text-sm" data-i18n="ethics.item3">Separacion entre sector publico e industria</span>
+          </div>
+          <div class="flex items-center gap-3 reveal">
+            <svg class="w-5 h-5 text-graphite-400 shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="text-graphite-600 text-sm" data-i18n="ethics.item4">Trazabilidad metodologica</span>
+          </div>
+        </div>
+        <p class="text-graphite-800 font-heading font-normal text-sm reveal" data-i18n="ethics.closing">
+          La confianza institucional es parte del servicio que ofrecemos.
+        </p>
       </div>
     </div>
   </section>
@@ -316,9 +545,13 @@
 
         <!-- Info -->
         <div>
-          <p class="overline mb-4 reveal">Contacto</p>
-          <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal">Hablemos</h2>
+          <p class="overline mb-4 reveal" data-i18n="contact.overline">Contacto institucional</p>
+          <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="contact.title">Contacto institucional</h2>
           <div class="line-accent mb-8 reveal"></div>
+
+          <p class="text-graphite-500 leading-relaxed mb-8 reveal" data-i18n="contact.text">
+            Recibimos consultas institucionales con estricta confidencialidad.
+          </p>
 
           <div class="space-y-6 reveal">
             <div class="flex items-start gap-4">
@@ -339,7 +572,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/>
               </svg>
               <div>
-                <p class="text-sm font-heading text-graphite-700 tracking-wide">Ubicación</p>
+                <p class="text-sm font-heading text-graphite-700 tracking-wide" data-i18n="contact.location.label">Ubicacion</p>
                 <p class="text-graphite-500 text-sm">Buenos Aires, Argentina</p>
               </div>
             </div>
@@ -349,8 +582,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
               </svg>
               <div>
-                <p class="text-sm font-heading text-graphite-700 tracking-wide">Cobertura</p>
-                <p class="text-graphite-500 text-sm">Latinoamérica · Internacional</p>
+                <p class="text-sm font-heading text-graphite-700 tracking-wide" data-i18n="contact.coverage.label">Cobertura</p>
+                <p class="text-graphite-500 text-sm" data-i18n="contact.coverage.value">Latinoamerica · Internacional</p>
               </div>
             </div>
           </div>
@@ -360,44 +593,26 @@
         <div class="reveal">
           <form id="contact-form" class="space-y-5">
             <div>
-              <label for="nombre" class="block text-sm font-heading text-graphite-600 mb-1.5">Nombre *</label>
-              <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre completo">
+              <label for="nombre" class="block text-sm font-heading text-graphite-600 mb-1.5" data-i18n="contact.form.name">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" class="form-input" data-i18n-placeholder="contact.form.namePlaceholder" placeholder="Tu nombre completo">
             </div>
             <div>
               <label for="email" class="block text-sm font-heading text-graphite-600 mb-1.5">Email *</label>
-              <input type="email" id="email" name="email" class="form-input" placeholder="nombre@organizacion.com">
+              <input type="email" id="email" name="email" class="form-input" data-i18n-placeholder="contact.form.emailPlaceholder" placeholder="nombre@organizacion.com">
             </div>
             <div>
-              <label for="organizacion" class="block text-sm font-heading text-graphite-600 mb-1.5">Organización</label>
-              <input type="text" id="organizacion" name="organizacion" class="form-input" placeholder="Nombre de tu organización (opcional)">
+              <label for="organizacion" class="block text-sm font-heading text-graphite-600 mb-1.5" data-i18n="contact.form.org">Organizacion</label>
+              <input type="text" id="organizacion" name="organizacion" class="form-input" data-i18n-placeholder="contact.form.orgPlaceholder" placeholder="Nombre de tu organizacion (opcional)">
             </div>
             <div>
-              <label for="mensaje" class="block text-sm font-heading text-graphite-600 mb-1.5">Mensaje *</label>
-              <textarea id="mensaje" name="mensaje" class="form-textarea" placeholder="Contanos en qué podemos ayudarte..."></textarea>
+              <label for="mensaje" class="block text-sm font-heading text-graphite-600 mb-1.5" data-i18n="contact.form.message">Mensaje *</label>
+              <textarea id="mensaje" name="mensaje" class="form-textarea" data-i18n-placeholder="contact.form.messagePlaceholder" placeholder="Contanos en que podemos ayudarte..."></textarea>
             </div>
-            <button type="submit" class="btn-primary w-full md:w-auto">Enviar mensaje</button>
+            <button type="submit" class="btn-primary w-full md:w-auto" data-i18n="contact.form.submit">Iniciar conversacion</button>
             <div id="form-feedback" class="hidden"></div>
           </form>
         </div>
       </div>
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       CTA BANNER
-       ============================================================ -->
-  <section class="section-dark">
-    <div class="container-site text-center">
-      <h2 class="text-display-sm font-heading font-extralight text-white mb-4 reveal">
-        ¿Necesitás apoyo en evaluación de tecnologías sanitarias?
-      </h2>
-      <p class="text-graphite-300 mb-8 reveal">
-        Nuestro equipo está preparado para brindarte el mejor asesoramiento.
-      </p>
-      <a href="#contacto" class="btn-primary bg-white text-graphite-900 hover:bg-graphite-50 reveal">
-        Contactar con nuestro equipo
-      </a>
     </div>
   </section>
 
@@ -410,7 +625,6 @@
       <!-- Logo footer -->
       <div class="flex justify-center mb-10">
         <a href="index.html" class="flex flex-col items-center gap-3">
-          <!-- ISOTIPO: mismo SVG que el navbar -->
           <svg class="w-10 h-10 opacity-60" viewBox="0 0 40 40" fill="none">
             <circle cx="12" cy="20" r="2.5" fill="#9A9A9A"/>
             <circle cx="20" cy="14" r="2" fill="#7A7A7A"/>
@@ -430,21 +644,22 @@
 
       <!-- Nav footer -->
       <div class="flex justify-center gap-8 mb-10 text-sm font-heading tracking-wide">
-        <a href="index.html" class="hover:text-graphite-200 transition-colors">Inicio</a>
-        <a href="equipo.html" class="hover:text-graphite-200 transition-colors">Equipo</a>
-        <a href="servicios.html" class="hover:text-graphite-200 transition-colors">Servicios</a>
-        <a href="#contacto" class="hover:text-graphite-200 transition-colors">Contacto</a>
+        <a href="index.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.home">Inicio</a>
+        <a href="equipo.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.team">Equipo</a>
+        <a href="servicios.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.services">Servicios</a>
+        <a href="#contacto" class="hover:text-graphite-200 transition-colors" data-i18n="nav.contact">Contacto</a>
       </div>
 
       <!-- Legal -->
       <div class="border-t border-graphite-800 pt-8 text-center">
-        <p class="text-xs text-graphite-600">
-          © 2025 Synapsis Health. Todos los derechos reservados.
+        <p class="text-xs text-graphite-600" data-i18n="footer.legal">
+          &copy; 2025 Synapsis Health. Todos los derechos reservados.
         </p>
       </div>
     </div>
   </footer>
 
+  <script src="./js/i18n.js"></script>
   <script src="./js/main.js"></script>
 </body>
 </html>
