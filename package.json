@@ -1,0 +1,12 @@
+{
+  "name": "synapsis-health",
+  "version": "1.0.0",
+  "description": "Sitio web institucional — Synapsis Health",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/css/input.css -o ./public/styles.css --watch",
+    "build": "npx tailwindcss -i ./src/css/input.css -o ./public/styles.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
