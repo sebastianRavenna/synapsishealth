@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Sitio web institucional — Synapsis Health",
   "scripts": {
-    "dev": "npx tailwindcss -i ./src/css/input.css -o ./src/styles.css --watch",
-    "build": "npx tailwindcss -i ./src/css/input.css -o ./src/styles.css --minify"
+    "dev": "npx tailwindcss -i ./css/input.css -o ./styles.css --watch",
+    "build": "npx tailwindcss -i ./css/input.css -o ./styles.css --minify"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.0"
