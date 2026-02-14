@@ -394,6 +394,16 @@ function applyTranslations(lang) {
   const labelMobile = document.getElementById("lang-label-mobile");
   if (label) label.textContent = nextLang;
   if (labelMobile) labelMobile.textContent = nextLang;
+
+  // Estilo visual del toggle (negativo cuando EN está activo)
+  [document.getElementById("lang-toggle"), document.getElementById("lang-toggle-mobile")].forEach(btn => {
+    if (!btn) return;
+    if (lang === "en") {
+      btn.classList.add("lang-active");
+    } else {
+      btn.classList.remove("lang-active");
+    }
+  });
 }
 
 /**
