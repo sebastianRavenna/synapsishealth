@@ -188,12 +188,12 @@
   }
 }
 
-/* ===== NAVBAR DARK — SVG logo filter ===== */
-#navbar [aria-label*="Synapsis"] > svg {
-  transition: filter 0.3s;
+/* ===== NAVBAR DARK — logo swap ===== */
+#navbar.navbar-dark .logo-dark {
+  display: none;
 }
-#navbar.navbar-dark [aria-label*="Synapsis"] > svg {
-  filter: brightness(0) invert(1);
+#navbar.navbar-dark .logo-light {
+  display: block;
 }
 
 /* ===== LANGUAGE TOGGLE — active state (EN selected) ===== */
