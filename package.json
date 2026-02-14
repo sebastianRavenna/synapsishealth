@@ -4,7 +4,7 @@
   "description": "Sitio web institucional — Synapsis Health",
   "scripts": {
     "dev": "npx tailwindcss -i ./css/input.css -o ./styles.css --watch",
-    "build": "npx tailwindcss -i ./css/input.css -o ./styles.css --minify && npx terser js/main.js -o js/main.min.js -c -m && npx terser js/i18n.js -o js/i18n.min.js -c -m"
+    "build": "npx tailwindcss -i ./css/input.css -o ./styles.css --minify && npx terser js/main.js -o js/main.min.js -c -m && npx terser js/i18n.js -o js/i18n.min.js -c -m && node scripts/cachebust.js"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.0",
