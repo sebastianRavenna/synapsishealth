@@ -92,6 +92,42 @@
     @apply text-graphite-900;
   }
 
+  /* Navbar dark theme (pages with dark heroes) */
+  #navbar.navbar-dark .nav-link {
+    @apply text-graphite-300;
+  }
+  #navbar.navbar-dark .nav-link:hover {
+    @apply text-white;
+  }
+  #navbar.navbar-dark .nav-link.active {
+    @apply text-white;
+  }
+  #navbar .font-logo,
+  #navbar .font-logo .font-light {
+    transition: color 0.3s;
+  }
+  #navbar.navbar-dark .font-logo {
+    @apply text-white;
+  }
+  #navbar.navbar-dark .font-logo .font-light {
+    @apply text-graphite-300;
+  }
+  #navbar.navbar-dark #menu-toggle svg {
+    @apply text-white;
+  }
+  #navbar.navbar-dark #lang-toggle {
+    @apply text-graphite-300 border-graphite-500;
+  }
+  #navbar.navbar-dark #lang-toggle:hover {
+    @apply text-white border-graphite-300;
+  }
+  #navbar.navbar-dark .btn-primary {
+    @apply bg-white text-graphite-900;
+  }
+  #navbar.navbar-dark .btn-primary:hover {
+    @apply bg-graphite-100;
+  }
+
   .reveal {
     @apply opacity-0 translate-y-5 transition-all duration-700 ease-out;
   }
@@ -150,6 +186,36 @@
   .gradient-hero {
     background: linear-gradient(180deg, rgba(242,242,242,0.4) 0%, rgba(250,250,250,1) 100%);
   }
+}
+
+/* ===== NAVBAR DARK — SVG logo filter ===== */
+#navbar [aria-label*="Synapsis"] > svg {
+  transition: filter 0.3s;
+}
+#navbar.navbar-dark [aria-label*="Synapsis"] > svg {
+  filter: brightness(0) invert(1);
+}
+
+/* ===== LANGUAGE TOGGLE — active state (EN selected) ===== */
+#lang-toggle.lang-active,
+#lang-toggle-mobile.lang-active {
+  background-color: #1A1A1A;
+  color: #fff;
+  border-color: #1A1A1A;
+}
+#lang-toggle.lang-active:hover,
+#lang-toggle-mobile.lang-active:hover {
+  background-color: #2D2D2D;
+  color: #fff;
+}
+#navbar.navbar-dark #lang-toggle.lang-active {
+  background-color: #fff;
+  color: #1A1A1A;
+  border-color: #fff;
+}
+#navbar.navbar-dark #lang-toggle.lang-active:hover {
+  background-color: #E0E0E0;
+  color: #1A1A1A;
 }
 
 /* ===== FOCUS VISIBLE ===== */

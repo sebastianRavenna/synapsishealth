@@ -91,11 +91,15 @@ function initNavbarScroll() {
   const nav = document.getElementById("navbar");
   if (!nav) return;
 
+  const isDarkHero = nav.hasAttribute("data-navbar-dark");
+
   const update = () => {
     if (window.scrollY > 60) {
       nav.classList.add("bg-white/95", "backdrop-blur-md", "shadow-sm");
+      if (isDarkHero) nav.classList.remove("navbar-dark");
     } else {
       nav.classList.remove("bg-white/95", "backdrop-blur-md", "shadow-sm");
+      if (isDarkHero) nav.classList.add("navbar-dark");
     }
   };
   window.addEventListener("scroll", update, { passive: true });
