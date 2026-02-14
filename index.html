@@ -6,9 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <!-- SEO -->
-  <title>Synapsis Health | Evaluación de Tecnologías Sanitarias - Argentina</title>
-  <meta name="description" content="Plataforma estratégica de Evaluación de Tecnologías Sanitarias. Integramos evidencia científica, análisis económico y gobernanza institucional para decisiones sanitarias de alto impacto en Latinoamérica.">
-  <meta name="keywords" content="evaluación tecnologías sanitarias, ETS, health technology assessment, decisiones sanitarias, evidencia científica, Argentina">
+  <title>Synapsis Health | Evaluación de Tecnologías Sanitarias</title>
+  <meta name="description" content="Plataforma estratégica de Evaluación de Tecnologías Sanitarias. Integramos evidencia científica, análisis económico y gobernanza para decisiones de alto impacto.">
   <link rel="canonical" href="https://synapsishealth.vercel.app/">
 
   <!-- Open Graph -->
@@ -18,27 +17,32 @@
   <meta property="og:url" content="https://synapsishealth.vercel.app/">
   <meta property="og:site_name" content="Synapsis Health">
   <meta property="og:locale" content="es_AR">
-  <!-- <meta property="og:image" content="https://synapsishealth.vercel.app/images/og-image.jpg"> -->
+  <!-- Descomentar cuando exista el archivo assets/img/og-image.jpg (1200x630px) -->
+  <!-- <meta property="og:image" content="https://synapsishealth.vercel.app/assets/img/og-image.jpg"> -->
+  <!-- <meta property="og:image:width" content="1200"> -->
+  <!-- <meta property="og:image:height" content="630"> -->
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Synapsis Health | Evaluación de Tecnologías Sanitarias">
   <meta name="twitter:description" content="Transformamos evidencia en decisiones sanitarias eficientes.">
-  <!-- <meta name="twitter:image" content="https://synapsishealth.vercel.app/images/twitter-card.jpg"> -->
+  <!-- Descomentar cuando exista el archivo assets/img/og-image.jpg -->
+  <!-- <meta name="twitter:image" content="https://synapsishealth.vercel.app/assets/img/og-image.jpg"> -->
 
   <!-- Fonts -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@200;300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Jost:wght@200;300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
   <!-- CSS -->
   <link rel="stylesheet" href="./styles.css">
 
   <!-- Favicon: reemplazar con isotipo SVG definitivo -->
-  <!-- <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml"> -->
-  <!-- <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"> -->
-  <!-- <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> -->
-  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> -->
+  <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#FAFAFA">
 </head>
@@ -139,7 +143,7 @@
     <div class="container-site pt-20">
       <div class="max-w-2xl">
         <p class="overline mb-6 reveal" data-i18n="hero.overline">Evaluación de Tecnologías Sanitarias</p>
-        <h1 class="text-display-xl font-logo font-normal text-graphite-900 mb-6 reveal" data-i18n="hero.headline">
+        <h1 class="text-display-xl font-logo font-normal text-graphite-900 mb-6" data-i18n="hero.headline">
           Transformamos evidencia en decisiones sanitarias eficientes.
         </h1>
         <p class="text-subtitle text-graphite-500 font-heading font-light mb-3 reveal" data-i18n="hero.subheadline">
@@ -661,7 +665,7 @@
               <span id="mensaje-error" class="error-message" role="alert"></span>
             </div>
             <button type="submit" class="btn-primary w-full md:w-auto" data-i18n="contact.form.submit">Iniciar conversación</button>
-            <div id="form-feedback" class="hidden"></div>
+            <div id="form-feedback" class="hidden" aria-live="assertive" role="alert"></div>
             <div id="form-success" class="success-message" role="status" aria-live="polite" style="display:none;">
               Mensaje enviado correctamente. Te contactaremos pronto.
             </div>
@@ -709,7 +713,7 @@
 
       <!-- Legal -->
       <div class="border-t border-graphite-800 pt-8 text-center">
-        <p class="text-xs text-graphite-600" data-i18n="footer.legal">
+        <p class="text-xs text-graphite-400" data-i18n="footer.legal">
           &copy; 2025 Synapsis Health. Todos los derechos reservados.
         </p>
       </div>
@@ -721,10 +725,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://synapsishealth.vercel.app/#organization",
     "name": "Synapsis Health",
     "description": "Plataforma estratégica de Evaluación de Tecnologías Sanitarias para sistemas de salud complejos",
     "url": "https://synapsishealth.vercel.app",
-    "logo": "https://synapsishealth.vercel.app/images/logo.png",
+    "logo": "https://synapsishealth.vercel.app/assets/icons/logo-full.png",
     "foundingDate": "2024",
     "address": {
       "@type": "PostalAddress",
@@ -748,7 +753,7 @@
   }
   </script>
 
-  <script src="./js/i18n.js"></script>
-  <script src="./js/main.js"></script>
+  <script src="./js/i18n.js" defer></script>
+  <script src="./js/main.js" defer></script>
 </body>
 </html>

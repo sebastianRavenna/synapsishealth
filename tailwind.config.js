@@ -28,9 +28,9 @@ module.exports = {
         body: ['"DM Sans"', 'sans-serif'],
       },
       fontSize: {
-        "display-xl": ["3.5rem",  { lineHeight: "1.08", letterSpacing: "-0.02em" }],
-        "display":    ["2.75rem", { lineHeight: "1.12", letterSpacing: "-0.01em" }],
-        "display-sm": ["2rem",    { lineHeight: "1.2",  letterSpacing: "-0.005em" }],
+        "display-xl": ["clamp(2.25rem, 5vw + 1rem, 3.5rem)",  { lineHeight: "1.08", letterSpacing: "-0.02em" }],
+        "display":    ["clamp(1.875rem, 4vw + 0.5rem, 2.75rem)", { lineHeight: "1.12", letterSpacing: "-0.01em" }],
+        "display-sm": ["clamp(1.5rem, 3vw + 0.25rem, 2rem)",    { lineHeight: "1.2",  letterSpacing: "-0.005em" }],
         "title":      ["1.5rem",  { lineHeight: "1.25", letterSpacing: "0.01em" }],
         "subtitle":   ["1.125rem",{ lineHeight: "1.5" }],
         "label":      ["0.6875rem",{ lineHeight: "1", letterSpacing: "0.15em" }],

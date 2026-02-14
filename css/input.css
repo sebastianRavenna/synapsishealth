@@ -30,7 +30,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply font-body font-light text-graphite-500 bg-[#FAFAFA];
+    @apply font-body font-light text-graphite-500 bg-[#FAFAFA] overflow-x-hidden;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
@@ -67,7 +67,7 @@
   }
 
   .overline {
-    @apply font-heading text-label uppercase tracking-[0.15em] text-graphite-300;
+    @apply font-heading text-label uppercase tracking-[0.15em] text-graphite-500;
   }
 
   .card {
@@ -137,6 +137,12 @@
   .success-message {
     @apply mt-4 text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-4 py-3;
   }
+
+  /* Disabled button state */
+  .btn-primary:disabled,
+  .btn-secondary:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
 }
 
 /* ===== UTILITIES ===== */
@@ -159,5 +165,19 @@
   input[type="submit"],
   input[type="button"] {
     min-height: 44px;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
