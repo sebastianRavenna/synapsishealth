@@ -25,20 +25,44 @@ function initMobileMenu() {
   const close   = document.getElementById("menu-close");
   if (!toggle || !menu) return;
 
+  const focusableSelector = 'a[href], button:not([disabled])';
+
+  const trapFocus = (e) => {
+    if (e.key !== "Tab") return;
+    const focusable = menu.querySelectorAll(focusableSelector);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  };
+
   const open = () => {
     menu.classList.replace("translate-x-full", "translate-x-0");
     overlay?.classList.remove("hidden");
     document.body.style.overflow = "hidden";
+    close?.focus();
+    menu.addEventListener("keydown", trapFocus);
   };
   const shut = () => {
     menu.classList.replace("translate-x-0", "translate-x-full");
     overlay?.classList.add("hidden");
     document.body.style.overflow = "";
+    menu.removeEventListener("keydown", trapFocus);
+    toggle.focus();
   };
 
   toggle.addEventListener("click", open);
   close?.addEventListener("click", shut);
   overlay?.addEventListener("click", shut);
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !menu.classList.contains("translate-x-full")) shut();
+  });
   menu.querySelectorAll("a").forEach(a => a.addEventListener("click", shut));
 }
 
@@ -199,18 +223,28 @@ function initContactForm() {
 
   form.addEventListener("submit", async e => {
     e.preventDefault();
+    clearFieldErrors();
 
     const data = Object.fromEntries(new FormData(form).entries());
 
-    // Validación
-    if (!data.nombre || !data.email || !data.mensaje) {
-      showFeedback(feedback, "Por favor completá todos los campos obligatorios.", "error");
-      return;
+    // Validación por campo
+    let hasErrors = false;
+    if (!data.nombre || data.nombre.trim().length < 2) {
+      setFieldError("nombre", "El nombre es obligatorio (mínimo 2 caracteres).");
+      hasErrors = true;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-      showFeedback(feedback, "Por favor ingresá un email válido.", "error");
-      return;
+    if (!data.email) {
+      setFieldError("email", "El email es obligatorio.");
+      hasErrors = true;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      setFieldError("email", "Por favor ingresá un email válido.");
+      hasErrors = true;
     }
+    if (!data.mensaje || data.mensaje.trim().length < 10) {
+      setFieldError("mensaje", "El mensaje es obligatorio (mínimo 10 caracteres).");
+      hasErrors = true;
+    }
+    if (hasErrors) return;
 
     btn.disabled = true;
     btn.textContent = "Enviando...";
@@ -236,6 +270,18 @@ function initContactForm() {
       btn.textContent = "Enviar mensaje";
     }
   });
+}
+
+function setFieldError(fieldId, msg) {
+  const input = document.getElementById(fieldId);
+  const error = document.getElementById(fieldId + "-error");
+  if (input) input.setAttribute("aria-invalid", "true");
+  if (error) error.textContent = msg;
+}
+
+function clearFieldErrors() {
+  document.querySelectorAll("[aria-invalid]").forEach(el => el.removeAttribute("aria-invalid"));
+  document.querySelectorAll(".error-message").forEach(el => el.textContent = "");
 }
 
 function showFeedback(el, msg, type) {
