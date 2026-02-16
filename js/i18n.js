@@ -38,7 +38,7 @@ const translations = {
     "about.text4": "No entregamos informes aislados. Construimos arquitectura de decisión.",
 
     // Pilares
-    "pillars.overline": "Nuestro enfoque",
+    "pillars.overline": "Pilares",
     "pillars.title": "Nuestro enfoque",
     "pillars.evidence.title": "Evidencia",
     "pillars.evidence.text": "Evaluación rigurosa de tecnologías sanitarias basada en estándares internacionales, adaptada a contextos reales de decisión.",
