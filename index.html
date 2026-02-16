@@ -36,7 +36,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Jost:wght@200;300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="./styles.css?v=29b44c29">
+  <link rel="stylesheet" href="./styles.css?v=3ebc8b1a">
 
   <!-- Favicon: reemplazar con isotipo SVG definitivo -->
   <link rel="icon" href="./assets/icons/favicon.png" type="image/png">
@@ -130,13 +130,15 @@
   <!-- ============================================================
        HERO
        ============================================================ -->
-  <section class="relative min-h-[90vh] flex items-center gradient-hero overflow-hidden">
+  <section class="relative flex items-center gradient-hero overflow-hidden md:min-h-[90vh]">
     <!-- Video de fondo -->
-    <video class="absolute inset-0 w-full h-full object-cover opacity-40 pointer-events-none hero-video" autoplay muted loop playsinline aria-hidden="true">
+    <video class="absolute inset-0 w-full h-full object-cover pointer-events-none hero-video" autoplay muted loop playsinline aria-hidden="true">
       <source src="./asset/vid/hero.mp4" type="video/mp4">
     </video>
+    <!-- Overlay: transición video → fondo -->
+    <div class="absolute inset-0 z-[1] hero-overlay" aria-hidden="true"></div>
 
-    <div class="container-site pt-20 relative z-10">
+    <div class="container-site pt-28 pb-16 md:pt-20 md:pb-0 relative z-10">
       <div class="max-w-2xl">
         <p class="overline mb-6 reveal" data-i18n="hero.overline">Evaluación de Tecnologías Sanitarias</p>
         <h1 class="text-display-xl font-logo font-normal text-graphite-900 mb-6" data-i18n="hero.headline">

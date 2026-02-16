@@ -128,9 +128,39 @@
     @apply bg-graphite-100;
   }
 
-  /* Hero background video — desaturación parcial */
+  /* Hero background video */
   .hero-video {
     filter: saturate(0.6);
+    opacity: 0.45;
+    object-position: center 30%;
+  }
+  @media (min-width: 768px) {
+    .hero-video {
+      opacity: 0.4;
+      object-position: center;
+    }
+  }
+
+  /* Overlay: funde el video con el fondo del hero */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(250, 250, 250, 0.3) 40%,
+      rgba(250, 250, 250, 0.85) 75%,
+      rgba(250, 250, 250, 1) 100%
+    );
+  }
+  @media (min-width: 768px) {
+    .hero-overlay {
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 55%,
+        rgba(250, 250, 250, 0.6) 80%,
+        rgba(250, 250, 250, 1) 100%
+      );
+    }
   }
 
   .reveal {
@@ -251,7 +281,8 @@
     opacity: 1 !important;
     transform: none !important;
   }
-  .hero-video {
+  .hero-video,
+  .hero-overlay {
     display: none;
   }
 }
