@@ -130,13 +130,13 @@
 
   /* Hero background video */
   .hero-video {
-    filter: saturate(0.6);
-    opacity: 0.45;
+    filter: grayscale(0.3);
+    opacity: 0.2;
+    transform: rotate(180deg);
     object-position: center 30%;
   }
   @media (min-width: 768px) {
     .hero-video {
-      opacity: 0.4;
       object-position: center;
     }
   }
