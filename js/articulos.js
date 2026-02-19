@@ -18,14 +18,12 @@ async function initArticulos() {
     const homeContainer = document.getElementById("home-articles");
     if (homeContainer) {
       renderHomeArticles(homeContainer, articulos.slice(0, 3), lang);
-      observeNewReveals(homeContainer);
     }
 
     // Listado completo
     const listContainer = document.getElementById("all-articles");
     if (listContainer) {
       renderAllArticles(listContainer, articulos, lang);
-      observeNewReveals(listContainer);
     }
 
     // Detalle de artículo individual
@@ -51,7 +49,7 @@ function renderHomeArticles(container, articulos, lang) {
     const summary = lang === "en" ? a.summaryEn : a.summary;
     const date = formatDate(a.date, lang);
     return `
-      <article class="card flex flex-col reveal">
+      <article class="card flex flex-col">
         <p class="text-xs font-heading text-graphite-400 tracking-wide uppercase mb-3">${date}</p>
         <h3 class="font-heading text-title font-light text-graphite-800 mb-3 line-clamp-2">${title}</h3>
         <p class="text-graphite-500 text-sm leading-relaxed mb-6 flex-1 line-clamp-3">${summary}</p>
@@ -68,7 +66,7 @@ function renderAllArticles(container, articulos, lang) {
     const author = lang === "en" ? a.authorEn : a.author;
     const date = formatDate(a.date, lang);
     return `
-      <article class="card flex flex-col md:flex-row gap-8 reveal">
+      <article class="card flex flex-col md:flex-row gap-8">
         <div class="flex-1">
           <p class="text-xs font-heading text-graphite-400 tracking-wide uppercase mb-2">${date} — ${author}</p>
           <h3 class="font-heading text-title font-light text-graphite-800 mb-3">${title}</h3>
@@ -108,20 +106,4 @@ function formatDate(dateStr, lang) {
     ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     : ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
   return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
-}
-
-/**
- * Observa elementos .reveal añadidos dinámicamente para activar la animación de entrada.
- * Necesario porque initScrollReveal() en main.js se ejecuta antes de que se rendericen los artículos.
- */
-function observeNewReveals(container) {
-  const els = container.querySelectorAll(".reveal:not(.visible)");
-  if (!els.length) return;
-  const obs = new IntersectionObserver(
-    entries => entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }
-    }),
-    { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
-  );
-  els.forEach(el => obs.observe(el));
 }
