@@ -128,7 +128,7 @@
     @apply bg-graphite-100;
   }
 
-  /* Hero background video */
+  /* Hero background video (comentado en HTML — mantener estilos por si se restaura) */
   .hero-video {
     filter: grayscale(0.3);
     opacity: 0.2;
@@ -161,6 +161,46 @@
         rgba(250, 250, 250, 1) 100%
       );
     }
+  }
+
+  /* Hero background photo — reemplazar URL cuando se tenga la imagen definitiva */
+  .hero-bg {
+    background-color: #F2F2F2;
+  }
+  .hero-photo-bg {
+    background-image: url('../assets/img/hero-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(0.2);
+    opacity: 0.15;
+  }
+  .hero-photo-overlay {
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(242, 242, 242, 0.4) 50%,
+      rgba(250, 250, 250, 0.9) 80%,
+      rgba(250, 250, 250, 1) 100%
+    );
+  }
+
+  /* Article prose */
+  .prose-article p {
+    @apply text-graphite-500 leading-relaxed;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .reveal {

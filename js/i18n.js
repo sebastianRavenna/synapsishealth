@@ -10,6 +10,7 @@ const translations = {
     "nav.home": "Inicio",
     "nav.team": "Equipo",
     "nav.services": "Servicios",
+    "nav.articles": "Artículos",
     "nav.contact": "Contacto",
     "nav.cta": "Contáctanos",
 
@@ -19,7 +20,7 @@ const translations = {
     "hero.subheadline": "Plataforma estratégica de Evaluación de Tecnologías Sanitarias para sistemas de salud complejos.",
     "hero.text": "Integramos evidencia científica, análisis económico y gobernanza institucional para sostener decisiones sanitarias de alto impacto.",
     "hero.cta": "Conocer nuestro enfoque",
-    "hero.cta2": "Áreas de trabajo",
+    "hero.cta2": "Servicios",
 
     // Problema
     "problem.overline": "El desafío",
@@ -36,6 +37,7 @@ const translations = {
     "about.text2": "No operamos como una consultora tradicional. Construimos infraestructura técnica e institucional para sostener decisiones defendibles.",
     "about.text3": "Nuestro trabajo conecta evidencia científica, política pública y sostenibilidad financiera para transformar complejidad en capacidad de decisión.",
     "about.text4": "No entregamos informes aislados. Construimos arquitectura de decisión.",
+    "about.cta": "Conoce Nuestro Equipo",
 
     // Pilares
     "pillars.overline": "Pilares",
@@ -46,6 +48,7 @@ const translations = {
     "pillars.governance.text": "Marcos institucionales que permiten decisiones transparentes, defendibles y sostenibles en el tiempo.",
     "pillars.access.title": "Acceso",
     "pillars.access.text": "Modelos de cobertura y acuerdos innovadores para tecnologías de alto impacto presupuestario.",
+    "pillars.cta": "Servicios",
 
     // Qué hacemos
     "services.overline": "Qué hacemos",
@@ -99,6 +102,32 @@ const translations = {
     "ethics.item3": "Separación entre sector público e industria",
     "ethics.item4": "Trazabilidad metodológica",
     "ethics.closing": "La confianza institucional es parte del servicio que ofrecemos.",
+
+    // Testimonios
+    "testimonials.overline": "Testimonios",
+    "testimonials.title": "Lo que dicen nuestros clientes",
+    "testimonials.quote1": "Synapsis Health nos brindó un marco de decisión sólido que transformó nuestra forma de evaluar tecnologías sanitarias.",
+    "testimonials.author1": "Nombre del cliente",
+    "testimonials.role1": "Cargo, Organización",
+    "testimonials.quote2": "La rigurosidad metodológica y la comprensión del contexto institucional hicieron la diferencia en nuestro proyecto.",
+    "testimonials.author2": "Nombre del cliente",
+    "testimonials.role2": "Cargo, Organización",
+    "testimonials.quote3": "Contar con el acompañamiento de Synapsis Health fue clave para fundamentar nuestras decisiones de cobertura.",
+    "testimonials.author3": "Nombre del cliente",
+    "testimonials.role3": "Cargo, Organización",
+
+    // Artículos (home)
+    "articles.overline": "Publicaciones",
+    "articles.title": "Artículos recientes",
+    "articles.readMore": "+ info",
+    "articles.viewAll": "Ver todos los artículos",
+
+    // Artículos page
+    "articlesPage.heroOverline": "Publicaciones",
+    "articlesPage.heroTitle": "Artículos y análisis",
+    "articlesPage.ctaTitle": "¿Querés saber más?",
+    "articlesPage.ctaText": "Contactanos para explorar cómo podemos trabajar juntos.",
+    "articlesPage.ctaBtn": "Contactar con nuestro equipo",
 
     // Contacto
     "contact.overline": "Contacto institucional",
@@ -181,6 +210,7 @@ const translations = {
     "nav.home": "Home",
     "nav.team": "Team",
     "nav.services": "Services",
+    "nav.articles": "Articles",
     "nav.contact": "Contact",
     "nav.cta": "Contact us",
 
@@ -190,7 +220,7 @@ const translations = {
     "hero.subheadline": "Strategic Health Technology Assessment platform for complex health systems.",
     "hero.text": "We integrate scientific evidence, economic analysis, and institutional governance to support high-impact health decisions.",
     "hero.cta": "Discover our approach",
-    "hero.cta2": "Work areas",
+    "hero.cta2": "Services",
 
     // Problem
     "problem.overline": "The challenge",
@@ -207,6 +237,7 @@ const translations = {
     "about.text2": "We do not operate as a traditional consultancy. We build technical and institutional infrastructure to support defensible decisions.",
     "about.text3": "Our work connects scientific evidence, public policy, and financial sustainability to transform complexity into decision-making capacity.",
     "about.text4": "We do not deliver isolated reports. We build decision architecture.",
+    "about.cta": "Meet Our Team",
 
     // Pillars
     "pillars.overline": "Our approach",
@@ -217,6 +248,7 @@ const translations = {
     "pillars.governance.text": "Institutional frameworks that enable transparent, defensible, and sustainable decisions over time.",
     "pillars.access.title": "Access",
     "pillars.access.text": "Coverage models and innovative agreements for high-budget-impact technologies.",
+    "pillars.cta": "Services",
 
     // Services
     "services.overline": "What we do",
@@ -270,6 +302,32 @@ const translations = {
     "ethics.item3": "Separation between public sector and industry",
     "ethics.item4": "Methodological traceability",
     "ethics.closing": "Institutional trust is part of the service we provide.",
+
+    // Testimonials
+    "testimonials.overline": "Testimonials",
+    "testimonials.title": "What our clients say",
+    "testimonials.quote1": "Synapsis Health provided us with a solid decision-making framework that transformed how we evaluate health technologies.",
+    "testimonials.author1": "Client name",
+    "testimonials.role1": "Position, Organization",
+    "testimonials.quote2": "The methodological rigor and understanding of the institutional context made the difference in our project.",
+    "testimonials.author2": "Client name",
+    "testimonials.role2": "Position, Organization",
+    "testimonials.quote3": "Having Synapsis Health's support was key to substantiating our coverage decisions.",
+    "testimonials.author3": "Client name",
+    "testimonials.role3": "Position, Organization",
+
+    // Articles (home)
+    "articles.overline": "Publications",
+    "articles.title": "Recent articles",
+    "articles.readMore": "+ info",
+    "articles.viewAll": "View all articles",
+
+    // Articles page
+    "articlesPage.heroOverline": "Publications",
+    "articlesPage.heroTitle": "Articles and analysis",
+    "articlesPage.ctaTitle": "Want to know more?",
+    "articlesPage.ctaText": "Contact us to explore how we can work together.",
+    "articlesPage.ctaBtn": "Contact our team",
 
     // Contact
     "contact.overline": "Institutional contact",
