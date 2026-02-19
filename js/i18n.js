@@ -15,7 +15,7 @@ const translations = {
     "nav.cta": "Contáctanos",
 
     // Hero
-    "hero.overline": "Evaluación de Tecnologías Sanitarias",
+    "hero.overline": "Plataforma estratégica de Evaluación de Tecnologías Sanitarias para sistemas de salud.",
     "hero.headline": "Transformamos evidencia en decisiones sanitarias eficientes.",
     "hero.subheadline": "Plataforma estratégica de Evaluación de Tecnologías Sanitarias para sistemas de salud complejos.",
     "hero.text": "Integramos evidencia científica, análisis económico y gobernanza institucional para sostener decisiones sanitarias de alto impacto.",
@@ -215,7 +215,7 @@ const translations = {
     "nav.cta": "Contact us",
 
     // Hero
-    "hero.overline": "Health Technology Assessment",
+    "hero.overline": "Strategic Health Technology Assessment platform for health systems.",
     "hero.headline": "We transform evidence into efficient health decisions.",
     "hero.subheadline": "Strategic Health Technology Assessment platform for complex health systems.",
     "hero.text": "We integrate scientific evidence, economic analysis, and institutional governance to support high-impact health decisions.",
