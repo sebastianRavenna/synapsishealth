@@ -68,6 +68,7 @@
         <a href="index.html" class="nav-link active" data-i18n="nav.home" aria-current="page">Inicio</a>
         <a href="equipo.html" class="nav-link" data-i18n="nav.team">Equipo</a>
         <a href="servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a>
+        <a href="articulos.html" class="nav-link" data-i18n="nav.articles">Artículos</a>
         <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
 
         <!-- Language Toggle -->
@@ -104,6 +105,7 @@
       <a href="index.html" class="font-heading text-lg text-graphite-800 tracking-wide" data-i18n="nav.home">Inicio</a>
       <a href="equipo.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.team">Equipo</a>
       <a href="servicios.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.services">Servicios</a>
+      <a href="articulos.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.articles">Artículos</a>
       <a href="#contacto" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.contact">Contacto</a>
       <div class="pt-4 border-t border-graphite-100 flex flex-col gap-4">
         <!-- Mobile Language Toggle -->
@@ -127,17 +129,19 @@
   <!-- ============================================================
        HERO
        ============================================================ -->
-  <section class="relative flex items-center gradient-hero overflow-hidden md:min-h-[90vh]">
-    <!-- Video de fondo -->
+  <section class="relative flex items-center overflow-hidden md:min-h-[90vh] hero-bg">
+    <!-- Video de fondo (comentado — descomentar para volver al video)
     <video class="absolute inset-0 w-full h-full object-cover pointer-events-none hero-video" autoplay muted loop playsinline aria-hidden="true">
       <source src="./assets/vid/hero.mp4" type="video/mp4">
     </video>
-    <!-- Overlay: transición video → fondo -->
     <div class="absolute inset-0 z-[1] hero-overlay" aria-hidden="true"></div>
+    -->
+    <!-- Foto de fondo — reemplazar la URL cuando se tenga la imagen definitiva -->
+    <div class="absolute inset-0 hero-photo-bg" aria-hidden="true"></div>
+    <div class="absolute inset-0 hero-photo-overlay" aria-hidden="true"></div>
 
     <div class="container-site pt-28 pb-16 md:pt-20 md:pb-0 relative z-10">
       <div class="max-w-2xl">
-        <p class="overline mb-6 reveal" data-i18n="hero.overline">Evaluación de Tecnologías Sanitarias</p>
         <h1 class="text-display-xl font-logo font-normal text-graphite-900 mb-6" data-i18n="hero.headline">
           Transformamos evidencia en decisiones sanitarias eficientes.
         </h1>
@@ -149,7 +153,7 @@
         </p>
         <div class="flex flex-wrap gap-4 reveal">
           <a href="#pilares" class="btn-primary" data-i18n="hero.cta">Conocer nuestro enfoque</a>
-          <a href="#que-hacemos" class="btn-secondary" data-i18n="hero.cta2">Áreas de trabajo</a>
+          <a href="servicios.html" class="btn-secondary" data-i18n="hero.cta2">Servicios</a>
         </div>
       </div>
     </div>
@@ -164,15 +168,15 @@
   <!-- ============================================================
        PROBLEMA
        ============================================================ -->
-  <section class="section" id="problema">
+  <section class="section-dark" id="problema">
     <div class="container-site">
       <div class="max-w-3xl mx-auto">
-        <p class="overline mb-4 reveal" data-i18n="problem.overline">El desafío</p>
-        <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="problem.title">
+        <p class="overline text-graphite-400 mb-4 reveal" data-i18n="problem.overline">El desafío</p>
+        <h2 class="text-display font-heading font-extralight text-white mb-6 reveal" data-i18n="problem.title">
           La complejidad ya no es técnica. Es institucional.
         </h2>
-        <div class="line-accent mb-8 reveal"></div>
-        <div class="space-y-5 text-graphite-500 leading-relaxed">
+        <div class="line-accent bg-graphite-500 mb-8 reveal"></div>
+        <div class="space-y-5 text-graphite-300 leading-relaxed">
           <p class="reveal" data-i18n="problem.text1">
             Los sistemas de salud enfrentan tecnologías cada vez más costosas, presión judicial creciente y decisiones políticamente sensibles.
           </p>
@@ -182,7 +186,7 @@
           <p class="reveal" data-i18n="problem.text3">
             Las decisiones sanitarias requieren hoy marcos sólidos que integren ciencia, economía y gobernanza.
           </p>
-          <p class="text-graphite-800 font-heading font-normal reveal" data-i18n="problem.text4">
+          <p class="text-white font-heading font-normal reveal" data-i18n="problem.text4">
             Synapsis Health existe para cerrar esa brecha.
           </p>
         </div>
@@ -194,33 +198,36 @@
   <!-- ============================================================
        QUIÉNES SOMOS
        ============================================================ -->
-  <section class="section-dark relative overflow-hidden" id="quienes-somos">
+  <section class="section relative overflow-hidden" id="quienes-somos">
     <div class="container-site relative z-10">
       <div class="grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <p class="overline text-graphite-400 mb-4 reveal" data-i18n="about.overline">Synapsis Health</p>
-          <h2 class="text-display font-heading font-extralight text-white mb-6 reveal" data-i18n="about.title">
+          <p class="overline mb-4 reveal" data-i18n="about.overline">Synapsis Health</p>
+          <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="about.title">
             Arquitectura de decisión sanitaria
           </h2>
-          <div class="line-accent bg-graphite-500 mb-6 reveal"></div>
+          <div class="line-accent mb-6 reveal"></div>
           <div class="space-y-5">
-            <p class="text-graphite-300 leading-relaxed reveal" data-i18n="about.text1">
+            <p class="text-graphite-500 leading-relaxed reveal" data-i18n="about.text1">
               Synapsis Health es una plataforma estratégica especializada en Evaluación de Tecnologías Sanitarias aplicada a contextos complejos.
             </p>
-            <p class="text-graphite-300 leading-relaxed reveal" data-i18n="about.text2">
+            <p class="text-graphite-500 leading-relaxed reveal" data-i18n="about.text2">
               No operamos como una consultora tradicional. Construimos infraestructura técnica e institucional para sostener decisiones defendibles.
             </p>
-            <p class="text-graphite-300 leading-relaxed reveal" data-i18n="about.text3">
+            <p class="text-graphite-500 leading-relaxed reveal" data-i18n="about.text3">
               Nuestro trabajo conecta evidencia científica, política pública y sostenibilidad financiera para transformar complejidad en capacidad de decisión.
             </p>
-            <p class="text-white font-heading font-normal reveal" data-i18n="about.text4">
+            <p class="text-graphite-800 font-heading font-normal reveal" data-i18n="about.text4">
               No entregamos informes aislados. Construimos arquitectura de decisión.
             </p>
+          </div>
+          <div class="mt-8 reveal">
+            <a href="equipo.html" class="btn-primary" data-i18n="about.cta">Conoce Nuestro Equipo</a>
           </div>
         </div>
         <div class="reveal">
           <!-- IMG: Imagen institucional — arquitectura de decisión, redes, conexiones -->
-          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center">
+          <div class="aspect-[4/3] bg-graphite-50 rounded-2xl border border-graphite-100 flex items-center justify-center">
             <img src="./assets/img/quienes_somos.jpg" class="rounded-2xl h-full object-cover" alt="">
           </div>
         </div>
@@ -232,7 +239,7 @@
   <!-- ============================================================
        PILARES
        ============================================================ -->
-  <section class="section" id="pilares">
+  <section class="py-20 md:py-30 bg-graphite-50 border-y border-graphite-100" id="pilares">
     <div class="container-site">
       <div class="text-center mb-16">
         <p class="overline mb-4 reveal" data-i18n="pillars.overline">Nuestro enfoque</p>
@@ -285,101 +292,67 @@
           </p>
         </div>
       </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="servicios.html" class="btn-primary" data-i18n="pillars.cta">Servicios</a>
+      </div>
     </div>
   </section>
 
 
   <!-- ============================================================
-       QUÉ HACEMOS
-       ============================================================ -->
+       QUÉ HACEMOS (OCULTO — descomentar para restaurar)
+       ============================================================
   <section class="section bg-graphite-50 border-y border-graphite-100" id="que-hacemos">
     <div class="container-site">
       <div class="text-center mb-16">
         <p class="overline mb-4 reveal" data-i18n="services.overline">Qué hacemos</p>
         <h2 class="text-display font-heading font-extralight text-graphite-800 reveal" data-i18n="services.title">Áreas de trabajo</h2>
       </div>
-
       <div class="grid md:grid-cols-3 gap-8">
-        <!-- Bloque 1 — Evaluación estratégica -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/>
             </svg>
           </div>
-          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block1.title">
-            Evaluación estratégica
-          </h3>
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block1.title">Evaluación estratégica</h3>
           <ul class="space-y-2.5 text-graphite-500 text-sm leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block1.item1">Evaluación de Tecnologías Sanitarias rápida y completa</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block1.item2">Análisis de impacto presupuestario</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block1.item3">Evaluación de valor y priorización explícita</span>
-            </li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block1.item1">Evaluación de Tecnologías Sanitarias rápida y completa</span></li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block1.item2">Análisis de impacto presupuestario</span></li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block1.item3">Evaluación de valor y priorización explícita</span></li>
           </ul>
         </div>
-
-        <!-- Bloque 2 — Acceso gestionado -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/>
             </svg>
           </div>
-          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block2.title">
-            Acceso gestionado
-          </h3>
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block2.title">Acceso gestionado</h3>
           <ul class="space-y-2.5 text-graphite-500 text-sm leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block2.item1">Diseño de acuerdos basados en valor</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block2.item2">Modelos de riesgo compartido</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block2.item3">Soporte técnico en negociación de tecnologías complejas</span>
-            </li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block2.item1">Diseño de acuerdos basados en valor</span></li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block2.item2">Modelos de riesgo compartido</span></li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block2.item3">Soporte técnico en negociación de tecnologías complejas</span></li>
           </ul>
         </div>
-
-        <!-- Bloque 3 — Soporte institucional -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/>
             </svg>
           </div>
-          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block3.title">
-            Soporte institucional
-          </h3>
+          <h3 class="font-heading text-title font-light text-graphite-800 mb-4" data-i18n="services.block3.title">Soporte institucional</h3>
           <ul class="space-y-2.5 text-graphite-500 text-sm leading-relaxed">
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block3.item1">Diseño de marcos de cobertura</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block3.item2">Estrategias frente a judicialización</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span>
-              <span data-i18n="services.block3.item3">Construcción de capacidades públicas de decisión</span>
-            </li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block3.item1">Diseño de marcos de cobertura</span></li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block3.item2">Estrategias frente a judicialización</span></li>
+            <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block3.item3">Construcción de capacidades públicas de decisión</span></li>
           </ul>
         </div>
       </div>
     </div>
   </section>
+  -->
 
 
   <!-- ============================================================
@@ -444,13 +417,7 @@
   <section class="section-dark relative overflow-hidden" id="academica">
     <div class="container-site relative z-10">
       <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="order-2 md:order-1 reveal">
-          <!-- IMG: Imagen académica — universidad, formación, investigación -->
-          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center">
-            <span class="overline text-graphite-600">Imagen académica</span>
-          </div>
-        </div>
-        <div class="order-1 md:order-2">
+        <div>
           <p class="overline text-graphite-400 mb-4 reveal" data-i18n="academic.overline">Vinculación académica</p>
           <h2 class="text-display font-heading font-extralight text-white mb-6 reveal" data-i18n="academic.title">
             Producción de conocimiento y formación
@@ -466,14 +433,20 @@
             Construimos capacidades públicas. No solo resolvemos problemas puntuales.
           </p>
         </div>
+        <div class="reveal">
+          <!-- IMG: Imagen académica — universidad, formación, investigación -->
+          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center">
+            <span class="overline text-graphite-600">Imagen académica</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
 
   <!-- ============================================================
-       EQUIPO
-       ============================================================ -->
+       EQUIPO (OCULTO — descomentar para restaurar)
+       ============================================================
   <section class="section" id="equipo">
     <div class="container-site">
       <div class="max-w-3xl mx-auto text-center">
@@ -492,6 +465,7 @@
       </div>
     </div>
   </section>
+  -->
 
 
   <!-- ============================================================
@@ -537,6 +511,84 @@
         <p class="text-graphite-800 font-heading font-normal text-sm reveal" data-i18n="ethics.closing">
           La confianza institucional es parte del servicio que ofrecemos.
         </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       OPINIONES DE CLIENTES
+       ============================================================ -->
+  <section class="section-dark" id="testimonios">
+    <div class="container-site">
+      <div class="text-center mb-16">
+        <p class="overline text-graphite-400 mb-4 reveal" data-i18n="testimonials.overline">Testimonios</p>
+        <h2 class="text-display font-heading font-extralight text-white reveal" data-i18n="testimonials.title">Lo que dicen nuestros clientes</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Testimonio 1 -->
+        <div class="bg-graphite-800 rounded-2xl border border-graphite-700 p-8 reveal">
+          <svg class="w-8 h-8 text-graphite-600 mb-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z"/>
+          </svg>
+          <p class="text-graphite-300 leading-relaxed mb-6" data-i18n="testimonials.quote1">
+            Synapsis Health nos brindó un marco de decisión sólido que transformó nuestra forma de evaluar tecnologías sanitarias.
+          </p>
+          <div>
+            <p class="text-white font-heading font-normal text-sm" data-i18n="testimonials.author1">Nombre del cliente</p>
+            <p class="text-graphite-500 text-xs" data-i18n="testimonials.role1">Cargo, Organización</p>
+          </div>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="bg-graphite-800 rounded-2xl border border-graphite-700 p-8 reveal">
+          <svg class="w-8 h-8 text-graphite-600 mb-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z"/>
+          </svg>
+          <p class="text-graphite-300 leading-relaxed mb-6" data-i18n="testimonials.quote2">
+            La rigurosidad metodológica y la comprensión del contexto institucional hicieron la diferencia en nuestro proyecto.
+          </p>
+          <div>
+            <p class="text-white font-heading font-normal text-sm" data-i18n="testimonials.author2">Nombre del cliente</p>
+            <p class="text-graphite-500 text-xs" data-i18n="testimonials.role2">Cargo, Organización</p>
+          </div>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="bg-graphite-800 rounded-2xl border border-graphite-700 p-8 reveal">
+          <svg class="w-8 h-8 text-graphite-600 mb-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.583 17.321C3.553 16.227 3 15 3 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179zm10 0C13.553 16.227 13 15 13 13.011c0-3.5 2.457-6.637 6.03-8.188l.893 1.378c-3.335 1.804-3.987 4.145-4.247 5.621.537-.278 1.24-.375 1.929-.311 1.804.167 3.226 1.648 3.226 3.489a3.5 3.5 0 01-3.5 3.5 3.871 3.871 0 01-2.748-1.179z"/>
+          </svg>
+          <p class="text-graphite-300 leading-relaxed mb-6" data-i18n="testimonials.quote3">
+            Contar con el acompañamiento de Synapsis Health fue clave para fundamentar nuestras decisiones de cobertura.
+          </p>
+          <div>
+            <p class="text-white font-heading font-normal text-sm" data-i18n="testimonials.author3">Nombre del cliente</p>
+            <p class="text-graphite-500 text-xs" data-i18n="testimonials.role3">Cargo, Organización</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ARTÍCULOS
+       ============================================================ -->
+  <section class="section" id="articulos">
+    <div class="container-site">
+      <div class="text-center mb-16">
+        <p class="overline mb-4 reveal" data-i18n="articles.overline">Publicaciones</p>
+        <h2 class="text-display font-heading font-extralight text-graphite-800 reveal" data-i18n="articles.title">Artículos recientes</h2>
+      </div>
+
+      <div id="home-articles" class="grid md:grid-cols-3 gap-8">
+        <!-- Los artículos se cargan dinámicamente desde articulos.js -->
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="articulos.html" class="btn-secondary" data-i18n="articles.viewAll">Ver todos los artículos</a>
       </div>
     </div>
   </section>
@@ -664,6 +716,7 @@
         <a href="index.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.home">Inicio</a>
         <a href="equipo.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.team">Equipo</a>
         <a href="servicios.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.services">Servicios</a>
+        <a href="articulos.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.articles">Artículos</a>
         <a href="#contacto" class="hover:text-graphite-200 transition-colors" data-i18n="nav.contact">Contacto</a>
       </nav>
 
@@ -711,5 +764,6 @@
 
   <script src="./js/i18n.js?v=e93f540f" defer></script>
   <script src="./js/main.js?v=e4777ca9" defer></script>
+  <script src="./js/articulos.js" defer></script>
 </body>
 </html>

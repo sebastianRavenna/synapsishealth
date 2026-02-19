@@ -132,37 +132,65 @@ function initSmoothScroll() {
 function initServiceTabs() {
   const btns = document.querySelectorAll("[data-service-tab]");
   const panels = document.querySelectorAll("[data-service-panel]");
+  const defaultPanel = document.getElementById("panel-default");
   if (!btns.length) return;
+
+  let activeTab = null;
 
   btns.forEach(btn => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.serviceTab;
 
+      // ON/OFF toggle: si el tab ya está activo, desactivarlo y volver al default
+      if (activeTab === id) {
+        // Desactivar tab
+        btns.forEach(b => {
+          b.classList.remove("bg-graphite-800", "text-white");
+          b.classList.add("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
+          b.setAttribute("aria-selected", "false");
+        });
+        panels.forEach(p => p.classList.add("hidden"));
+        if (defaultPanel) {
+          defaultPanel.classList.remove("hidden");
+          fadeIn(defaultPanel);
+        }
+        activeTab = null;
+        return;
+      }
+
       // Activar tab
       btns.forEach(b => {
         b.classList.remove("bg-graphite-800", "text-white");
         b.classList.add("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
+        b.setAttribute("aria-selected", "false");
       });
       btn.classList.add("bg-graphite-800", "text-white");
       btn.classList.remove("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
+      btn.setAttribute("aria-selected", "true");
 
-      // Mostrar panel
+      // Ocultar default y todos los paneles, mostrar el seleccionado
+      if (defaultPanel) defaultPanel.classList.add("hidden");
       panels.forEach(p => {
         p.classList.add("hidden");
         if (p.dataset.servicePanel === id) {
           p.classList.remove("hidden");
-          // Fade in
-          p.style.opacity = "0";
-          p.style.transform = "translateY(10px)";
-          requestAnimationFrame(() => {
-            p.style.transition = "opacity 0.4s ease, transform 0.4s ease";
-            p.style.opacity = "1";
-            p.style.transform = "translateY(0)";
-          });
+          fadeIn(p);
         }
       });
+
+      activeTab = id;
     });
   });
+
+  function fadeIn(el) {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(10px)";
+    requestAnimationFrame(() => {
+      el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    });
+  }
 }
 
 

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- SEO -->
+  <title>Artículos | Synapsis Health - Publicaciones</title>
+  <meta name="description" content="Artículos y publicaciones de Synapsis Health sobre evaluación de tecnologías sanitarias, gobernanza en salud y acceso a tecnologías.">
+  <link rel="canonical" href="https://synapsishealth.vercel.app/articulos.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Artículos | Synapsis Health">
+  <meta property="og:description" content="Artículos y publicaciones sobre evaluación de tecnologías sanitarias.">
+  <meta property="og:url" content="https://synapsishealth.vercel.app/articulos.html">
+  <meta property="og:site_name" content="Synapsis Health">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Artículos | Synapsis Health">
+  <meta name="twitter:description" content="Artículos y publicaciones sobre evaluación de tecnologías sanitarias.">
+
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Jost:wght@200;300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=bbc4865d">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/icons/favicon.png" type="image/png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#FAFAFA">
+</head>
+<body>
+
+  <!-- Skip link -->
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-navbar-dark aria-label="Navegación principal">
+    <div class="container-site flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Synapsis Health - Inicio">
+        <img src="./assets/icons/logo-dark.png" alt="" class="h-30 logo-dark" aria-hidden="true">
+        <img src="./assets/icons/logo-light.png" alt="" class="h-30 logo-light hidden" aria-hidden="true">
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link" data-i18n="nav.home">Inicio</a>
+        <a href="equipo.html" class="nav-link" data-i18n="nav.team">Equipo</a>
+        <a href="servicios.html" class="nav-link" data-i18n="nav.services">Servicios</a>
+        <a href="articulos.html" class="nav-link active" data-i18n="nav.articles" aria-current="page">Artículos</a>
+        <a href="index.html#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
+        <!-- Language Toggle -->
+        <button id="lang-toggle" class="flex items-center gap-1.5 text-xs font-heading tracking-wider uppercase text-graphite-400 hover:text-graphite-800 transition-colors duration-300 border border-graphite-200 rounded-md px-3 py-1.5" aria-label="Cambiar idioma">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
+          </svg>
+          <span id="lang-label">EN</span>
+        </button>
+        <a href="index.html#contacto" class="btn-primary text-xs py-2.5 px-6" data-i18n="nav.cta">Contáctanos</a>
+      </div>
+      <button id="menu-toggle" class="md:hidden p-2" aria-label="Abrir menú">
+        <svg class="w-6 h-6 text-graphite-800" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="menu-overlay" class="hidden fixed inset-0 bg-graphite-900/50 z-50"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-white z-50 transform translate-x-full transition-transform duration-300 shadow-2xl" role="dialog" aria-label="Menú de navegación">
+    <div class="flex justify-end p-6">
+      <button id="menu-close" aria-label="Cerrar menú"><svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div class="flex flex-col gap-6 px-8 pt-4">
+      <a href="index.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.home">Inicio</a>
+      <a href="equipo.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.team">Equipo</a>
+      <a href="servicios.html" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.services">Servicios</a>
+      <a href="articulos.html" class="font-heading text-lg text-graphite-800 tracking-wide" data-i18n="nav.articles">Artículos</a>
+      <a href="index.html#contacto" class="font-heading text-lg text-graphite-500 tracking-wide" data-i18n="nav.contact">Contacto</a>
+      <div class="pt-4 border-t border-graphite-100 flex flex-col gap-4">
+        <button id="lang-toggle-mobile" class="flex items-center justify-center gap-2 text-xs font-heading tracking-wider uppercase text-graphite-400 hover:text-graphite-800 transition-colors duration-300 border border-graphite-200 rounded-md px-3 py-2" aria-label="Cambiar idioma">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
+          </svg>
+          <span id="lang-label-mobile">EN</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main id="main-content">
+
+  <!-- ===== HERO ARTÍCULOS ===== -->
+  <section class="relative pt-32 pb-16 bg-graphite-900 overflow-hidden">
+    <div class="container-site relative z-10">
+      <p class="overline text-graphite-400 mb-4 reveal" data-i18n="articlesPage.heroOverline">Publicaciones</p>
+      <h1 class="text-display font-heading font-extralight text-white max-w-xl reveal" data-i18n="articlesPage.heroTitle">
+        Artículos y análisis
+      </h1>
+    </div>
+  </section>
+
+
+  <!-- ===== LISTADO DE ARTÍCULOS ===== -->
+  <section class="section">
+    <div class="container-site">
+      <div id="all-articles" class="space-y-8">
+        <!-- Los artículos se cargan dinámicamente desde articulos.js -->
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== CTA ===== -->
+  <section class="section-dark">
+    <div class="container-site text-center">
+      <h2 class="text-display-sm font-heading font-extralight text-white mb-4 reveal" data-i18n="articlesPage.ctaTitle">
+        ¿Querés saber más?
+      </h2>
+      <p class="text-graphite-300 mb-8 reveal" data-i18n="articlesPage.ctaText">
+        Contactanos para explorar cómo podemos trabajar juntos.
+      </p>
+      <a href="index.html#contacto" class="btn-primary bg-white text-graphite-900 hover:bg-graphite-50 reveal" data-i18n="articlesPage.ctaBtn">
+        Contactar con nuestro equipo
+      </a>
+    </div>
+  </section>
+
+  </main><!-- /main-content -->
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="bg-graphite-950 text-graphite-400 py-16">
+    <div class="container-site">
+      <div class="flex justify-center mb-10">
+        <a href="index.html" class="flex flex-col items-center gap-3" aria-label="Synapsis Health - Inicio">
+          <img src="./assets/icons/logo-light.png" alt="" class="w-40 opacity-60" aria-hidden="true">
+        </a>
+      </div>
+      <nav class="flex justify-center gap-8 mb-10 text-sm font-heading tracking-wide" aria-label="Navegación del pie de página">
+        <a href="index.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.home">Inicio</a>
+        <a href="equipo.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.team">Equipo</a>
+        <a href="servicios.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.services">Servicios</a>
+        <a href="articulos.html" class="hover:text-graphite-200 transition-colors" data-i18n="nav.articles">Artículos</a>
+        <a href="index.html#contacto" class="hover:text-graphite-200 transition-colors" data-i18n="nav.contact">Contacto</a>
+      </nav>
+      <div class="border-t border-graphite-800 pt-8 text-center">
+        <p class="text-xs text-graphite-400" data-i18n="footer.legal">&copy; 2025 Synapsis Health. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/i18n.js?v=e93f540f" defer></script>
+  <script src="./js/main.js?v=e4777ca9" defer></script>
+  <script src="./js/articulos.js" defer></script>
+</body>
+</html>
