@@ -200,13 +200,24 @@
        ============================================================ -->
   <section class="section relative overflow-hidden" id="quienes-somos">
     <div class="container-site relative z-10">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div class="grid md:grid-cols-2 gap-x-16 gap-y-8">
+        <!-- Title -->
         <div>
           <p class="overline mb-4 reveal" data-i18n="about.overline">Synapsis Health</p>
           <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="about.title">
             Arquitectura de decisión sanitaria
           </h2>
-          <div class="line-accent mb-6 reveal"></div>
+          <div class="line-accent reveal"></div>
+        </div>
+        <!-- Image -->
+        <div class="reveal md:row-span-2 flex items-center">
+          <!-- IMG: Imagen institucional — arquitectura de decisión, redes, conexiones -->
+          <div class="aspect-[4/3] bg-graphite-50 rounded-2xl border border-graphite-100 flex items-center justify-center w-full">
+            <img src="./assets/img/quienes_somos.jpg" class="rounded-2xl h-full object-cover" alt="">
+          </div>
+        </div>
+        <!-- Content -->
+        <div>
           <div class="space-y-5">
             <p class="text-graphite-500 leading-relaxed reveal" data-i18n="about.text1">
               Synapsis Health es una plataforma estratégica especializada en Evaluación de Tecnologías Sanitarias aplicada a contextos complejos.
@@ -223,12 +234,6 @@
           </div>
           <div class="mt-8 reveal">
             <a href="equipo.html" class="btn-primary" data-i18n="about.cta">Conoce Nuestro Equipo</a>
-          </div>
-        </div>
-        <div class="reveal">
-          <!-- IMG: Imagen institucional — arquitectura de decisión, redes, conexiones -->
-          <div class="aspect-[4/3] bg-graphite-50 rounded-2xl border border-graphite-100 flex items-center justify-center">
-            <img src="./assets/img/quienes_somos.jpg" class="rounded-2xl h-full object-cover" alt="">
           </div>
         </div>
       </div>
@@ -360,19 +365,24 @@
        ============================================================ -->
   <section class="section" id="diferencial">
     <div class="container-site">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
-        <div class="reveal">
-          <!-- IMG: Imagen de diferencial — profesionalismo, confianza, rigor -->
-          <div class="aspect-[4/3] bg-graphite-50 rounded-2xl border border-graphite-100 flex items-center justify-center">
-            <span class="overline text-graphite-200">Imagen diferencial</span>
-          </div>
-        </div>
-        <div>
+      <div class="grid md:grid-cols-2 gap-x-16 gap-y-8">
+        <!-- Title -->
+        <div class="md:col-start-2">
           <p class="overline mb-4 reveal" data-i18n="differential.overline">Diferencial</p>
           <h2 class="text-display font-heading font-extralight text-graphite-800 mb-6 reveal" data-i18n="differential.title">
             Por qué Synapsis
           </h2>
-          <div class="line-accent mb-6 reveal"></div>
+          <div class="line-accent reveal"></div>
+        </div>
+        <!-- Image -->
+        <div class="reveal md:row-span-2 md:col-start-1 md:row-start-1 flex items-center">
+          <!-- IMG: Imagen de diferencial — profesionalismo, confianza, rigor -->
+          <div class="aspect-[4/3] bg-graphite-50 rounded-2xl border border-graphite-100 flex items-center justify-center w-full">
+            <span class="overline text-graphite-200">Imagen diferencial</span>
+          </div>
+        </div>
+        <!-- Content -->
+        <div class="md:col-start-2">
           <ul class="space-y-3 text-graphite-500 leading-relaxed mb-6">
             <li class="flex items-start gap-3 reveal">
               <span class="w-1.5 h-1.5 rounded-full bg-graphite-400 mt-2 shrink-0" aria-hidden="true"></span>
@@ -416,13 +426,24 @@
        ============================================================ -->
   <section class="section-dark relative overflow-hidden" id="academica">
     <div class="container-site relative z-10">
-      <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div class="grid md:grid-cols-2 gap-x-16 gap-y-8">
+        <!-- Title -->
         <div>
           <p class="overline text-graphite-400 mb-4 reveal" data-i18n="academic.overline">Vinculación académica</p>
           <h2 class="text-display font-heading font-extralight text-white mb-6 reveal" data-i18n="academic.title">
             Producción de conocimiento y formación
           </h2>
-          <div class="line-accent bg-graphite-500 mb-6 reveal"></div>
+          <div class="line-accent bg-graphite-500 reveal"></div>
+        </div>
+        <!-- Image -->
+        <div class="reveal md:row-span-2 flex items-center">
+          <!-- IMG: Imagen académica — universidad, formación, investigación -->
+          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center w-full">
+            <span class="overline text-graphite-600">Imagen académica</span>
+          </div>
+        </div>
+        <!-- Content -->
+        <div>
           <p class="text-graphite-300 leading-relaxed mb-5 reveal" data-i18n="academic.text1">
             La producción científica aplicada y la formación ejecutiva son parte integral de nuestro modelo.
           </p>
@@ -432,12 +453,6 @@
           <p class="text-white font-heading font-normal reveal" data-i18n="academic.text3">
             Construimos capacidades públicas. No solo resolvemos problemas puntuales.
           </p>
-        </div>
-        <div class="reveal">
-          <!-- IMG: Imagen académica — universidad, formación, investigación -->
-          <div class="aspect-[4/3] bg-graphite-800 rounded-2xl border border-graphite-700 flex items-center justify-center">
-            <span class="overline text-graphite-600">Imagen académica</span>
-          </div>
         </div>
       </div>
     </div>
@@ -576,7 +591,7 @@
   <!-- ============================================================
        ARTÍCULOS
        ============================================================ -->
-  <section class="section" id="articulos">
+  <section class="py-20 md:py-30 bg-graphite-50 border-y border-graphite-100" id="articulos">
     <div class="container-site">
       <div class="text-center mb-16">
         <p class="overline mb-4 reveal" data-i18n="articles.overline">Publicaciones</p>

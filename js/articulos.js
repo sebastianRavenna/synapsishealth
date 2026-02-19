@@ -18,12 +18,14 @@ async function initArticulos() {
     const homeContainer = document.getElementById("home-articles");
     if (homeContainer) {
       renderHomeArticles(homeContainer, articulos.slice(0, 3), lang);
+      observeNewReveals(homeContainer);
     }
 
     // Listado completo
     const listContainer = document.getElementById("all-articles");
     if (listContainer) {
       renderAllArticles(listContainer, articulos, lang);
+      observeNewReveals(listContainer);
     }
 
     // Detalle de artículo individual
@@ -106,4 +108,20 @@ function formatDate(dateStr, lang) {
     ? ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     : ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
   return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+
+/**
+ * Observa elementos .reveal añadidos dinámicamente para activar la animación de entrada.
+ * Necesario porque initScrollReveal() en main.js se ejecuta antes de que se rendericen los artículos.
+ */
+function observeNewReveals(container) {
+  const els = container.querySelectorAll(".reveal:not(.visible)");
+  if (!els.length) return;
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add("visible"); obs.unobserve(e.target); }
+    }),
+    { threshold: 0.12, rootMargin: "0px 0px -30px 0px" }
+  );
+  els.forEach(el => obs.observe(el));
 }
