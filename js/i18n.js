@@ -178,7 +178,7 @@ const translations = {
     "servicesPage.capacitacion.text1": "Diseñamos e impartimos programas de formación en evaluación de tecnologías sanitarias, lectura crítica de evidencia, análisis económico en salud y toma de decisiones basada en evidencia.",
     "servicesPage.capacitacion.text2": "Nuestras capacitaciones están dirigidas a equipos técnicos de organismos de salud, financiadores, empresas del sector y profesionales que buscan fortalecer sus competencias en estas áreas.",
     "servicesPage.ctaTitle": "¿Necesitás asesoramiento especializado?",
-    "servicesPage.ctaText": "Nuestro equipo está preparado para brindarte la mejor consultoría.",
+    "servicesPage.ctaText": "Nuestro equipo está preparado para brindarte la mejor solución.",
     "servicesPage.ctaBtn": "Contactar con nuestro equipo",
 
     // Equipo page
@@ -201,7 +201,7 @@ const translations = {
     "teamPage.member4.role": "Política Sanitaria",
     "teamPage.member4.bio1": "Especialista en análisis de política sanitaria, regulación de tecnologías médicas y procesos de toma de decisiones en el sector salud público y privado.",
     "teamPage.ctaTitle": "¿Necesitás asesoramiento especializado?",
-    "teamPage.ctaText": "Nuestro equipo está preparado para brindarte la mejor consultoría.",
+    "teamPage.ctaText": "Nuestro equipo está preparado para brindarte la mejor solución.",
     "teamPage.ctaBtn": "Contactar con nuestro equipo",
   },
 
@@ -378,7 +378,7 @@ const translations = {
     "servicesPage.capacitacion.text1": "We design and deliver training programs in health technology assessment, critical evidence appraisal, health economic analysis, and evidence-based decision-making.",
     "servicesPage.capacitacion.text2": "Our training programs are aimed at technical teams from health agencies, funders, sector companies, and professionals seeking to strengthen their competencies in these areas.",
     "servicesPage.ctaTitle": "Need specialized advisory?",
-    "servicesPage.ctaText": "Our team is ready to provide you with the best consultancy.",
+    "servicesPage.ctaText": "Our team is ready to provide you with the best solution.",
     "servicesPage.ctaBtn": "Contact our team",
 
     // Team page
@@ -401,7 +401,7 @@ const translations = {
     "teamPage.member4.role": "Health Policy",
     "teamPage.member4.bio1": "Specialist in health policy analysis, medical technology regulation, and decision-making processes in both public and private health sectors.",
     "teamPage.ctaTitle": "Need specialized advisory?",
-    "teamPage.ctaText": "Our team is ready to provide you with the best consultancy.",
+    "teamPage.ctaText": "Our team is ready to provide you with the best solution.",
     "teamPage.ctaBtn": "Contact our team",
   },
 };
