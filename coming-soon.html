@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Synapsis Health | Muy Pronto</title>
+  <meta name="description" content="Estamos construyendo una nueva experiencia. Muy pronto, una nueva forma de evaluar y gestionar tecnologías sanitarias.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://synapsishealth.com.ar/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Synapsis Health | Muy Pronto">
+  <meta property="og:description" content="Estamos construyendo una nueva experiencia en evaluación de tecnologías sanitarias.">
+  <meta property="og:url" content="https://synapsishealth.com.ar/">
+  <meta property="og:site_name" content="Synapsis Health">
+  <meta property="og:locale" content="es_AR">
+
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Jost:wght@200;300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="./assets/icons/favicon.png" type="image/png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/icons/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
+  <meta name="theme-color" content="#F2F2F2">
+
+  <style>
+    /* Coming-soon video background */
+    .cs-video {
+      filter: grayscale(0.4);
+      opacity: 0.12;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    /* Radial gradient overlay — vignette that draws focus to center */
+    .cs-overlay {
+      background: radial-gradient(
+        ellipse at center,
+        transparent 0%,
+        rgba(242, 242, 242, 0.4) 40%,
+        rgba(242, 242, 242, 0.9) 75%,
+        rgba(242, 242, 242, 1) 100%
+      );
+    }
+
+    /* Staggered fade-in animation */
+    @keyframes cs-fade-in {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .cs-animate {
+      opacity: 0;
+      animation: cs-fade-in 0.8s ease-out forwards;
+    }
+    .cs-delay-1 { animation-delay: 0.15s; }
+    .cs-delay-2 { animation-delay: 0.35s; }
+    .cs-delay-3 { animation-delay: 0.55s; }
+    .cs-delay-4 { animation-delay: 0.75s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cs-animate {
+        animation: none;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="font-body font-light text-graphite-500 bg-graphite-50 overflow-hidden">
+
+  <!-- Full-screen centered layout -->
+  <div class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+
+    <!-- Video background -->
+    <!-- TODO: Reemplazar hero.mp4 con el video definitivo -->
+    <video
+      class="absolute inset-0 w-full h-full cs-video pointer-events-none"
+      autoplay muted loop playsinline
+      aria-hidden="true">
+      <source src="./assets/vid/hero.mp4" type="video/mp4">
+    </video>
+
+    <!-- Gradient overlay -->
+    <div class="absolute inset-0 cs-overlay" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl">
+
+      <!-- Logo -->
+      <div class="cs-animate mb-10 md:mb-14">
+        <img
+          src="./assets/icons/logo-dark.png"
+          alt="Synapsis Health"
+          class="h-8 md:h-10">
+      </div>
+
+      <!-- Decorative line -->
+      <div class="cs-animate cs-delay-1 w-12 h-px bg-graphite-300 mb-8 md:mb-10"></div>
+
+      <!-- Headline -->
+      <h1 class="cs-animate cs-delay-2 font-heading font-extralight text-graphite-800 text-2xl md:text-4xl lg:text-[2.75rem] leading-tight tracking-tight mb-5 md:mb-6">
+        Estamos construyendo una nueva experiencia
+      </h1>
+
+      <!-- Subtext -->
+      <p class="cs-animate cs-delay-3 text-graphite-500 font-light text-base md:text-lg leading-relaxed max-w-lg">
+        Muy pronto, una nueva forma de evaluar y gestionar tecnologías sanitarias. Evidencia, gobernanza y acceso en un solo lugar.
+      </p>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="cs-animate cs-delay-4 absolute bottom-6 left-0 right-0 text-center z-10">
+      <p class="text-xs text-graphite-300 font-heading tracking-wide">
+        &copy; 2025 Synapsis Health
+      </p>
+    </div>
+
+  </div>
+
+</body>
+</html>
