@@ -74,12 +74,5 @@
       "destination": "/",
       "permanent": true
     }
-  ],
-  "rewrites": [
-    { "source": "/", "destination": "/coming-soon.html" },
-    { "source": "/equipo.html", "destination": "/coming-soon.html" },
-    { "source": "/servicios.html", "destination": "/coming-soon.html" },
-    { "source": "/articulos.html", "destination": "/coming-soon.html" },
-    { "source": "/articulo.html", "destination": "/coming-soon.html" }
   ]
 }
