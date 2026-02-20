@@ -146,7 +146,7 @@ const translations = {
     "contact.form.submit": "Iniciar conversación",
 
     // Footer
-    "footer.legal": "© 2025 Synapsis Health. Todos los derechos reservados.",
+    "footer.legal": "© 2026 Synapsis Health. Todos los derechos reservados.",
 
     // Servicios page
     "servicesPage.heroOverline": "Nuestros servicios",
@@ -346,7 +346,7 @@ const translations = {
     "contact.form.submit": "Start a conversation",
 
     // Footer
-    "footer.legal": "© 2025 Synapsis Health. All rights reserved.",
+    "footer.legal": "© 2026 Synapsis Health. All rights reserved.",
 
     // Services page
     "servicesPage.heroOverline": "Our services",

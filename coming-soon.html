@@ -35,25 +35,6 @@
   <meta name="theme-color" content="#F2F2F2">
 
   <style>
-    /* Coming-soon video background */
-    .cs-video {
-      filter: grayscale(0.4);
-      opacity: 0.12;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    /* Radial gradient overlay — vignette that draws focus to center */
-    .cs-overlay {
-      background: radial-gradient(
-        ellipse at center,
-        transparent 0%,
-        rgba(242, 242, 242, 0.4) 40%,
-        rgba(242, 242, 242, 0.9) 75%,
-        rgba(242, 242, 242, 1) 100%
-      );
-    }
-
     /* Staggered fade-in animation */
     @keyframes cs-fade-in {
       from { opacity: 0; transform: translateY(20px); }
@@ -83,27 +64,17 @@
   <!-- Full-screen centered layout -->
   <div class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
 
-    <!-- Video background -->
-    <!-- TODO: Reemplazar hero.mp4 con el video definitivo -->
-    <video
-      class="absolute inset-0 w-full h-full cs-video pointer-events-none"
-      autoplay muted loop playsinline
-      aria-hidden="true">
-      <source src="./assets/vid/hero.mp4" type="video/mp4">
-    </video>
-
-    <!-- Gradient overlay -->
-    <div class="absolute inset-0 cs-overlay" aria-hidden="true"></div>
-
     <!-- Content -->
     <div class="relative z-10 flex flex-col items-center text-center px-6 max-w-2xl">
 
-      <!-- Logo -->
+      <!-- Logo (video) -->
+      <!-- TODO: Subir logo-anim.mp4 a assets/vid/ -->
       <div class="cs-animate mb-10 md:mb-14">
-        <img
-          src="./assets/icons/logo-dark.png"
-          alt="Synapsis Health"
-          class="h-8 md:h-10">
+        <video
+          autoplay muted playsinline
+          class="h-8 md:h-10 pointer-events-none">
+          <source src="./assets/vid/logo-anim.mp4" type="video/mp4">
+        </video>
       </div>
 
       <!-- Decorative line -->
@@ -124,7 +95,7 @@
     <!-- Footer -->
     <div class="cs-animate cs-delay-4 absolute bottom-6 left-0 right-0 text-center z-10">
       <p class="text-xs text-graphite-300 font-heading tracking-wide">
-        &copy; 2025 Synapsis Health
+        &copy; 2026 Synapsis Health
       </p>
     </div>
 
