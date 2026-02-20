@@ -132,55 +132,45 @@ function initSmoothScroll() {
 function initServiceTabs() {
   const btns = document.querySelectorAll("[data-service-tab]");
   const panels = document.querySelectorAll("[data-service-panel]");
-  const defaultPanel = document.getElementById("panel-default");
   if (!btns.length) return;
 
   let activeTab = null;
 
+  function activateTab(id) {
+    btns.forEach(b => {
+      b.classList.remove("bg-graphite-800", "text-white");
+      b.classList.add("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
+      b.setAttribute("aria-selected", "false");
+    });
+
+    const activeBtn = document.querySelector(`[data-service-tab="${id}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add("bg-graphite-800", "text-white");
+      activeBtn.classList.remove("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
+      activeBtn.setAttribute("aria-selected", "true");
+    }
+
+    panels.forEach(p => {
+      p.classList.add("hidden");
+      if (p.dataset.servicePanel === id) {
+        p.classList.remove("hidden");
+        fadeIn(p);
+      }
+    });
+
+    activeTab = id;
+  }
+
   btns.forEach(btn => {
     btn.addEventListener("click", () => {
       const id = btn.dataset.serviceTab;
-
-      // ON/OFF toggle: si el tab ya está activo, desactivarlo y volver al default
-      if (activeTab === id) {
-        // Desactivar tab
-        btns.forEach(b => {
-          b.classList.remove("bg-graphite-800", "text-white");
-          b.classList.add("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
-          b.setAttribute("aria-selected", "false");
-        });
-        panels.forEach(p => p.classList.add("hidden"));
-        if (defaultPanel) {
-          defaultPanel.classList.remove("hidden");
-          fadeIn(defaultPanel);
-        }
-        activeTab = null;
-        return;
-      }
-
-      // Activar tab
-      btns.forEach(b => {
-        b.classList.remove("bg-graphite-800", "text-white");
-        b.classList.add("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
-        b.setAttribute("aria-selected", "false");
-      });
-      btn.classList.add("bg-graphite-800", "text-white");
-      btn.classList.remove("text-graphite-500", "hover:text-graphite-800", "hover:bg-graphite-50");
-      btn.setAttribute("aria-selected", "true");
-
-      // Ocultar default y todos los paneles, mostrar el seleccionado
-      if (defaultPanel) defaultPanel.classList.add("hidden");
-      panels.forEach(p => {
-        p.classList.add("hidden");
-        if (p.dataset.servicePanel === id) {
-          p.classList.remove("hidden");
-          fadeIn(p);
-        }
-      });
-
-      activeTab = id;
+      if (activeTab === id) return;
+      activateTab(id);
     });
   });
+
+  // Pre-seleccionar ETES al cargar la página
+  activateTab("etes");
 
   function fadeIn(el) {
     el.style.opacity = "0";
