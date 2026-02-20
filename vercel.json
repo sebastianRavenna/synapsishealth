@@ -27,7 +27,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'"
+          "value": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; frame-ancestors 'none'"
         }
       ]
     },
@@ -74,5 +74,12 @@
       "destination": "/",
       "permanent": true
     }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/coming-soon.html" },
+    { "source": "/equipo.html", "destination": "/coming-soon.html" },
+    { "source": "/servicios.html", "destination": "/coming-soon.html" },
+    { "source": "/articulos.html", "destination": "/coming-soon.html" },
+    { "source": "/articulo.html", "destination": "/coming-soon.html" }
   ]
 }
