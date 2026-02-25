@@ -73,7 +73,7 @@ function buildNotificationEmail(nombre, email, telefono, organizacion, mensaje, 
 
           <!-- Header -->
           <tr>
-            <td align="center" bgcolor="#2D2D2D" style="background-color:#2D2D2D;padding:28px 32px;">
+            <td align="center" bgcolor="#2D2D2D" style="background-color:#2D2D2D;padding:16px 32px;">
               <img src="${logoUrl}/assets/icons/logo-light.png" alt="Synapsis Health" width="180" height="110" style="display:block;border:0;width:180px;height:auto;max-width:180px;" />
             </td>
           </tr>
@@ -187,7 +187,7 @@ function buildConfirmationEmail(nombre, mensaje, logoUrl) {
 
           <!-- Header -->
           <tr>
-            <td align="center" bgcolor="#2D2D2D" style="background-color:#2D2D2D;padding:28px 32px;">
+            <td align="center" bgcolor="#2D2D2D" style="background-color:#2D2D2D;padding:16px 32px;">
               <img src="${logoUrl}/assets/icons/logo-light.png" alt="Synapsis Health" width="180" height="110" style="display:block;border:0;width:180px;height:auto;max-width:180px;" />
             </td>
           </tr>
