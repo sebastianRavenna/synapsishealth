@@ -13,6 +13,242 @@ function escapeHtml(str) {
     .replace(/'/g, "&#39;");
 }
 
+function buildNotificationEmail(nombre, email, organizacion, mensaje, logoUrl) {
+  const nombreEsc = escapeHtml(nombre);
+  const emailEsc = escapeHtml(email);
+  const orgEsc = organizacion ? escapeHtml(organizacion) : "";
+  const mensajeEsc = escapeHtml(mensaje).replace(/\n/g, "<br>");
+
+  const orgRow = orgEsc
+    ? `<tr>
+        <td style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8C8C8C;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #F0F0F0;width:130px;vertical-align:top;">Organizaci&oacute;n</td>
+        <td style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;border-bottom:1px solid #F0F0F0;vertical-align:top;">${orgEsc}</td>
+      </tr>`
+    : "";
+
+  return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>Nuevo mensaje de contacto</title>
+  <!--[if mso]>
+  <style type="text/css">
+    table, td, th { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+  </style>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; outline: none; text-decoration: none; }
+    @media only screen and (max-width: 620px) {
+      .email-container { width: 100% !important; max-width: 100% !important; }
+      .email-content { padding: 24px 20px !important; }
+      .data-label { display: block !important; width: 100% !important; padding-bottom: 4px !important; }
+      .data-value { display: block !important; width: 100% !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#F2F2F2;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+  <!-- Background wrapper -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F2F2F2;">
+    <tr>
+      <td align="center" style="padding:40px 16px;">
+        <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td><![endif]-->
+        <table role="presentation" class="email-container" width="600" cellpadding="0" cellspacing="0" border="0" align="center" style="max-width:600px;width:100%;margin:0 auto;">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" bgcolor="#2D2D2D" style="background-color:#2D2D2D;padding:28px 32px;">
+              <img src="${logoUrl}/assets/icons/logo-light.png" alt="Synapsis Health" width="180" height="110" style="display:block;border:0;width:180px;height:auto;max-width:180px;" />
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td bgcolor="#FFFFFF" class="email-content" style="background-color:#FFFFFF;padding:32px;border-left:1px solid #E5E5E5;border-right:1px solid #E5E5E5;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:bold;color:#2D2D2D;padding-bottom:8px;">
+                    Nuevo mensaje desde el sitio web
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#8C8C8C;padding-bottom:24px;">
+                    Recibido el ${new Date().toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Data table -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #EBEBEB;">
+                <tr>
+                  <td class="data-label" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8C8C8C;text-transform:uppercase;letter-spacing:0.5px;background-color:#FAFAFA;border-bottom:1px solid #F0F0F0;width:130px;vertical-align:top;">Nombre</td>
+                  <td class="data-value" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;border-bottom:1px solid #F0F0F0;vertical-align:top;font-weight:bold;">${nombreEsc}</td>
+                </tr>
+                <tr>
+                  <td class="data-label" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8C8C8C;text-transform:uppercase;letter-spacing:0.5px;background-color:#FAFAFA;border-bottom:1px solid #F0F0F0;width:130px;vertical-align:top;">Email</td>
+                  <td class="data-value" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;border-bottom:1px solid #F0F0F0;vertical-align:top;">
+                    <a href="mailto:${emailEsc}" style="color:#2D2D2D;text-decoration:underline;">${emailEsc}</a>
+                  </td>
+                </tr>
+                ${orgRow}
+                <tr>
+                  <td class="data-label" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8C8C8C;text-transform:uppercase;letter-spacing:0.5px;background-color:#FAFAFA;width:130px;vertical-align:top;">Mensaje</td>
+                  <td class="data-value" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;line-height:1.6;vertical-align:top;">${mensajeEsc}</td>
+                </tr>
+              </table>
+
+              <!-- Reply hint -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-top:24px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#999999;line-height:1.5;">
+                    Pod&eacute;s responder directamente a este email para contactar a ${nombreEsc}.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td bgcolor="#F9F9F9" style="background-color:#F9F9F9;padding:20px 32px;border:1px solid #E5E5E5;border-top:none;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#AAAAAA;line-height:1.5;">
+                    Este mensaje fue enviado desde el formulario de contacto de synapsishealth.com.ar
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+function buildConfirmationEmail(nombre, mensaje, logoUrl) {
+  const nombreEsc = escapeHtml(nombre);
+  const mensajeEsc = escapeHtml(mensaje).replace(/\n/g, "<br>");
+
+  return `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <meta name="supported-color-schemes" content="light" />
+  <title>Recibimos tu mensaje</title>
+  <!--[if mso]>
+  <style type="text/css">
+    table, td, th { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+  </style>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; outline: none; text-decoration: none; }
+    @media only screen and (max-width: 620px) {
+      .email-container { width: 100% !important; max-width: 100% !important; }
+      .email-content { padding: 28px 20px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background-color:#F2F2F2;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
+  <!-- Background wrapper -->
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F2F2F2;">
+    <tr>
+      <td align="center" style="padding:40px 16px;">
+        <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td><![endif]-->
+        <table role="presentation" class="email-container" width="600" cellpadding="0" cellspacing="0" border="0" align="center" style="max-width:600px;width:100%;margin:0 auto;">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" bgcolor="#2D2D2D" style="background-color:#2D2D2D;padding:28px 32px;">
+              <img src="${logoUrl}/assets/icons/logo-light.png" alt="Synapsis Health" width="180" height="110" style="display:block;border:0;width:180px;height:auto;max-width:180px;" />
+            </td>
+          </tr>
+
+          <!-- Content -->
+          <tr>
+            <td bgcolor="#FFFFFF" class="email-content" style="background-color:#FFFFFF;padding:36px 32px;border-left:1px solid #E5E5E5;border-right:1px solid #E5E5E5;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <!-- Greeting -->
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:#2D2D2D;padding-bottom:16px;">
+                    Hola ${nombreEsc},
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#555555;line-height:1.7;padding-bottom:28px;">
+                    Gracias por contactarnos. Recibimos tu mensaje y nuestro equipo lo revisar&aacute; a la brevedad. Nos pondremos en contacto con vos lo antes posible.
+                  </td>
+                </tr>
+
+                <!-- Message copy -->
+                <tr>
+                  <td style="padding-bottom:28px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#8C8C8C;text-transform:uppercase;letter-spacing:1px;padding-bottom:10px;">
+                          Tu mensaje
+                        </td>
+                      </tr>
+                      <tr>
+                        <td bgcolor="#F7F7F7" style="background-color:#F7F7F7;padding:20px;border-left:3px solid #2D2D2D;font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#444444;line-height:1.7;">
+                          ${mensajeEsc}
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- CTA text -->
+                <tr>
+                  <td style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#555555;line-height:1.7;">
+                    Si necesit&aacute;s agregar algo m&aacute;s, pod&eacute;s responder directamente a este correo.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td bgcolor="#F9F9F9" style="background-color:#F9F9F9;padding:24px 32px;border:1px solid #E5E5E5;border-top:none;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="padding-bottom:12px;">
+                    <img src="${logoUrl}/assets/icons/logo-dark.png" alt="Synapsis Health" width="120" height="73" style="display:block;border:0;width:120px;height:auto;max-width:120px;opacity:0.4;" />
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#AAAAAA;line-height:1.5;">
+                    &copy; ${new Date().getFullYear()} Synapsis Health. Todos los derechos reservados.
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+        </table>
+        <!--[if mso]></td></tr></table><![endif]-->
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -58,10 +294,7 @@ module.exports = async function handler(req, res) {
       },
     });
 
-    const nombreEscapado = escapeHtml(nombre);
-    const emailEscapado = escapeHtml(email);
-    const orgEscapada = organizacion ? escapeHtml(organizacion) : "";
-    const mensajeEscapado = escapeHtml(mensaje).replace(/\n/g, "<br>");
+    const logoUrl = (process.env.SITE_URL || "https://synapsishealth.vercel.app").replace(/\/$/, "");
 
     // 1. Email de notificacion a info@synapsishealth.com.ar
     await transporter.sendMail({
@@ -69,44 +302,7 @@ module.exports = async function handler(req, res) {
       to: process.env.CONTACT_TO,
       replyTo: email,
       subject: `[Web] Nuevo mensaje de ${nombre}`,
-      html: `
-        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: #2D2D2D; padding: 24px 32px; border-radius: 8px 8px 0 0;">
-            <h2 style="color: #FFFFFF; margin: 0; font-weight: 300; letter-spacing: 2px;">
-              SYNAPSIS HEALTH
-            </h2>
-          </div>
-          <div style="background: #FFFFFF; padding: 32px; border: 1px solid #E0E0E0; border-top: none; border-radius: 0 0 8px 8px;">
-            <h3 style="color: #2D2D2D; font-weight: 400; margin-top: 0;">Nuevo mensaje desde el sitio web</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 12px 0; color: #7A7A7A; font-size: 14px; width: 120px; vertical-align: top; border-bottom: 1px solid #F0F0F0;">Nombre</td>
-                <td style="padding: 12px 0; color: #2D2D2D; font-size: 14px; border-bottom: 1px solid #F0F0F0;">${nombreEscapado}</td>
-              </tr>
-              <tr>
-                <td style="padding: 12px 0; color: #7A7A7A; font-size: 14px; vertical-align: top; border-bottom: 1px solid #F0F0F0;">Email</td>
-                <td style="padding: 12px 0; color: #2D2D2D; font-size: 14px; border-bottom: 1px solid #F0F0F0;">
-                  <a href="mailto:${emailEscapado}" style="color: #2D2D2D; text-decoration: underline;">${emailEscapado}</a>
-                </td>
-              </tr>
-              ${orgEscapada ? `
-              <tr>
-                <td style="padding: 12px 0; color: #7A7A7A; font-size: 14px; vertical-align: top; border-bottom: 1px solid #F0F0F0;">Organizaci&oacute;n</td>
-                <td style="padding: 12px 0; color: #2D2D2D; font-size: 14px; border-bottom: 1px solid #F0F0F0;">${orgEscapada}</td>
-              </tr>` : ""}
-              <tr>
-                <td style="padding: 12px 0; color: #7A7A7A; font-size: 14px; vertical-align: top;">Mensaje</td>
-                <td style="padding: 12px 0; color: #2D2D2D; font-size: 14px; line-height: 1.6;">${mensajeEscapado}</td>
-              </tr>
-            </table>
-            <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid #E0E0E0;">
-              <p style="color: #999; font-size: 12px; margin: 0;">
-                Pod&eacute;s responder directamente a este email para contactar a ${nombreEscapado}.
-              </p>
-            </div>
-          </div>
-        </div>
-      `,
+      html: buildNotificationEmail(nombre, email, organizacion, mensaje, logoUrl),
     });
 
     // 2. Email de confirmacion al usuario
@@ -114,33 +310,7 @@ module.exports = async function handler(req, res) {
       from: `"Synapsis Health" <${process.env.SMTP_USER}>`,
       to: email,
       subject: "Recibimos tu mensaje \u2014 Synapsis Health",
-      html: `
-        <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <div style="background: #2D2D2D; padding: 24px 32px; border-radius: 8px 8px 0 0;">
-            <h2 style="color: #FFFFFF; margin: 0; font-weight: 300; letter-spacing: 2px;">
-              SYNAPSIS HEALTH
-            </h2>
-          </div>
-          <div style="background: #FFFFFF; padding: 32px; border: 1px solid #E0E0E0; border-top: none; border-radius: 0 0 8px 8px;">
-            <h3 style="color: #2D2D2D; font-weight: 400; margin-top: 0;">
-              Hola ${nombreEscapado}, recibimos tu mensaje
-            </h3>
-            <p style="color: #555; font-size: 15px; line-height: 1.7;">
-              Gracias por contactarnos. Nuestro equipo revisar&aacute; tu consulta y te responder&aacute; a la brevedad.
-            </p>
-            <div style="background: #F8F8F8; border-radius: 8px; padding: 20px; margin: 24px 0;">
-              <p style="color: #7A7A7A; font-size: 13px; margin: 0 0 8px 0; text-transform: uppercase; letter-spacing: 1px;">Tu mensaje:</p>
-              <p style="color: #2D2D2D; font-size: 14px; line-height: 1.6; margin: 0;">${mensajeEscapado}</p>
-            </div>
-            <p style="color: #555; font-size: 15px; line-height: 1.7;">
-              Si necesit&aacute;s agregar algo, pod&eacute;s responder directamente a este correo.
-            </p>
-            <div style="margin-top: 32px; padding-top: 16px; border-top: 1px solid #E0E0E0;">
-              <p style="color: #999; font-size: 12px; margin: 0;">Synapsis Health</p>
-            </div>
-          </div>
-        </div>
-      `,
+      html: buildConfirmationEmail(nombre, mensaje, logoUrl),
       replyTo: process.env.CONTACT_TO,
     });
 
