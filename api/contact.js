@@ -261,6 +261,20 @@ function buildConfirmationEmail(nombre, mensaje, logoUrl) {
 </html>`;
 }
 
+// Transporter SMTP reutilizable (se mantiene entre invocaciones warm)
+const smtpPort = parseInt(process.env.SMTP_PORT || "465");
+const transporter = nodemailer.createTransport({
+  host: process.env.SMTP_HOST,
+  port: smtpPort,
+  secure: smtpPort === 465,
+  pool: true,
+  maxConnections: 2,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
+  },
+});
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -299,36 +313,27 @@ module.exports = async function handler(req, res) {
     }
     submissions.set(clientIP, Date.now());
 
-    // Crear transporter SMTP
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || "465"),
-      secure: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
     const logoUrl = (process.env.SITE_URL || "https://synapsishealth.vercel.app").replace(/\/$/, "");
 
-    // 1. Email de notificacion a info@synapsishealth.com.ar
-    await transporter.sendMail({
-      from: `"Synapsis Health Web" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_TO,
-      replyTo: email,
-      subject: `[Web] Nuevo mensaje de ${nombre}`,
-      html: buildNotificationEmail(nombre, email, telefono, organizacion, mensaje, logoUrl),
-    });
-
-    // 2. Email de confirmacion al usuario
-    await transporter.sendMail({
-      from: `"Synapsis Health" <${process.env.SMTP_USER}>`,
-      to: email,
-      subject: "Recibimos tu mensaje \u2014 Synapsis Health",
-      html: buildConfirmationEmail(nombre, mensaje, logoUrl),
-      replyTo: process.env.CONTACT_TO,
-    });
+    // Enviar ambos emails en paralelo
+    await Promise.all([
+      // 1. Email de notificacion a info@synapsishealth.com.ar
+      transporter.sendMail({
+        from: `"Synapsis Health Web" <${process.env.SMTP_USER}>`,
+        to: process.env.CONTACT_TO,
+        replyTo: email,
+        subject: `[Web] Nuevo mensaje de ${nombre}`,
+        html: buildNotificationEmail(nombre, email, telefono, organizacion, mensaje, logoUrl),
+      }),
+      // 2. Email de confirmacion al usuario
+      transporter.sendMail({
+        from: `"Synapsis Health" <${process.env.SMTP_USER}>`,
+        to: email,
+        subject: "Recibimos tu mensaje \u2014 Synapsis Health",
+        html: buildConfirmationEmail(nombre, mensaje, logoUrl),
+        replyTo: process.env.CONTACT_TO,
+      }),
+    ]);
 
     console.log(`[CONTACT] Mensaje de ${nombre} (${email} / ${telefono})`);
     res.json({ success: true, message: "Mensaje enviado correctamente." });
