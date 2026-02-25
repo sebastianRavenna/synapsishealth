@@ -262,6 +262,10 @@ function initContactForm() {
       setFieldError("email", "Por favor ingresá un email válido.");
       hasErrors = true;
     }
+    if (!data.telefono || data.telefono.trim().length < 8) {
+      setFieldError("telefono", "El celular es obligatorio (mínimo 8 dígitos).");
+      hasErrors = true;
+    }
     if (!data.mensaje || data.mensaje.trim().length < 10) {
       setFieldError("mensaje", "El mensaje es obligatorio (mínimo 10 caracteres).");
       hasErrors = true;
