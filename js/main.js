@@ -286,7 +286,7 @@ function initContactForm() {
       form.reset();
     } catch (err) {
       console.error("Contact form error:", err);
-      showFeedback(feedback, "Error al enviar. Por favor intentá nuevamente o escribinos a contacto@synapsishealth.com", "error");
+      showFeedback(feedback, "Error al enviar. Por favor intentá nuevamente o escribinos a info@synapsishealth.com.ar", "error");
     } finally {
       btn.disabled = false;
       btn.textContent = "Enviar mensaje";
