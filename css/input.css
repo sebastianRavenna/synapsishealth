@@ -66,8 +66,15 @@
            active:scale-[0.98];
   }
 
-  .overline {
+  .section-label {
     @apply font-heading text-label uppercase tracking-[0.15em] text-graphite-500;
+  }
+  .section-label::before {
+    content: '';
+    @apply block w-12 h-px bg-graphite-300 mb-4;
+  }
+  .section-dark .section-label::before {
+    @apply bg-graphite-500;
   }
 
   .card {
