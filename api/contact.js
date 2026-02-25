@@ -13,16 +13,28 @@ function escapeHtml(str) {
     .replace(/'/g, "&#39;");
 }
 
-function buildNotificationEmail(nombre, email, organizacion, mensaje, logoUrl) {
+function getArgentinaDate() {
+  return new Date().toLocaleDateString("es-AR", {
+    timeZone: "America/Argentina/Buenos_Aires",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+function buildNotificationEmail(nombre, email, telefono, organizacion, mensaje, logoUrl) {
   const nombreEsc = escapeHtml(nombre);
   const emailEsc = escapeHtml(email);
+  const telEsc = escapeHtml(telefono);
   const orgEsc = organizacion ? escapeHtml(organizacion) : "";
   const mensajeEsc = escapeHtml(mensaje).replace(/\n/g, "<br>");
 
   const orgRow = orgEsc
     ? `<tr>
-        <td style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8C8C8C;text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid #F0F0F0;width:130px;vertical-align:top;">Organizaci&oacute;n</td>
-        <td style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;border-bottom:1px solid #F0F0F0;vertical-align:top;">${orgEsc}</td>
+        <td class="data-label" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8C8C8C;text-transform:uppercase;letter-spacing:0.5px;background-color:#FAFAFA;border-bottom:1px solid #F0F0F0;width:130px;vertical-align:top;">Organizaci&oacute;n</td>
+        <td class="data-value" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;border-bottom:1px solid #F0F0F0;vertical-align:top;">${orgEsc}</td>
       </tr>`
     : "";
 
@@ -53,7 +65,6 @@ function buildNotificationEmail(nombre, email, organizacion, mensaje, logoUrl) {
   </style>
 </head>
 <body style="margin:0;padding:0;background-color:#F2F2F2;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
-  <!-- Background wrapper -->
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F2F2F2;">
     <tr>
       <td align="center" style="padding:40px 16px;">
@@ -78,7 +89,7 @@ function buildNotificationEmail(nombre, email, organizacion, mensaje, logoUrl) {
                 </tr>
                 <tr>
                   <td style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#8C8C8C;padding-bottom:24px;">
-                    Recibido el ${new Date().toLocaleDateString("es-AR", { day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit" })}
+                    Recibido el ${getArgentinaDate()} (hora Argentina)
                   </td>
                 </tr>
               </table>
@@ -94,6 +105,10 @@ function buildNotificationEmail(nombre, email, organizacion, mensaje, logoUrl) {
                   <td class="data-value" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;border-bottom:1px solid #F0F0F0;vertical-align:top;">
                     <a href="mailto:${emailEsc}" style="color:#2D2D2D;text-decoration:underline;">${emailEsc}</a>
                   </td>
+                </tr>
+                <tr>
+                  <td class="data-label" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:13px;color:#8C8C8C;text-transform:uppercase;letter-spacing:0.5px;background-color:#FAFAFA;border-bottom:1px solid #F0F0F0;width:130px;vertical-align:top;">Celular</td>
+                  <td class="data-value" style="padding:14px 16px;font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#2D2D2D;border-bottom:1px solid #F0F0F0;vertical-align:top;">${telEsc}</td>
                 </tr>
                 ${orgRow}
                 <tr>
@@ -164,7 +179,6 @@ function buildConfirmationEmail(nombre, mensaje, logoUrl) {
   </style>
 </head>
 <body style="margin:0;padding:0;background-color:#F2F2F2;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;">
-  <!-- Background wrapper -->
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F2F2F2;">
     <tr>
       <td align="center" style="padding:40px 16px;">
@@ -182,7 +196,6 @@ function buildConfirmationEmail(nombre, mensaje, logoUrl) {
           <tr>
             <td bgcolor="#FFFFFF" class="email-content" style="background-color:#FFFFFF;padding:36px 32px;border-left:1px solid #E5E5E5;border-right:1px solid #E5E5E5;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <!-- Greeting -->
                 <tr>
                   <td style="font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:bold;color:#2D2D2D;padding-bottom:16px;">
                     Hola ${nombreEsc},
@@ -212,7 +225,6 @@ function buildConfirmationEmail(nombre, mensaje, logoUrl) {
                   </td>
                 </tr>
 
-                <!-- CTA text -->
                 <tr>
                   <td style="font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#555555;line-height:1.7;">
                     Si necesit&aacute;s agregar algo m&aacute;s, pod&eacute;s responder directamente a este correo.
@@ -224,15 +236,15 @@ function buildConfirmationEmail(nombre, mensaje, logoUrl) {
 
           <!-- Footer -->
           <tr>
-            <td bgcolor="#F9F9F9" style="background-color:#F9F9F9;padding:24px 32px;border:1px solid #E5E5E5;border-top:none;">
+            <td bgcolor="#2D2D2D" style="background-color:#2D2D2D;padding:24px 32px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="center" style="padding-bottom:12px;">
-                    <img src="${logoUrl}/assets/icons/logo-dark.png" alt="Synapsis Health" width="120" height="73" style="display:block;border:0;width:120px;height:auto;max-width:120px;opacity:0.4;" />
+                    <img src="${logoUrl}/assets/icons/logo-light.png" alt="Synapsis Health" width="120" height="73" style="display:block;border:0;width:120px;height:auto;max-width:120px;" />
                   </td>
                 </tr>
                 <tr>
-                  <td align="center" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#AAAAAA;line-height:1.5;">
+                  <td align="center" style="font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#999999;line-height:1.5;">
                     &copy; ${new Date().getFullYear()} Synapsis Health. Todos los derechos reservados.
                   </td>
                 </tr>
@@ -255,24 +267,28 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const { nombre, email, organizacion, mensaje } = req.body;
+    const { nombre, email, telefono, organizacion, mensaje } = req.body;
 
     // Validacion
-    if (!nombre || !email || !mensaje) {
-      return res.status(400).json({ error: "Faltan campos obligatorios (nombre, email, mensaje)." });
+    if (!nombre || !email || !telefono || !mensaje) {
+      return res.status(400).json({ error: "Faltan campos obligatorios (nombre, email, celular, mensaje)." });
     }
 
     if (nombre.trim().length < 2) {
       return res.status(400).json({ error: "El nombre debe tener al menos 2 caracteres." });
     }
 
-    if (mensaje.trim().length < 10) {
-      return res.status(400).json({ error: "El mensaje debe tener al menos 10 caracteres." });
-    }
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: "Email invalido." });
+    }
+
+    if (telefono.trim().length < 8) {
+      return res.status(400).json({ error: "El celular debe tener al menos 8 digitos." });
+    }
+
+    if (mensaje.trim().length < 10) {
+      return res.status(400).json({ error: "El mensaje debe tener al menos 10 caracteres." });
     }
 
     // Rate limit por IP
@@ -302,7 +318,7 @@ module.exports = async function handler(req, res) {
       to: process.env.CONTACT_TO,
       replyTo: email,
       subject: `[Web] Nuevo mensaje de ${nombre}`,
-      html: buildNotificationEmail(nombre, email, organizacion, mensaje, logoUrl),
+      html: buildNotificationEmail(nombre, email, telefono, organizacion, mensaje, logoUrl),
     });
 
     // 2. Email de confirmacion al usuario
@@ -314,7 +330,7 @@ module.exports = async function handler(req, res) {
       replyTo: process.env.CONTACT_TO,
     });
 
-    console.log(`[CONTACT] Mensaje de ${nombre} (${email})`);
+    console.log(`[CONTACT] Mensaje de ${nombre} (${email} / ${telefono})`);
     res.json({ success: true, message: "Mensaje enviado correctamente." });
   } catch (error) {
     console.error("[CONTACT] Error:", error);
