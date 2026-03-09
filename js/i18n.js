@@ -24,19 +24,19 @@ const translations = {
 
     // Problema
     "problem.overline": "El desafío",
-    "problem.title": "La complejidad ya no es técnica. Es institucional.",
-    "problem.text1": "Los sistemas de salud enfrentan tecnologías cada vez más costosas, presión judicial creciente y decisiones políticamente sensibles.",
-    "problem.text2": "En este escenario, la técnica aislada no alcanza. La política sin evidencia es frágil.",
+    "problem.title": "Sistemas de salud con complejidad técnica, política e institucional.",
+    "problem.text1": "Los sistemas de salud enfrentan tecnologías cada vez más costosas, presión judicial creciente y decisiones políticamente sensibles. En este escenario, la técnica aislada no alcanza. La política sin evidencia es frágil.",
+    "problem.text2": "Las decisiones sanitarias requieren hoy marcos sólidos de sostén que integren evidencia científica, gobernanza y acceso.",
     "problem.text3": "Las decisiones sanitarias requieren hoy marcos sólidos que integren ciencia, economía y gobernanza.",
-    "problem.text4": "Synapsis Health existe para cerrar esa brecha.",
+    "problem.text4": "Nuestro propósito es cerrar esa brecha trabajando junto a quienes tienen que decidir.",
 
     // Quiénes somos
-    "about.overline": "Synapsis Health",
+    "about.overline": "Cómo trabajamos",
     "about.title": "Arquitectura de decisión sanitaria",
     "about.text1": "Synapsis Health es una plataforma estratégica especializada en Evaluación de Tecnologías Sanitarias aplicada a contextos complejos.",
-    "about.text2": "No operamos como una consultora tradicional. Construimos infraestructura técnica e institucional para sostener decisiones defendibles.",
-    "about.text3": "Nuestro trabajo conecta evidencia científica, política pública y sostenibilidad financiera para transformar complejidad en capacidad de decisión.",
-    "about.text4": "No entregamos informes aislados. Construimos arquitectura de decisión.",
+    "about.text2": "Nuestro trabajo genera conexiones inteligentes entre evidencia científica, política pública y sostenibilidad financiera para transformar complejidad en capacidad de decisión dentro del sistema de salud.",
+    "about.text3": "Construimos arquitectura de decisión sobre tecnologías sanitarias de alto impacto. Nuestra especialidad es convertir análisis técnico en decisiones defendibles, políticas implementables y eficientes, acuerdos viables y sostenibles.",
+    "about.text4": "Acompañamos procesos de decisión sanitaria.",
     "about.cta": "Conoce Nuestro Equipo",
 
     // Pilares
@@ -74,7 +74,7 @@ const translations = {
     "differential.item3": "Comprensión profunda del ecosistema político-institucional.",
     "differential.item4": "Integración de academia, evidencia y gestión real.",
     "differential.item5": "Marco ético explícito y gobernanza transparente.",
-    "differential.text1": "Synapsis Health combina credibilidad técnica y legitimidad institucional. Cada proyecto se orienta a producir decisiones que resistan auditoría técnica, escrutinio político y evaluación pública.",
+    "differential.text1": "Synapsis Health combina credibilidad técnica y legitimidad institucional. Cada proyecto se orienta a producir decisiones sólidas y transparentes.",
     "differential.tag1": "Rigor metodológico.",
     "differential.tag2": "Independencia.",
     "differential.tag3": "Comprensión institucional.",
@@ -84,7 +84,7 @@ const translations = {
     "academic.title": "Producción de conocimiento y formación",
     "academic.text1": "La producción científica aplicada y la formación ejecutiva son parte integral de nuestro modelo.",
     "academic.text2": "Articulamos con universidades e instituciones académicas para fortalecer la capacidad de decisión de los sistemas de salud.",
-    "academic.text3": "Construimos capacidades públicas. No solo resolvemos problemas puntuales.",
+    "academic.text3": "Formamos profesionales capaces de enfrentar decisiones sanitarias complejas con herramientas analíticas y rigor metodológico.",
 
     // Equipo (landing)
     "team.overline": "Equipo",
@@ -226,19 +226,19 @@ const translations = {
 
     // Problem
     "problem.overline": "The challenge",
-    "problem.title": "Complexity is no longer technical. It is institutional.",
-    "problem.text1": "Health systems face increasingly costly technologies, growing judicial pressure, and politically sensitive decisions.",
-    "problem.text2": "In this scenario, technical expertise alone is not enough. Policy without evidence is fragile.",
+    "problem.title": "Health systems with technical, political and institutional complexity.",
+    "problem.text1": "Health systems face increasingly costly technologies, growing judicial pressure, and politically sensitive decisions. In this scenario, technical expertise alone is not enough. Policy without evidence is fragile.",
+    "problem.text2": "Health decisions today require solid frameworks that integrate scientific evidence, governance and access.",
     "problem.text3": "Health decisions today require solid frameworks that integrate science, economics, and governance.",
-    "problem.text4": "Synapsis Health exists to bridge that gap.",
+    "problem.text4": "Our purpose is to bridge that gap, working alongside those who must decide.",
 
     // About
-    "about.overline": "Synapsis Health",
+    "about.overline": "How we work",
     "about.title": "Health decision architecture",
     "about.text1": "Synapsis Health is a strategic platform specialized in Health Technology Assessment applied to complex contexts.",
-    "about.text2": "We do not operate as a traditional consultancy. We build technical and institutional infrastructure to support defensible decisions.",
-    "about.text3": "Our work connects scientific evidence, public policy, and financial sustainability to transform complexity into decision-making capacity.",
-    "about.text4": "We do not deliver isolated reports. We build decision architecture.",
+    "about.text2": "Our work generates intelligent connections between scientific evidence, public policy, and financial sustainability to transform complexity into decision-making capacity within the health system.",
+    "about.text3": "We build decision architecture for high-impact health technologies. Our specialty is converting technical analysis into defensible decisions, implementable and efficient policies, viable and sustainable agreements.",
+    "about.text4": "We accompany health decision-making processes.",
     "about.cta": "Meet Our Team",
 
     // Pillars
@@ -276,7 +276,7 @@ const translations = {
     "differential.item3": "Deep understanding of the political-institutional ecosystem.",
     "differential.item4": "Integration of academia, evidence, and real-world management.",
     "differential.item5": "Explicit ethical framework and transparent governance.",
-    "differential.text1": "Synapsis Health combines technical credibility and institutional legitimacy. Every project aims to produce decisions that withstand technical audit, political scrutiny, and public evaluation.",
+    "differential.text1": "Synapsis Health combines technical credibility and institutional legitimacy. Every project aims to produce sound and transparent decisions.",
     "differential.tag1": "Methodological rigor.",
     "differential.tag2": "Independence.",
     "differential.tag3": "Institutional understanding.",
@@ -286,7 +286,7 @@ const translations = {
     "academic.title": "Knowledge production and training",
     "academic.text1": "Applied scientific production and executive training are an integral part of our model.",
     "academic.text2": "We partner with universities and academic institutions to strengthen health systems' decision-making capacity.",
-    "academic.text3": "We build public capabilities. We don't just solve isolated problems.",
+    "academic.text3": "We train professionals capable of facing complex health decisions with analytical tools and methodological rigor.",
 
     // Team (landing)
     "team.overline": "Team",
