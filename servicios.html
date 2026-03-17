@@ -179,43 +179,43 @@
 
         <!-- SIDEBAR -->
         <aside class="md:sticky md:top-24 md:self-start" aria-label="Navegación de servicios">
-          <p class="font-heading text-sm tracking-wider uppercase text-graphite-500 mb-4" data-i18n="servicesPage.sidebar">Servicios</p>
+          <p class="font-heading text-sm tracking-wider uppercase text-graphite-500 mb-4">Servicios</p>
           <div class="flex flex-col gap-1" role="tablist" aria-label="Categorías de servicios">
 
-            <button data-service-tab="etes" role="tab" aria-selected="true" aria-controls="panel-etes"
+            <button data-service-tab="acceso" role="tab" aria-selected="true" aria-controls="panel-acceso"
               class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
                      bg-graphite-800 text-white">
-              <span data-i18n="servicesPage.tab.etes">Evaluación de Tecnologías Sanitarias (ETES)</span>
+              Acceso y financiamiento de tecnologías
             </button>
 
-            <button data-service-tab="analisis" role="tab" aria-selected="false" aria-controls="panel-analisis"
+            <button data-service-tab="evaluacion" role="tab" aria-selected="false" aria-controls="panel-evaluacion"
               class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
                      text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              <span data-i18n="servicesPage.tab.analisis">Análisis de Datos en Salud</span>
+              Evaluación estratégica
             </button>
 
-            <button data-service-tab="decisiones" role="tab" aria-selected="false" aria-controls="panel-decisiones"
+            <button data-service-tab="economia" role="tab" aria-selected="false" aria-controls="panel-economia"
               class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
                      text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              <span data-i18n="servicesPage.tab.decisiones">Apoyo a la Toma de Decisiones</span>
+              Economía y sostenibilidad
             </button>
 
-            <button data-service-tab="economica" role="tab" aria-selected="false" aria-controls="panel-economica"
+            <button data-service-tab="datos" role="tab" aria-selected="false" aria-controls="panel-datos"
               class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
                      text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              <span data-i18n="servicesPage.tab.economica">Evaluación Económica en Salud</span>
+              Análisis de datos y gestión sanitaria
             </button>
 
-            <button data-service-tab="politica" role="tab" aria-selected="false" aria-controls="panel-politica"
+            <button data-service-tab="soporte" role="tab" aria-selected="false" aria-controls="panel-soporte"
               class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
                      text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              <span data-i18n="servicesPage.tab.politica">Análisis de Política Sanitaria</span>
+              Soporte institucional y política sanitaria
             </button>
 
             <button data-service-tab="capacitacion" role="tab" aria-selected="false" aria-controls="panel-capacitacion"
               class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
                      text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              <span data-i18n="servicesPage.tab.capacitacion">Capacitación y Formación</span>
+              Capacitación y transferencia de conocimiento
             </button>
 
           </div>
@@ -224,142 +224,193 @@
         <!-- PANELES DE DETALLE -->
         <div>
 
-          <!-- Panel: ETES -->
-          <div data-service-panel="etes" id="panel-etes" role="tabpanel">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6" data-i18n="servicesPage.etes.title">
-              Evaluación de Tecnologías Sanitarias
-            </h2>
-            <!-- IMG: Imagen contextual del servicio -->
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/etes.webp?v=d2146005" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p data-i18n="servicesPage.etes.text1">
-                La Evaluación de Tecnologías Sanitarias (ETES) es un proceso multidisciplinario que analiza
-                de forma sistemática las implicaciones médicas, económicas, sociales y éticas del desarrollo,
-                difusión y uso de tecnologías en salud.
-              </p>
-              <p data-i18n="servicesPage.etes.text2">
-                En Synapsis Health realizamos evaluaciones integrales que abarcan desde la revisión sistemática
-                de evidencia clínica hasta el análisis de impacto presupuestario, pasando por la evaluación de
-                la calidad de la evidencia disponible y la formulación de recomendaciones basadas en frameworks
-                internacionales.
-              </p>
-              <p data-i18n="servicesPage.etes.text3">
-                Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria,
-                financiadores, instituciones de salud y empresas del sector, proporcionando una base sólida
-                y transparente para la toma de decisiones sobre la incorporación, financiamiento o
-                desinversión de tecnologías.
-              </p>
-            </div>
-          </div>
-
-          <!-- Panel: Análisis de Datos -->
-          <div data-service-panel="analisis" id="panel-analisis" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6" data-i18n="servicesPage.analisis.title">
-              Análisis de Datos en Salud
-            </h2>
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/analisis_datos.webp?v=f269ba06" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p data-i18n="servicesPage.analisis.text1">
-                Transformamos datos sanitarios complejos en información accionable. Trabajamos con bases
-                de datos de prestaciones, registros clínicos, datos epidemiológicos y fuentes de información
-                del sistema de salud para generar análisis que sustenten la gestión y la planificación.
-              </p>
-              <p data-i18n="servicesPage.analisis.text2">
-                Nuestros servicios incluyen diseño de tableros de indicadores, análisis de utilización de
-                servicios, estudios de carga de enfermedad, y modelización de escenarios para proyección
-                de demanda y costos.
-              </p>
-            </div>
-          </div>
-
-          <!-- Panel: Toma de Decisiones -->
-          <div data-service-panel="decisiones" id="panel-decisiones" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6" data-i18n="servicesPage.decisiones.title">
-              Apoyo a la Toma de Decisiones
+          <!-- Panel: Acceso y financiamiento -->
+          <div data-service-panel="acceso" id="panel-acceso" role="tabpanel">
+            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
+              Acceso gestionado a tecnologías de alto impacto
             </h2>
             <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
               <img src="./assets/img/decisiones.webp?v=5e0b8c20" class="w-full h-full object-cover" alt="">
             </div>
             <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p data-i18n="servicesPage.decisiones.text1">
-                Acompañamos a organismos públicos, financiadores y organizaciones del sector salud en el
-                proceso de toma de decisiones, proporcionando evidencia estructurada, marcos de evaluación
-                y recomendaciones fundamentadas.
+              <p>
+                Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre.
               </p>
-              <p data-i18n="servicesPage.decisiones.text2">
-                Diseñamos procesos deliberativos transparentes que integran la mejor evidencia disponible
-                con las necesidades y prioridades de cada contexto, facilitando decisiones factibles,
-                responsables y sostenibles.
+              <p>
+                Nuestro enfoque combina evaluación de valor, análisis económico, diseño de acuerdos basados en resultados, modelos de riesgo compartido y acompañamiento institucional en procesos de decisión y negociación.
               </p>
+              <p>
+                Este servicio permite a financiadores y autoridades sanitarias facilitar el acceso a innovaciones terapéuticas sin comprometer la sostenibilidad del sistema.
+              </p>
+            </div>
+            <div class="mt-8 pt-8 border-t border-graphite-100">
+              <p class="section-label mb-6">Sub-servicios</p>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Diseño de acuerdos basados en valor</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Modelos de riesgo compartido</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Estrategias de financiamiento de tecnologías innovadoras</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Soporte técnico en procesos de negociación complejos</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Panel: Evaluación Económica -->
-          <div data-service-panel="economica" id="panel-economica" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6" data-i18n="servicesPage.economica.title">
-              Evaluación Económica en Salud
+          <!-- Panel: Evaluación estratégica -->
+          <div data-service-panel="evaluacion" id="panel-evaluacion" role="tabpanel" class="hidden">
+            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
+              Evaluación de Tecnologías Sanitarias (ETESA)
+            </h2>
+            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
+              <img src="./assets/img/etes.webp?v=d2146005" class="w-full h-full object-cover" alt="">
+            </div>
+            <div class="space-y-4 text-graphite-500 leading-relaxed">
+              <p>
+                Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías. Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria, financiadores, instituciones de salud y empresas del sector, proporcionando una base sólida y transparente para la toma de decisiones sobre la incorporación, financiamiento o desinversión de tecnologías.
+              </p>
+            </div>
+            <div class="mt-8 pt-8 border-t border-graphite-100">
+              <p class="section-label mb-6">Sub-servicios</p>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Evaluaciones rápidas para toma de decisión</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de impacto presupuestario</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Evaluación de valor y priorización</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Herramientas para comparar alternativas y orientar decisiones transparentes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel: Economía y sostenibilidad -->
+          <div data-service-panel="economia" id="panel-economia" role="tabpanel" class="hidden">
+            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
+              Economía y sostenibilidad
             </h2>
             <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
               <img src="./assets/img/eval_economicas.webp?v=39b6e13e" class="w-full h-full object-cover" alt="">
             </div>
-            <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p data-i18n="servicesPage.economica.text1">
-                Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario
-                que permiten evaluar el valor de las intervenciones sanitarias en relación con los recursos
-                disponibles.
-              </p>
-              <p data-i18n="servicesPage.economica.text2">
-                Nuestros modelos económicos se construyen con transparencia metodológica, permitiendo a los
-                decisores comprender los supuestos, las fuentes de datos y la incertidumbre asociada a cada
-                estimación.
-              </p>
+            <div class="mt-0 pt-0">
+              <p class="section-label mb-6">Sub-servicios</p>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Evaluación económica en salud</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario que permiten evaluar el valor de las intervenciones sanitarias en relación con los recursos disponibles.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Modelización de escenarios y proyecciones</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Simulación de demanda, costos y resultados bajo distintos supuestos.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de sostenibilidad presupuestaria</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Panel: Política Sanitaria -->
-          <div data-service-panel="politica" id="panel-politica" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6" data-i18n="servicesPage.politica.title">
-              Análisis de Política Sanitaria
+          <!-- Panel: Análisis de datos -->
+          <div data-service-panel="datos" id="panel-datos" role="tabpanel" class="hidden">
+            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
+              Análisis de datos y gestión sanitaria
+            </h2>
+            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
+              <img src="./assets/img/analisis_datos.webp?v=f269ba06" class="w-full h-full object-cover" alt="">
+            </div>
+            <div class="mt-0 pt-0">
+              <p class="section-label mb-6">Sub-servicios</p>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de utilización de servicios</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Identificación de patrones de uso, variabilidad y consumo de recursos.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Estudios de carga de enfermedad</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Diseño de tableros de indicadores</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Herramientas para monitoreo y gestión basada en datos.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Proyección de demanda y costos</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis para planificación de recursos y presupuestos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Panel: Soporte institucional -->
+          <div data-service-panel="soporte" id="panel-soporte" role="tabpanel" class="hidden">
+            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
+              Soporte institucional y política sanitaria
             </h2>
             <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
               <img src="./assets/img/pol_sanitarias.webp?v=20ba8dfa" class="w-full h-full object-cover" alt="">
             </div>
-            <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p data-i18n="servicesPage.politica.text1">
-                Analizamos el contexto regulatorio, institucional y político en el que se toman las
-                decisiones sanitarias, identificando oportunidades, barreras y marcos de viabilidad
-                para la implementación de políticas y tecnologías.
-              </p>
-              <p data-i18n="servicesPage.politica.text2">
-                Nuestro enfoque integra el análisis de stakeholders, la evaluación de marcos legales
-                y la revisión de experiencias internacionales comparables.
-              </p>
+            <div class="mt-0 pt-0">
+              <p class="section-label mb-6">Sub-servicios</p>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Diseño de marcos de cobertura</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Definición de criterios y procesos para incorporación de tecnologías.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Estrategias frente a judicialización</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis y propuestas para abordar conflictos de acceso individuales.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de política sanitaria y regulación</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Evaluación del entorno institucional, legal y político.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Fortalecimiento de procesos de decisión</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Diseño de mecanismos deliberativos y criterios explícitos.</p>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- Panel: Capacitación -->
           <div data-service-panel="capacitacion" id="panel-capacitacion" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6" data-i18n="servicesPage.capacitacion.title">
-              Capacitación y Formación
+            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
+              Capacitación y transferencia de conocimiento
             </h2>
             <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
               <img src="./assets/img/educacion.webp?v=8f7edfb4" class="w-full h-full object-cover" alt="">
             </div>
-            <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p data-i18n="servicesPage.capacitacion.text1">
-                Diseñamos e impartimos programas de formación en evaluación de tecnologías sanitarias,
-                lectura crítica de evidencia, análisis económico en salud y toma de decisiones basada
-                en evidencia.
-              </p>
-              <p data-i18n="servicesPage.capacitacion.text2">
-                Nuestras capacitaciones están dirigidas a equipos técnicos de organismos de salud,
-                financiadores, empresas del sector y profesionales que buscan fortalecer sus
-                competencias en estas áreas.
-              </p>
+            <div class="mt-0 pt-0">
+              <p class="section-label mb-6">Sub-servicios</p>
+              <div class="space-y-6">
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Formación en evaluación de tecnologías sanitarias</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Programas para equipos técnicos y decisores.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Capacitación en análisis económico y evidencia</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Herramientas para lectura crítica y toma de decisiones informadas.</p>
+                </div>
+                <div>
+                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Programas de fortalecimiento institucional</h4>
+                  <p class="text-sm text-graphite-500 leading-relaxed">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p>
+                </div>
+              </div>
             </div>
           </div>
 
