@@ -108,43 +108,54 @@
     .section { padding: 5rem 0; }
     @media (min-width: 768px) { .section { padding: 7.5rem 0; } }
 
-    .accordion { display: flex; flex-direction: column; gap: 0.75rem; }
+    .accordion { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--g100);
+      border-radius: 1.25rem; overflow: hidden; }
 
-    .acc-item { border: 1px solid var(--g100); border-radius: 1rem; overflow: hidden;
-      background: #fff; transition: box-shadow 0.3s, border-color 0.3s; }
-    .acc-item.open { box-shadow: 0 8px 32px rgba(0,0,0,0.07); border-color: var(--g200); }
+    /* Each panel: separated by a 1px divider, no gaps */
+    .acc-item { border-bottom: 1px solid var(--g100); background: #fff;
+      border-left: 5px solid transparent;
+      transition: border-left-color 0.3s, background 0.2s; }
+    .acc-item:last-child { border-bottom: none; }
+    .acc-item.open { border-left-color: var(--g800); background: #fff; }
 
-    .acc-header { width: 100%; display: flex; align-items: center; gap: 1.5rem;
-      padding: 1.5rem 2rem; background: none; border: none; cursor: pointer;
-      text-align: left; transition: background 0.2s; }
+    .acc-header { width: 100%; display: flex; align-items: center; gap: 1.75rem;
+      padding: 1.5rem 2rem 1.5rem 1.5rem; background: none; border: none; cursor: pointer;
+      text-align: left; transition: background 0.2s; min-height: 5.5rem; }
     .acc-header:hover { background: var(--g50); }
     .acc-item.open .acc-header { background: var(--g50); }
 
-    .acc-lnum { font-family: 'Playfair Display', serif; font-size: 2.75rem; color: var(--g100);
-      min-width: 3.5rem; line-height: 1; transition: color 0.3s; user-select: none; }
+    /* BIG decorative line numbers — the visual signature of this variant */
+    .acc-lnum { font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--g100);
+      min-width: 5rem; line-height: 1; transition: color 0.3s; user-select: none;
+      letter-spacing: -0.04em; }
     .acc-item.open .acc-lnum { color: var(--g800); }
+    .acc-item:hover:not(.open) .acc-lnum { color: var(--g200); }
 
-    .acc-icon { width: 2.75rem; height: 2.75rem; display: flex; align-items: center;
-      justify-content: center; background: var(--g50); border-radius: 0.75rem;
+    .acc-icon { width: 2.5rem; height: 2.5rem; display: flex; align-items: center;
+      justify-content: center; background: var(--g100); border-radius: 0.625rem;
       flex-shrink: 0; color: var(--g500); transition: all 0.3s; }
     .acc-item.open .acc-icon { background: var(--g800); color: #fff; }
 
     .acc-title { font-family: 'Jost', sans-serif; font-size: 1.0625rem; font-weight: 400;
-      color: var(--g800); flex: 1; line-height: 1.4; text-align: left; }
+      color: var(--g600); flex: 1; line-height: 1.4; text-align: left; transition: color 0.2s; }
+    .acc-item.open .acc-title { color: var(--g900); font-weight: 500; }
 
-    .acc-chevron { color: var(--g300); transition: transform 0.35s ease, color 0.3s; flex-shrink: 0; }
-    .acc-item.open .acc-chevron { transform: rotate(180deg); color: var(--g600); }
+    .acc-chevron { color: var(--g200); transition: transform 0.35s ease, color 0.3s; flex-shrink: 0; }
+    .acc-item.open .acc-chevron { transform: rotate(180deg); color: var(--g500); }
 
     .acc-body { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(0.4,0,0.2,1); }
-    .acc-body-inner { padding: 0 2rem 2rem; }
+    .acc-body-inner { padding: 0 2rem 2.5rem 8rem; }
+    @media (max-width: 600px) { .acc-body-inner { padding: 0 1.5rem 2rem 1.5rem; } }
 
     .acc-desc { color: var(--g500); line-height: 1.75; margin-bottom: 2rem;
-      padding-top: 0.5rem; border-top: 1px solid var(--g100); padding-top: 1.25rem; font-size: 0.9375rem; }
+      border-top: 1px solid var(--g100); padding-top: 1.25rem; font-size: 0.9375rem; }
 
     .sub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.875rem; }
     @media (max-width: 600px) { .sub-grid { grid-template-columns: 1fr; } }
 
-    .sub-card { background: var(--g50); border-radius: 0.75rem; padding: 1.25rem 1.5rem; }
+    .sub-card { background: #fff; border: 1px solid var(--g100); border-radius: 0.75rem;
+      padding: 1.25rem 1.5rem; transition: border-color 0.2s; }
+    .sub-card:hover { border-color: var(--g200); }
     .sub-card-title { font-family: 'Jost', sans-serif; font-weight: 500; color: var(--g800);
       margin-bottom: 0.5rem; font-size: 0.9rem; line-height: 1.4; }
     .sub-card-desc { font-size: 0.85rem; color: var(--g500); line-height: 1.65; }

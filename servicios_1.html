@@ -102,59 +102,73 @@
     @media (min-width: 768px) { .section { padding: 7.5rem 0; } }
 
     /* ── GRID ── */
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
     @media (min-width: 600px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3, 1fr); } }
 
-    .service-card { background: #fff; border: 1px solid var(--g100); border-radius: 1rem;
-      padding: 2rem; cursor: pointer; transition: all 0.3s; position: relative;
-      display: flex; flex-direction: column; text-align: left; }
-    .service-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.09); border-color: var(--g200);
-      transform: translateY(-4px); }
+    /* Card: visual signature = dark badge + lift-on-hover shadow */
+    .service-card { background: #fff; border: 1px solid var(--g100); border-radius: 1.25rem;
+      padding: 1.75rem; cursor: pointer; transition: all 0.3s; position: relative;
+      display: flex; flex-direction: column; text-align: left;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+    .service-card:hover { box-shadow: 0 20px 48px rgba(0,0,0,0.13); border-color: var(--g200);
+      transform: translateY(-6px); }
     .service-card:focus-visible { outline: 2px solid var(--g800); outline-offset: 2px; }
 
-    .card-number { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--g100);
-      line-height: 1; margin-bottom: 0.75rem; transition: color 0.3s; user-select: none; }
-    .service-card:hover .card-number { color: var(--g200); }
-
-    .card-icon { width: 2.5rem; height: 2.5rem; display: flex; align-items: center;
-      justify-content: center; background: var(--g50); border-radius: 0.75rem;
-      color: var(--g500); margin-bottom: 1.25rem; transition: all 0.3s; }
-    .service-card:hover .card-icon { background: var(--g800); color: #fff; }
+    /* Prominent dark badge — this is the visual signature of this variant */
+    .card-badge { display: inline-flex; align-items: center; gap: 0.625rem; margin-bottom: 1.5rem; }
+    .card-badge-num { font-family: 'Jost', sans-serif; font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      background: var(--g900); color: #fff; border-radius: 0.375rem;
+      padding: 0.25rem 0.625rem; transition: background 0.3s; }
+    .service-card:hover .card-badge-num { background: var(--g800); }
+    .card-badge-icon { width: 2rem; height: 2rem; display: flex; align-items: center;
+      justify-content: center; background: var(--g50); border-radius: 0.5rem;
+      color: var(--g500); transition: all 0.3s; }
+    .service-card:hover .card-badge-icon { background: var(--g100); color: var(--g800); }
 
     .card-title { font-family: 'Jost', sans-serif; font-size: 1rem; font-weight: 500;
-      color: var(--g800); margin-bottom: 0.75rem; line-height: 1.4; }
+      color: var(--g900); margin-bottom: 0.75rem; line-height: 1.4; }
     .card-excerpt { font-size: 0.875rem; color: var(--g400); line-height: 1.65; flex: 1; }
     .card-cta { margin-top: 1.5rem; display: flex; align-items: center; gap: 0.5rem;
-      font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.08em;
-      text-transform: uppercase; color: var(--g600); transition: gap 0.3s; }
-    .service-card:hover .card-cta { gap: 0.75rem; color: var(--g900); }
+      font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--g400); transition: gap 0.25s, color 0.25s; }
+    .service-card:hover .card-cta { gap: 0.875rem; color: var(--g900); }
+    .card-cta-line { flex: 1; height: 1px; background: var(--g100); transition: background 0.3s; }
+    .service-card:hover .card-cta-line { background: var(--g300); }
 
     /* ── MODAL ── */
-    .modal-overlay { position: fixed; inset: 0; background: rgba(17,17,17,0.65); z-index: 200;
+    .modal-overlay { position: fixed; inset: 0; background: rgba(10,10,10,0.72); z-index: 200;
       display: flex; align-items: center; justify-content: center; padding: 1rem;
-      opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+      opacity: 0; pointer-events: none; transition: opacity 0.25s; }
     .modal-overlay.open { opacity: 1; pointer-events: all; }
 
     .modal-box { background: #fff; border-radius: 1.5rem; max-width: 44rem; width: 100%;
-      max-height: 88vh; overflow-y: auto; padding: 2.5rem; position: relative;
-      transform: scale(0.94) translateY(24px);
-      transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1); }
+      max-height: 88vh; overflow-y: auto; position: relative;
+      transform: scale(0.93) translateY(28px);
+      transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1); }
     .modal-overlay.open .modal-box { transform: scale(1) translateY(0); }
 
-    .modal-close { position: absolute; top: 1.25rem; right: 1.25rem; background: var(--g50);
-      border: none; border-radius: 50%; width: 2.5rem; height: 2.5rem;
+    /* Dark header bar inside modal */
+    .modal-header { background: var(--g900); border-radius: 1.5rem 1.5rem 0 0;
+      padding: 1.75rem 2rem 1.5rem; position: relative; }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(255,255,255,0.12);
+      border: none; border-radius: 50%; width: 2.25rem; height: 2.25rem;
       display: flex; align-items: center; justify-content: center; cursor: pointer;
-      color: var(--g500); transition: all 0.2s; }
-    .modal-close:hover { background: var(--g100); color: var(--g900); }
+      color: rgba(255,255,255,0.7); transition: all 0.2s; }
+    .modal-close:hover { background: rgba(255,255,255,0.2); color: #fff; }
 
-    .modal-number { font-family: 'Playfair Display', serif; font-size: 4.5rem; color: var(--g100);
-      line-height: 1; margin-bottom: 0.25rem; user-select: none; }
-    .modal-icon { display: inline-flex; align-items: center; justify-content: center;
-      width: 3rem; height: 3rem; background: var(--g800); border-radius: 0.75rem;
-      color: #fff; margin-bottom: 1rem; }
-    .modal-title { font-family: 'Jost', sans-serif; font-size: clamp(1.25rem, 3vw, 1.5rem);
-      font-weight: 300; color: var(--g900); margin-bottom: 1.25rem; line-height: 1.3; }
+    .modal-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .modal-badge-num { font-family: 'Jost', sans-serif; font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 0.25rem; padding: 0.2rem 0.5rem; }
+    .modal-badge-icon { width: 2rem; height: 2rem; display: flex; align-items: center;
+      justify-content: center; background: rgba(255,255,255,0.12); border-radius: 0.5rem;
+      color: rgba(255,255,255,0.75); }
+    .modal-title { font-family: 'Jost', sans-serif; font-size: clamp(1.125rem, 3vw, 1.375rem);
+      font-weight: 300; color: #fff; line-height: 1.3; }
+
+    .modal-body { padding: 2rem; }
     .modal-description { color: var(--g500); line-height: 1.75; margin-bottom: 2rem;
       font-size: 0.9375rem; }
     .modal-sub-label { font-family: 'Jost', sans-serif; font-size: 0.6875rem; letter-spacing: 0.15em;
@@ -291,75 +305,63 @@
       <div class="services-grid">
 
         <button class="service-card reveal" data-modal="m0" aria-haspopup="dialog">
-          <div class="card-number" aria-hidden="true">L1</div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/>
-            </svg>
+          <div class="card-badge" aria-hidden="true">
+            <span class="card-badge-num">L1</span>
+            <span class="card-badge-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/></svg></span>
           </div>
           <p class="card-title">Acceso y financiamiento de tecnologías</p>
           <p class="card-excerpt">Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre.</p>
-          <span class="card-cta" aria-hidden="true">Ver detalle <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          <span class="card-cta" aria-hidden="true"><span class="card-cta-line"></span>Ver detalle <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
         </button>
 
         <button class="service-card reveal" data-modal="m1" aria-haspopup="dialog" style="transition-delay:0.05s">
-          <div class="card-number" aria-hidden="true">L2</div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/>
-            </svg>
+          <div class="card-badge" aria-hidden="true">
+            <span class="card-badge-num">L2</span>
+            <span class="card-badge-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span>
           </div>
           <p class="card-title">Evaluación estratégica (ETESA)</p>
           <p class="card-excerpt">Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías para decisores de política sanitaria.</p>
-          <span class="card-cta" aria-hidden="true">Ver detalle <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          <span class="card-cta" aria-hidden="true"><span class="card-cta-line"></span>Ver detalle <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
         </button>
 
         <button class="service-card reveal" data-modal="m2" aria-haspopup="dialog" style="transition-delay:0.1s">
-          <div class="card-number" aria-hidden="true">L3</div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/>
-            </svg>
+          <div class="card-badge" aria-hidden="true">
+            <span class="card-badge-num">L3</span>
+            <span class="card-badge-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg></span>
           </div>
           <p class="card-title">Economía y sostenibilidad</p>
           <p class="card-excerpt">Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario para evaluar el valor de las intervenciones.</p>
-          <span class="card-cta" aria-hidden="true">Ver detalle <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          <span class="card-cta" aria-hidden="true"><span class="card-cta-line"></span>Ver detalle <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
         </button>
 
         <button class="service-card reveal" data-modal="m3" aria-haspopup="dialog" style="transition-delay:0.15s">
-          <div class="card-number" aria-hidden="true">L4</div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/>
-            </svg>
+          <div class="card-badge" aria-hidden="true">
+            <span class="card-badge-num">L4</span>
+            <span class="card-badge-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg></span>
           </div>
           <p class="card-title">Análisis de datos y gestión sanitaria</p>
           <p class="card-excerpt">Transformamos datos sanitarios complejos en información accionable para sustentar la gestión y la planificación.</p>
-          <span class="card-cta" aria-hidden="true">Ver detalle <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          <span class="card-cta" aria-hidden="true"><span class="card-cta-line"></span>Ver detalle <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
         </button>
 
         <button class="service-card reveal" data-modal="m4" aria-haspopup="dialog" style="transition-delay:0.2s">
-          <div class="card-number" aria-hidden="true">L5</div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>
-            </svg>
+          <div class="card-badge" aria-hidden="true">
+            <span class="card-badge-num">L5</span>
+            <span class="card-badge-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg></span>
           </div>
           <p class="card-title">Soporte institucional y política sanitaria</p>
           <p class="card-excerpt">Acompañamos a organismos públicos y financiadores en el diseño de marcos institucionales y procesos de decisión robustos.</p>
-          <span class="card-cta" aria-hidden="true">Ver detalle <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          <span class="card-cta" aria-hidden="true"><span class="card-cta-line"></span>Ver detalle <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
         </button>
 
         <button class="service-card reveal" data-modal="m5" aria-haspopup="dialog" style="transition-delay:0.25s">
-          <div class="card-number" aria-hidden="true">L6</div>
-          <div class="card-icon" aria-hidden="true">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
-            </svg>
+          <div class="card-badge" aria-hidden="true">
+            <span class="card-badge-num">L6</span>
+            <span class="card-badge-icon"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg></span>
           </div>
           <p class="card-title">Capacitación y transferencia de conocimiento</p>
           <p class="card-excerpt">Diseñamos e impartimos programas de formación en evaluación de tecnologías sanitarias y análisis económico en salud.</p>
-          <span class="card-cta" aria-hidden="true">Ver detalle <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+          <span class="card-cta" aria-hidden="true"><span class="card-cta-line"></span>Ver detalle <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
         </button>
 
       </div>
@@ -380,122 +382,116 @@
 <!-- ===== MODALS ===== -->
 <div class="modal-overlay" id="m0" role="dialog" aria-modal="true" aria-labelledby="m0-title">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Cerrar">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <div class="modal-number" aria-hidden="true">L1</div>
-    <div class="modal-icon" aria-hidden="true">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/></svg>
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      <div class="modal-badge" aria-hidden="true"><span class="modal-badge-num">L1</span><span class="modal-badge-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/></svg></span></div>
+      <h2 class="modal-title" id="m0-title">Acceso y financiamiento de tecnologías</h2>
     </div>
-    <h2 class="modal-title" id="m0-title">Acceso y financiamiento de tecnologías</h2>
-    <p class="modal-description">Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre. Nuestro enfoque combina evaluación de valor, análisis económico, diseño de acuerdos basados en resultados, modelos de riesgo compartido y acompañamiento institucional en procesos de decisión y negociación. Este servicio permite a financiadores y autoridades sanitarias facilitar el acceso a innovaciones terapéuticas sin comprometer la sostenibilidad del sistema.</p>
-    <span class="modal-sub-label">Sub-servicios</span>
-    <div class="modal-sub-list">
-      <div class="modal-sub-item"><p class="modal-sub-title">Diseño de acuerdos basados en valor</p><p class="modal-sub-desc">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Modelos de riesgo compartido</p><p class="modal-sub-desc">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Estrategias de financiamiento de tecnologías innovadoras</p><p class="modal-sub-desc">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Soporte técnico en procesos de negociación complejos</p><p class="modal-sub-desc">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p></div>
+    <div class="modal-body">
+      <p class="modal-description">Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre. Nuestro enfoque combina evaluación de valor, análisis económico, diseño de acuerdos basados en resultados, modelos de riesgo compartido y acompañamiento institucional en procesos de decisión y negociación. Este servicio permite a financiadores y autoridades sanitarias facilitar el acceso a innovaciones terapéuticas sin comprometer la sostenibilidad del sistema.</p>
+      <span class="modal-sub-label">Sub-servicios</span>
+      <div class="modal-sub-list">
+        <div class="modal-sub-item"><p class="modal-sub-title">Diseño de acuerdos basados en valor</p><p class="modal-sub-desc">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Modelos de riesgo compartido</p><p class="modal-sub-desc">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Estrategias de financiamiento de tecnologías innovadoras</p><p class="modal-sub-desc">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Soporte técnico en procesos de negociación complejos</p><p class="modal-sub-desc">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p></div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="m1" role="dialog" aria-modal="true" aria-labelledby="m1-title">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Cerrar">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <div class="modal-number" aria-hidden="true">L2</div>
-    <div class="modal-icon" aria-hidden="true">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      <div class="modal-badge" aria-hidden="true"><span class="modal-badge-num">L2</span><span class="modal-badge-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg></span></div>
+      <h2 class="modal-title" id="m1-title">Evaluación estratégica (ETESA)</h2>
     </div>
-    <h2 class="modal-title" id="m1-title">Evaluación estratégica (ETESA)</h2>
-    <p class="modal-description">Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías. Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria, financiadores, instituciones de salud y empresas del sector, proporcionando una base sólida y transparente para la toma de decisiones sobre la incorporación, financiamiento o desinversión de tecnologías.</p>
-    <span class="modal-sub-label">Sub-servicios</span>
-    <div class="modal-sub-list">
-      <div class="modal-sub-item"><p class="modal-sub-title">Evaluaciones rápidas para toma de decisión</p><p class="modal-sub-desc">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Análisis de impacto presupuestario</p><p class="modal-sub-desc">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Evaluación de valor y priorización</p><p class="modal-sub-desc">Herramientas para comparar alternativas y orientar decisiones transparentes.</p></div>
+    <div class="modal-body">
+      <p class="modal-description">Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías. Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria, financiadores, instituciones de salud y empresas del sector, proporcionando una base sólida y transparente para la toma de decisiones sobre la incorporación, financiamiento o desinversión de tecnologías.</p>
+      <span class="modal-sub-label">Sub-servicios</span>
+      <div class="modal-sub-list">
+        <div class="modal-sub-item"><p class="modal-sub-title">Evaluaciones rápidas para toma de decisión</p><p class="modal-sub-desc">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Análisis de impacto presupuestario</p><p class="modal-sub-desc">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Evaluación de valor y priorización</p><p class="modal-sub-desc">Herramientas para comparar alternativas y orientar decisiones transparentes.</p></div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="m2" role="dialog" aria-modal="true" aria-labelledby="m2-title">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Cerrar">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <div class="modal-number" aria-hidden="true">L3</div>
-    <div class="modal-icon" aria-hidden="true">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      <div class="modal-badge" aria-hidden="true"><span class="modal-badge-num">L3</span><span class="modal-badge-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg></span></div>
+      <h2 class="modal-title" id="m2-title">Economía y sostenibilidad</h2>
     </div>
-    <h2 class="modal-title" id="m2-title">Economía y sostenibilidad</h2>
-    <p class="modal-description">Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario que permiten evaluar el valor de las intervenciones sanitarias en relación con los recursos disponibles.</p>
-    <span class="modal-sub-label">Sub-servicios</span>
-    <div class="modal-sub-list">
-      <div class="modal-sub-item"><p class="modal-sub-title">Modelización de escenarios y proyecciones</p><p class="modal-sub-desc">Simulación de demanda, costos y resultados bajo distintos supuestos.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Análisis de sostenibilidad presupuestaria</p><p class="modal-sub-desc">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p></div>
+    <div class="modal-body">
+      <p class="modal-description">Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario que permiten evaluar el valor de las intervenciones sanitarias en relación con los recursos disponibles.</p>
+      <span class="modal-sub-label">Sub-servicios</span>
+      <div class="modal-sub-list">
+        <div class="modal-sub-item"><p class="modal-sub-title">Modelización de escenarios y proyecciones</p><p class="modal-sub-desc">Simulación de demanda, costos y resultados bajo distintos supuestos.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Análisis de sostenibilidad presupuestaria</p><p class="modal-sub-desc">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p></div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="m3" role="dialog" aria-modal="true" aria-labelledby="m3-title">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Cerrar">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <div class="modal-number" aria-hidden="true">L4</div>
-    <div class="modal-icon" aria-hidden="true">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      <div class="modal-badge" aria-hidden="true"><span class="modal-badge-num">L4</span><span class="modal-badge-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg></span></div>
+      <h2 class="modal-title" id="m3-title">Análisis de datos y gestión sanitaria</h2>
     </div>
-    <h2 class="modal-title" id="m3-title">Análisis de datos y gestión sanitaria</h2>
-    <p class="modal-description">Transformamos datos sanitarios complejos en información accionable, trabajando con bases de datos de prestaciones, registros clínicos y datos epidemiológicos para generar análisis que sustenten la gestión y la planificación.</p>
-    <span class="modal-sub-label">Sub-servicios</span>
-    <div class="modal-sub-list">
-      <div class="modal-sub-item"><p class="modal-sub-title">Análisis de utilización de servicios</p><p class="modal-sub-desc">Identificación de patrones de uso, variabilidad y consumo de recursos.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Estudios de carga de enfermedad</p><p class="modal-sub-desc">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Diseño de tableros de indicadores</p><p class="modal-sub-desc">Herramientas para monitoreo y gestión basada en datos.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Proyección de demanda y costos</p><p class="modal-sub-desc">Análisis para planificación de recursos y presupuestos.</p></div>
+    <div class="modal-body">
+      <p class="modal-description">Transformamos datos sanitarios complejos en información accionable, trabajando con bases de datos de prestaciones, registros clínicos y datos epidemiológicos para generar análisis que sustenten la gestión y la planificación.</p>
+      <span class="modal-sub-label">Sub-servicios</span>
+      <div class="modal-sub-list">
+        <div class="modal-sub-item"><p class="modal-sub-title">Análisis de utilización de servicios</p><p class="modal-sub-desc">Identificación de patrones de uso, variabilidad y consumo de recursos.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Estudios de carga de enfermedad</p><p class="modal-sub-desc">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Diseño de tableros de indicadores</p><p class="modal-sub-desc">Herramientas para monitoreo y gestión basada en datos.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Proyección de demanda y costos</p><p class="modal-sub-desc">Análisis para planificación de recursos y presupuestos.</p></div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="m4" role="dialog" aria-modal="true" aria-labelledby="m4-title">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Cerrar">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <div class="modal-number" aria-hidden="true">L5</div>
-    <div class="modal-icon" aria-hidden="true">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      <div class="modal-badge" aria-hidden="true"><span class="modal-badge-num">L5</span><span class="modal-badge-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg></span></div>
+      <h2 class="modal-title" id="m4-title">Soporte institucional y política sanitaria</h2>
     </div>
-    <h2 class="modal-title" id="m4-title">Soporte institucional y política sanitaria</h2>
-    <p class="modal-description">Acompañamos a organismos públicos, financiadores y organizaciones del sector salud en el diseño de marcos institucionales, análisis de política sanitaria y procesos de decisión robustos.</p>
-    <span class="modal-sub-label">Sub-servicios</span>
-    <div class="modal-sub-list">
-      <div class="modal-sub-item"><p class="modal-sub-title">Diseño de marcos de cobertura</p><p class="modal-sub-desc">Definición de criterios y procesos para incorporación de tecnologías.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Estrategias frente a judicialización</p><p class="modal-sub-desc">Análisis y propuestas para abordar conflictos de acceso individuales.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Análisis de política sanitaria y regulación</p><p class="modal-sub-desc">Evaluación del entorno institucional, legal y político.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Fortalecimiento de procesos de decisión</p><p class="modal-sub-desc">Diseño de mecanismos deliberativos y criterios explícitos.</p></div>
+    <div class="modal-body">
+      <p class="modal-description">Acompañamos a organismos públicos, financiadores y organizaciones del sector salud en el diseño de marcos institucionales, análisis de política sanitaria y procesos de decisión robustos.</p>
+      <span class="modal-sub-label">Sub-servicios</span>
+      <div class="modal-sub-list">
+        <div class="modal-sub-item"><p class="modal-sub-title">Diseño de marcos de cobertura</p><p class="modal-sub-desc">Definición de criterios y procesos para incorporación de tecnologías.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Estrategias frente a judicialización</p><p class="modal-sub-desc">Análisis y propuestas para abordar conflictos de acceso individuales.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Análisis de política sanitaria y regulación</p><p class="modal-sub-desc">Evaluación del entorno institucional, legal y político.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Fortalecimiento de procesos de decisión</p><p class="modal-sub-desc">Diseño de mecanismos deliberativos y criterios explícitos.</p></div>
+      </div>
     </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="m5" role="dialog" aria-modal="true" aria-labelledby="m5-title">
   <div class="modal-box">
-    <button class="modal-close" aria-label="Cerrar">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-    <div class="modal-number" aria-hidden="true">L6</div>
-    <div class="modal-icon" aria-hidden="true">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+    <div class="modal-header">
+      <button class="modal-close" aria-label="Cerrar"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      <div class="modal-badge" aria-hidden="true"><span class="modal-badge-num">L6</span><span class="modal-badge-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg></span></div>
+      <h2 class="modal-title" id="m5-title">Capacitación y transferencia de conocimiento</h2>
     </div>
-    <h2 class="modal-title" id="m5-title">Capacitación y transferencia de conocimiento</h2>
-    <p class="modal-description">Diseñamos e impartimos programas de formación en evaluación de tecnologías sanitarias, lectura crítica de evidencia, análisis económico en salud y toma de decisiones basada en evidencia.</p>
-    <span class="modal-sub-label">Sub-servicios</span>
-    <div class="modal-sub-list">
-      <div class="modal-sub-item"><p class="modal-sub-title">Formación en evaluación de tecnologías sanitarias</p><p class="modal-sub-desc">Programas para equipos técnicos y decisores.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Capacitación en análisis económico y evidencia</p><p class="modal-sub-desc">Herramientas para lectura crítica y toma de decisiones informadas.</p></div>
-      <div class="modal-sub-item"><p class="modal-sub-title">Programas de fortalecimiento institucional</p><p class="modal-sub-desc">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p></div>
+    <div class="modal-body">
+      <p class="modal-description">Diseñamos e impartimos programas de formación en evaluación de tecnologías sanitarias, lectura crítica de evidencia, análisis económico en salud y toma de decisiones basada en evidencia.</p>
+      <span class="modal-sub-label">Sub-servicios</span>
+      <div class="modal-sub-list">
+        <div class="modal-sub-item"><p class="modal-sub-title">Formación en evaluación de tecnologías sanitarias</p><p class="modal-sub-desc">Programas para equipos técnicos y decisores.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Capacitación en análisis económico y evidencia</p><p class="modal-sub-desc">Herramientas para lectura crítica y toma de decisiones informadas.</p></div>
+        <div class="modal-sub-item"><p class="modal-sub-title">Programas de fortalecimiento institucional</p><p class="modal-sub-desc">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p></div>
+      </div>
     </div>
   </div>
 </div>

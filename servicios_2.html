@@ -105,19 +105,22 @@
     .tabs-wrapper { position: relative; }
 
     /* Desktop tab list */
-    .tabs-list { display: flex; border-bottom: 2px solid var(--g100); overflow-x: auto;
-      -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0; }
+    .tabs-list-wrap { background: var(--g50); border-radius: 0.875rem; padding: 0.3125rem;
+      display: inline-flex; margin-bottom: 0; }
+    .tabs-list { display: flex; overflow-x: auto;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 0.25rem; }
     .tabs-list::-webkit-scrollbar { display: none; }
 
-    .tab-btn { position: relative; font-family: 'Jost', sans-serif; font-size: 0.875rem;
-      font-weight: 400; color: var(--g400); padding: 1.125rem 1.5rem; background: none;
-      border: none; border-bottom: 2px solid transparent; margin-bottom: -2px;
-      cursor: pointer; white-space: nowrap; transition: color 0.25s; flex-shrink: 0; }
-    .tab-btn:hover { color: var(--g700); }
-    .tab-btn.active { color: var(--g900); font-weight: 500; border-bottom-color: var(--g900); }
+    .tab-btn { position: relative; font-family: 'Jost', sans-serif; font-size: 0.8125rem;
+      font-weight: 400; color: var(--g400); padding: 0.625rem 1.125rem; background: none;
+      border: none; border-radius: 0.5625rem;
+      cursor: pointer; white-space: nowrap; transition: all 0.22s; flex-shrink: 0; }
+    .tab-btn:hover { color: var(--g700); background: rgba(0,0,0,0.04); }
+    .tab-btn.active { background: var(--g800); color: #fff; font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
     .tab-btn .tab-num { font-family: 'Playfair Display', serif; font-size: 0.875rem;
       margin-right: 0.4rem; color: var(--g300); transition: color 0.25s; }
-    .tab-btn.active .tab-num { color: var(--g500); }
+    .tab-btn.active .tab-num { color: rgba(255,255,255,0.55); }
 
     /* Mobile dropdown */
     .tabs-select-wrapper { display: none; margin-bottom: 2rem; position: relative; }
@@ -132,7 +135,7 @@
 
     @media (max-width: 767px) {
       .tabs-select-wrapper { display: block; }
-      .tabs-list { display: none; }
+      .tabs-list-wrap { display: none; }
     }
 
     /* Tab panels */
@@ -308,6 +311,7 @@
         </div>
 
         <!-- Desktop tabs -->
+        <div class="tabs-list-wrap">
         <div class="tabs-list" role="tablist" aria-label="Líneas de servicio">
           <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab0" id="btn-tab0">
             <span class="tab-num">L1</span> Acceso y financiamiento
@@ -328,6 +332,7 @@
             <span class="tab-num">L6</span> Capacitación
           </button>
         </div>
+        </div><!-- /tabs-list-wrap -->
 
         <!-- Panels -->
         <div class="tab-panels">
