@@ -132,10 +132,27 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(26, 26, 26, 0.75);
+      background: rgba(26, 26, 26, 0.85);
       z-index: 0;
     }
     .section-transparent > .container-site {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Light sections — white semi-transparent over parallax */
+    .section-light {
+      position: relative;
+      background: transparent;
+    }
+    .section-light::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.80);
+      z-index: 0;
+    }
+    .section-light > .container-site {
       position: relative;
       z-index: 1;
     }
@@ -217,9 +234,9 @@
     </section>
 
     <!-- Especialidades del equipo -->
-    <section class="py-20 md:py-28 bg-background">
+    <section class="py-20 md:py-28 section-light">
       <div class="container-site">
-        <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-400 mb-4">Especialidades</p>
+        <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-900 mb-4">Especialidades</p>
         <div class="w-12 h-px bg-graphite-300 mb-6"></div>
         <p class="text-graphite-500 leading-relaxed max-w-3xl mb-12">Nuestro equipo cuenta con especialistas altamente calificados en:</p>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
@@ -275,7 +292,7 @@
     <section class="py-20 md:py-28 section-transparent">
       <div class="container-site">
         <div class="max-w-3xl ml-auto text-right">
-          <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-400 mb-4">Experiencia aplicada</p>
+          <p class="text-xs font-heading tracking-[0.25em] uppercase text-white mb-4">Experiencia aplicada</p>
           <div class="w-12 h-px bg-graphite-500 mb-12 ml-auto"></div>
           <p class="text-graphite-200 leading-relaxed mb-6">El equipo de Synapsis Health cuenta con una sólida trayectoria en procesos de decisión, negociación y diseño de políticas sanitarias en contextos públicos y privados.</p>
           <p class="text-graphite-200 leading-relaxed">Esta experiencia permite abordar problemas complejos con una comprensión realista de los factores técnicos, políticos y operativos que condicionan la implementación de soluciones.</p>
@@ -284,9 +301,9 @@
     </section>
 
     <!-- Alcance de trabajo -->
-    <section class="py-20 md:py-28 bg-background">
+    <section class="py-20 md:py-28 section-light">
       <div class="container-site">
-        <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-400 mb-4">Alcance de trabajo</p>
+        <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-900 mb-4">Alcance de trabajo</p>
         <div class="w-12 h-px bg-graphite-300 mb-12"></div>
         <p class="text-graphite-600 font-heading text-lg mb-8">Synapsis Health colabora con:</p>
         <ul class="check-list max-w-2xl mb-12">
@@ -323,7 +340,7 @@
     <section class="py-20 md:py-28 section-transparent">
       <div class="container-site">
         <div class="max-w-3xl mx-auto">
-          <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-400 mb-4">Filosofía de trabajo</p>
+          <p class="text-xs font-heading tracking-[0.25em] uppercase text-white mb-4">Filosofía de trabajo</p>
           <div class="w-12 h-px bg-graphite-500 mb-12"></div>
           <div class="quote-block">
             <p class="text-lg md:text-xl text-graphite-200 leading-relaxed mb-6">Creemos que las decisiones sanitarias más relevantes no dependen únicamente de la calidad de la evidencia, sino de la capacidad de integrarla en marcos institucionales viables.</p>
