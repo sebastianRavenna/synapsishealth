@@ -236,37 +236,19 @@
       background: #E0E0E0;
     }
 
-    /* Mobile hero */
-    .mobile-hero {
-      display: none;
-    }
-
     @media (max-width: 767px) {
       .split-layout {
         flex-direction: column;
       }
 
       .split-image-col {
-        display: none;
-      }
-
-      .mobile-hero {
-        display: block;
-        position: relative;
         width: 100%;
         height: 50vh;
-        overflow: hidden;
       }
 
-      .mobile-hero img {
-        width: 100%;
+      .split-image-sticky {
+        position: relative;
         height: 100%;
-        object-fit: cover;
-      }
-
-      .mobile-hero .split-image-overlay {
-        position: absolute;
-        inset: 0;
       }
 
       .split-content-col {
@@ -343,15 +325,6 @@
     </div>
   </div>
 
-  <!-- Mobile hero (visible < 768px) -->
-  <div class="mobile-hero">
-    <img src="./assets/img/equipo-bg.jpg" alt="Equipo interdisciplinario de Synapsis Health">
-    <div class="split-image-overlay">
-      <img src="./assets/icons/logo-light.png" alt="">
-      <h1>Equipo interdisciplinario</h1>
-    </div>
-  </div>
-
   <main id="main-content">
     <div class="split-layout">
       <!-- Left: Sticky image column (desktop) -->
@@ -372,6 +345,7 @@
           <!-- Section 1: Especialidades -->
           <section class="section-block">
             <h2 class="section-title">Especialidades del equipo</h2>
+            <p class="section-text" style="margin-bottom: 1.5rem;">Trabajamos con una perspectiva integradora que articula distintas disciplinas relevantes para la toma de decisiones en salud.</p>
             <div class="specialty-grid">
               <div class="specialty-item">
                 <span class="specialty-icon">
