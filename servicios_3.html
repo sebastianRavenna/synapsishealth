@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios | Synapsis Health — Opción 4: Menú lateral fijo</title>
+  <meta name="description" content="Evaluación estratégica, acceso gestionado y soporte institucional en tecnologías sanitarias.">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Jost:wght@200;300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="icon" href="./assets/icons/favicon.png" type="image/png">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body { font-family: 'DM Sans', sans-serif; font-weight: 300; color: #5C5C5C; background: #FAFAFA; overflow-x: hidden; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Jost', sans-serif; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; }
+    ::selection { background: #2D2D2D; color: #fff; }
+
+    :root {
+      --g950: #111111; --g900: #1A1A1A; --g800: #2D2D2D; --g700: #3D3D3D;
+      --g600: #4A4A4A; --g500: #5C5C5C; --g400: #7A7A7A; --g300: #9A9A9A;
+      --g200: #BCBCBC; --g100: #E0E0E0; --g50: #F2F2F2; --bg: #FAFAFA;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    @media (min-width: 768px)  { .container { padding: 0 2.5rem; } }
+    @media (min-width: 1024px) { .container { padding: 0 4rem; } }
+
+    .skip-link { position: absolute; top: -100px; left: 0; background: var(--g900); color: #fff;
+      padding: 0.5rem 1rem; border-radius: 0 0 0.5rem 0; font-family: 'Jost', sans-serif;
+      font-size: 0.875rem; z-index: 200; transition: top 0.2s; }
+    .skip-link:focus { top: 0; }
+
+    /* ── NAVBAR ── */
+    #navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: all 0.3s; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 5rem; }
+    @media (min-width: 768px)  { .nav-inner { padding: 0 2.5rem; } }
+    @media (min-width: 1024px) { .nav-inner { padding: 0 4rem; } }
+    .logo-light { display: none !important; }
+    .nav-links { display: none; align-items: center; gap: 2.5rem; }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-link { font-family: 'Jost', sans-serif; font-size: 0.875rem; letter-spacing: 0.025em;
+      color: var(--g500); transition: color 0.3s; }
+    .nav-link:hover, .nav-link.active { color: var(--g900); }
+    .lang-btn { display: flex; align-items: center; gap: 0.375rem; font-family: 'Jost', sans-serif;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--g400);
+      border: 1px solid var(--g100); border-radius: 0.375rem; padding: 0.375rem 0.75rem;
+      background: none; cursor: pointer; transition: all 0.3s; }
+    .lang-btn:hover { color: var(--g800); border-color: var(--g200); }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.625rem 1.5rem; background: var(--g800); color: #fff;
+      font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase; border-radius: 0.5rem;
+      transition: all 0.3s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--g950); }
+    #menu-toggle { display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer; padding: 0.5rem; color: var(--g800); }
+    @media (min-width: 768px) { #menu-toggle { display: none; } }
+    #navbar.scrolled { background: rgba(250,250,250,0.96); backdrop-filter: blur(12px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    #navbar.navbar-dark .nav-link { color: var(--g300); }
+    #navbar.navbar-dark .nav-link:hover, #navbar.navbar-dark .nav-link.active { color: #fff; }
+    #navbar.navbar-dark .lang-btn { color: var(--g300); border-color: var(--g500); }
+    #navbar.navbar-dark .lang-btn:hover { color: #fff; border-color: var(--g300); }
+    #navbar.navbar-dark .btn-primary { background: #fff; color: var(--g900); }
+    #navbar.navbar-dark .btn-primary:hover { background: var(--g50); }
+    #navbar.navbar-dark #menu-toggle { color: #fff; }
+    #navbar.navbar-dark .logo-dark { display: none !important; }
+    #navbar.navbar-dark .logo-light { display: block !important; }
+
+    /* ── MOBILE MENU ── */
+    #menu-overlay { position: fixed; inset: 0; background: rgba(17,17,17,0.5); z-index: 90; display: none; }
+    #menu-overlay.open { display: block; }
+    #mobile-menu { position: fixed; top: 0; right: 0; height: 100%; width: 18rem; background: #fff;
+      z-index: 95; transform: translateX(100%); transition: transform 0.3s; box-shadow: -4px 0 20px rgba(0,0,0,0.12); }
+    #mobile-menu.open { transform: translateX(0); }
+    .mm-header { display: flex; justify-content: flex-end; padding: 1.5rem; }
+    .mm-close { background: none; border: none; cursor: pointer; color: var(--g600); padding: 0.25rem; }
+    .mm-links { display: flex; flex-direction: column; gap: 1.5rem; padding: 0.5rem 2rem 2rem; }
+    .mm-link { font-family: 'Jost', sans-serif; font-size: 1.125rem; color: var(--g500); letter-spacing: 0.025em; }
+    .mm-link.active { color: var(--g900); }
+    .mm-footer { padding: 1.5rem 2rem; border-top: 1px solid var(--g100); margin-top: 0.5rem; }
+
+    /* ── HERO ── */
+    .hero { position: relative; padding: 8rem 0 5rem; background: var(--g900); overflow: hidden; }
+    .section-overline { font-family: 'Jost', sans-serif; font-size: 0.6875rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--g400); display: block; margin-bottom: 1.25rem; }
+    .section-overline::before { content: ''; display: block; width: 3rem; height: 1px;
+      background: var(--g600); margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Jost', sans-serif; font-weight: 200;
+      font-size: clamp(1.875rem, 4vw + 0.5rem, 2.75rem); line-height: 1.12;
+      letter-spacing: -0.01em; color: #fff; max-width: 32rem; }
+
+    /* ── SIDEBAR LAYOUT ── */
+    .services-section { padding: 5rem 0; }
+    @media (min-width: 768px) { .services-section { padding: 7.5rem 0; } }
+
+    .services-layout { display: grid; gap: 0; }
+    @media (min-width: 768px) {
+      .services-layout { grid-template-columns: 260px 1fr; gap: 0; align-items: start; }
+    }
+    @media (min-width: 1024px) {
+      .services-layout { grid-template-columns: 300px 1fr; }
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { background: var(--g50); border-right: 1px solid var(--g100); }
+
+    /* Desktop: sticky */
+    @media (min-width: 768px) {
+      .sidebar { position: sticky; top: 5rem; max-height: calc(100vh - 5rem); overflow-y: auto;
+        align-self: start; scrollbar-width: thin; scrollbar-color: var(--g200) transparent; }
+      .sidebar::-webkit-scrollbar { width: 4px; }
+      .sidebar::-webkit-scrollbar-thumb { background: var(--g200); border-radius: 2px; }
+    }
+
+    /* Mobile: horizontal scrollable bar */
+    @media (max-width: 767px) {
+      .sidebar { position: sticky; top: 5rem; z-index: 40; border-right: none;
+        border-bottom: 1px solid var(--g100); overflow-x: auto; overflow-y: hidden;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .sidebar::-webkit-scrollbar { display: none; }
+    }
+
+    .sidebar-inner { padding: 2rem 1.25rem; }
+    @media (max-width: 767px) {
+      .sidebar-inner { padding: 0.75rem 1rem; display: flex; align-items: center;
+        gap: 0.375rem; white-space: nowrap; }
+    }
+
+    .sidebar-label { font-family: 'Jost', sans-serif; font-size: 0.625rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--g300); margin-bottom: 1rem;
+      padding: 0 0.25rem; display: block; }
+    @media (max-width: 767px) { .sidebar-label { display: none; } }
+
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.25rem; }
+    @media (max-width: 767px) { .sidebar-nav { flex-direction: row; gap: 0.375rem; } }
+
+    .sidebar-item { display: flex; align-items: center; gap: 0.75rem; width: 100%;
+      padding: 0.75rem 1rem; border-radius: 0.75rem; cursor: pointer; transition: all 0.2s;
+      text-align: left; background: none; border: none; }
+    .sidebar-item:hover { background: var(--g100); }
+    .sidebar-item.active { background: var(--g800); }
+
+    @media (max-width: 767px) {
+      .sidebar-item { padding: 0.5rem 0.875rem; flex-shrink: 0; white-space: nowrap; border-radius: 2rem; }
+    }
+
+    .sb-num { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: var(--g300);
+      flex-shrink: 0; transition: color 0.2s; min-width: 1.75rem; }
+    .sidebar-item.active .sb-num { color: rgba(255,255,255,0.6); }
+
+    .sb-label { font-family: 'Jost', sans-serif; font-size: 0.8125rem; color: var(--g500);
+      line-height: 1.35; transition: color 0.2s; }
+    .sidebar-item.active .sb-label { color: #fff; }
+    .sidebar-item:hover:not(.active) .sb-label { color: var(--g800); }
+
+    /* ── CONTENT AREA ── */
+    .content-area { padding: 3rem 2rem 5rem; }
+    @media (min-width: 768px) { .content-area { padding: 3rem 3rem 5rem; } }
+    @media (min-width: 1024px) { .content-area { padding: 4rem 4rem 6rem; } }
+
+    .content-section { padding-bottom: 4rem; margin-bottom: 4rem;
+      border-bottom: 1px solid var(--g100); scroll-margin-top: 6rem; }
+    .content-section:last-child { border-bottom: none; margin-bottom: 0; }
+
+    .cs-top { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .cs-lnum { font-family: 'Playfair Display', serif; font-size: 6rem; color: var(--g100);
+      line-height: 0.85; user-select: none; flex-shrink: 0; }
+    @media (max-width: 500px) { .cs-lnum { font-size: 4rem; } }
+    .cs-heading { flex: 1; min-width: 200px; }
+    .cs-icon { width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center;
+      background: var(--g50); border: 1px solid var(--g100); border-radius: 0.875rem;
+      color: var(--g500); margin-bottom: 0.75rem; }
+    .cs-title { font-family: 'Jost', sans-serif; font-weight: 200;
+      font-size: clamp(1.25rem, 3vw + 0.25rem, 1.75rem); color: var(--g900);
+      line-height: 1.2; letter-spacing: -0.01em; }
+
+    .cs-desc { color: var(--g500); line-height: 1.75; font-size: 0.9375rem;
+      margin-bottom: 2rem; max-width: 54rem; }
+
+    .sub-label { font-family: 'Jost', sans-serif; font-size: 0.6875rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--g300); margin-bottom: 1.25rem; display: block; }
+    .sub-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.875rem; }
+    @media (max-width: 600px) { .sub-grid { grid-template-columns: 1fr; } }
+    .sub-card { background: var(--g50); border-radius: 0.75rem; padding: 1.25rem 1.5rem;
+      border: 1px solid transparent; transition: border-color 0.2s; }
+    .sub-card:hover { border-color: var(--g100); }
+    .sub-card-title { font-family: 'Jost', sans-serif; font-weight: 500; color: var(--g800);
+      margin-bottom: 0.5rem; font-size: 0.9rem; line-height: 1.4; }
+    .sub-card-desc { font-size: 0.85rem; color: var(--g500); line-height: 1.65; }
+
+    /* ── CTA ── */
+    .section-dark { background: var(--g900); color: #fff; padding: 5rem 0; text-align: center; }
+    @media (min-width: 768px) { .section-dark { padding: 7.5rem 0; } }
+    .cta-title { font-family: 'Jost', sans-serif; font-weight: 200;
+      font-size: clamp(1.5rem, 3vw + 0.25rem, 2rem); line-height: 1.2;
+      letter-spacing: -0.005em; color: #fff; margin-bottom: 1rem; }
+    .cta-text { color: var(--g300); margin-bottom: 2rem; font-size: 0.9375rem; }
+    .btn-cta { display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.875rem 2rem; background: #fff; color: var(--g900);
+      font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.1em; text-transform: uppercase; border-radius: 0.5rem; transition: all 0.3s; }
+    .btn-cta:hover { background: var(--g50); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--g950); color: var(--g400); padding: 4rem 0; }
+    .footer-logo { display: flex; justify-content: center; margin-bottom: 2.5rem; }
+    .footer-logo img { width: 10rem; opacity: 0.6; }
+    .footer-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 2.5rem; }
+    .footer-nav a { font-family: 'Jost', sans-serif; font-size: 0.875rem; letter-spacing: 0.025em;
+      color: var(--g400); transition: color 0.3s; }
+    .footer-nav a:hover { color: var(--g200); }
+    .footer-copy { border-top: 1px solid var(--g800); padding-top: 2rem; text-align: center; }
+    .footer-copy p { font-size: 0.75rem; color: var(--g400); }
+
+    /* ── WHATSAPP ── */
+    .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 80;
+      display: flex; align-items: center; justify-content: center; width: 3.5rem; height: 3.5rem;
+      border-radius: 50%; background: #25D366; color: #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18); transition: all 0.3s; }
+    .whatsapp-float:hover { background: #1ebe5d; transform: scale(1.1); }
+
+    .reveal { opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s ease-out, transform 0.7s ease-out; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    *:focus-visible { outline: 2px solid var(--g800); outline-offset: 2px; }
+    @media (max-width: 768px) { button, a { min-height: 44px; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+<!-- NAVBAR -->
+<nav id="navbar" data-navbar-dark aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="index.html" aria-label="Synapsis Health - Inicio">
+      <img src="./assets/icons/logo-dark.png" alt="Synapsis Health" class="logo-dark" style="height:2.25rem;">
+      <img src="./assets/icons/logo-light.png" alt="Synapsis Health" class="logo-light" style="height:2.25rem;">
+    </a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="equipo.html" class="nav-link">Equipo</a>
+      <a href="servicios.html" class="nav-link active" aria-current="page">Servicios</a>
+      <a href="articulos.html" class="nav-link">Artículos</a>
+      <a href="index.html#contacto" class="nav-link">Contacto</a>
+      <button class="lang-btn" aria-label="Cambiar idioma">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
+        </svg>
+        <span>EN</span>
+      </button>
+      <a href="index.html#contacto" class="btn-primary">Contáctanos</a>
+    </div>
+    <button id="menu-toggle" aria-label="Abrir menú">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<div id="menu-overlay"></div>
+<div id="mobile-menu" role="dialog" aria-label="Menú de navegación">
+  <div class="mm-header">
+    <button class="mm-close" id="menu-close" aria-label="Cerrar menú">
+      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div class="mm-links">
+    <a href="index.html" class="mm-link">Inicio</a>
+    <a href="equipo.html" class="mm-link">Equipo</a>
+    <a href="servicios.html" class="mm-link active">Servicios</a>
+    <a href="articulos.html" class="mm-link">Artículos</a>
+    <a href="index.html#contacto" class="mm-link">Contacto</a>
+  </div>
+  <div class="mm-footer">
+    <button class="lang-btn" style="width:100%;justify-content:center;" aria-label="Cambiar idioma">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
+      </svg>
+      <span>EN</span>
+    </button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main id="main-content">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <span class="section-overline reveal">Nuestros servicios</span>
+      <h1 class="reveal" style="transition-delay:0.1s">Análisis y evaluación para decisiones en salud</h1>
+    </div>
+  </section>
+
+  <!-- SIDEBAR + CONTENT -->
+  <section class="services-section" style="background:#FAFAFA; padding-top:0; padding-bottom:0;">
+    <div style="max-width:1200px; margin:0 auto;">
+      <div class="services-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" aria-label="Navegación de servicios">
+          <div class="sidebar-inner">
+            <span class="sidebar-label">Líneas de servicio</span>
+            <nav class="sidebar-nav" aria-label="Ir a sección">
+
+              <button class="sidebar-item active" data-target="s1" aria-current="true">
+                <span class="sb-num">L1</span>
+                <span class="sb-label">Acceso y financiamiento</span>
+              </button>
+              <button class="sidebar-item" data-target="s2">
+                <span class="sb-num">L2</span>
+                <span class="sb-label">Evaluación estratégica</span>
+              </button>
+              <button class="sidebar-item" data-target="s3">
+                <span class="sb-num">L3</span>
+                <span class="sb-label">Economía y sostenibilidad</span>
+              </button>
+              <button class="sidebar-item" data-target="s4">
+                <span class="sb-num">L4</span>
+                <span class="sb-label">Análisis de datos</span>
+              </button>
+              <button class="sidebar-item" data-target="s5">
+                <span class="sb-num">L5</span>
+                <span class="sb-label">Soporte institucional</span>
+              </button>
+              <button class="sidebar-item" data-target="s6">
+                <span class="sb-num">L6</span>
+                <span class="sb-label">Capacitación</span>
+              </button>
+
+            </nav>
+          </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="content-area">
+
+          <!-- S1 -->
+          <article class="content-section" id="s1" tabindex="-1">
+            <div class="cs-top">
+              <div class="cs-lnum" aria-hidden="true">L1</div>
+              <div class="cs-heading">
+                <div class="cs-icon" aria-hidden="true">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7.5 14.25v2.25m3-4.5v4.5m3-6.75v6.75m3-9v9M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z"/></svg>
+                </div>
+                <h2 class="cs-title">Acceso y financiamiento de tecnologías</h2>
+              </div>
+            </div>
+            <p class="cs-desc">Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre. Nuestro enfoque combina evaluación de valor, análisis económico, diseño de acuerdos basados en resultados, modelos de riesgo compartido y acompañamiento institucional en procesos de decisión y negociación. Este servicio permite a financiadores y autoridades sanitarias facilitar el acceso a innovaciones terapéuticas sin comprometer la sostenibilidad del sistema.</p>
+            <span class="sub-label">Sub-servicios</span>
+            <div class="sub-grid">
+              <div class="sub-card"><p class="sub-card-title">Diseño de acuerdos basados en valor</p><p class="sub-card-desc">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Modelos de riesgo compartido</p><p class="sub-card-desc">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Estrategias de financiamiento de tecnologías innovadoras</p><p class="sub-card-desc">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Soporte técnico en procesos de negociación complejos</p><p class="sub-card-desc">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p></div>
+            </div>
+          </article>
+
+          <!-- S2 -->
+          <article class="content-section" id="s2" tabindex="-1">
+            <div class="cs-top">
+              <div class="cs-lnum" aria-hidden="true">L2</div>
+              <div class="cs-heading">
+                <div class="cs-icon" aria-hidden="true">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+                </div>
+                <h2 class="cs-title">Evaluación estratégica (ETESA)</h2>
+              </div>
+            </div>
+            <p class="cs-desc">Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías. Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria, financiadores, instituciones de salud y empresas del sector, proporcionando una base sólida y transparente para la toma de decisiones sobre la incorporación, financiamiento o desinversión de tecnologías.</p>
+            <span class="sub-label">Sub-servicios</span>
+            <div class="sub-grid">
+              <div class="sub-card"><p class="sub-card-title">Evaluaciones rápidas para toma de decisión</p><p class="sub-card-desc">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Análisis de impacto presupuestario</p><p class="sub-card-desc">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Evaluación de valor y priorización</p><p class="sub-card-desc">Herramientas para comparar alternativas y orientar decisiones transparentes.</p></div>
+            </div>
+          </article>
+
+          <!-- S3 -->
+          <article class="content-section" id="s3" tabindex="-1">
+            <div class="cs-top">
+              <div class="cs-lnum" aria-hidden="true">L3</div>
+              <div class="cs-heading">
+                <div class="cs-icon" aria-hidden="true">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>
+                </div>
+                <h2 class="cs-title">Economía y sostenibilidad</h2>
+              </div>
+            </div>
+            <p class="cs-desc">Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario que permiten evaluar el valor de las intervenciones sanitarias en relación con los recursos disponibles.</p>
+            <span class="sub-label">Sub-servicios</span>
+            <div class="sub-grid">
+              <div class="sub-card"><p class="sub-card-title">Modelización de escenarios y proyecciones</p><p class="sub-card-desc">Simulación de demanda, costos y resultados bajo distintos supuestos.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Análisis de sostenibilidad presupuestaria</p><p class="sub-card-desc">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p></div>
+            </div>
+          </article>
+
+          <!-- S4 -->
+          <article class="content-section" id="s4" tabindex="-1">
+            <div class="cs-top">
+              <div class="cs-lnum" aria-hidden="true">L4</div>
+              <div class="cs-heading">
+                <div class="cs-icon" aria-hidden="true">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 5.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125"/></svg>
+                </div>
+                <h2 class="cs-title">Análisis de datos y gestión sanitaria</h2>
+              </div>
+            </div>
+            <p class="cs-desc">Transformamos datos sanitarios complejos en información accionable, trabajando con bases de datos de prestaciones, registros clínicos y datos epidemiológicos para generar análisis que sustenten la gestión y la planificación.</p>
+            <span class="sub-label">Sub-servicios</span>
+            <div class="sub-grid">
+              <div class="sub-card"><p class="sub-card-title">Análisis de utilización de servicios</p><p class="sub-card-desc">Identificación de patrones de uso, variabilidad y consumo de recursos.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Estudios de carga de enfermedad</p><p class="sub-card-desc">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Diseño de tableros de indicadores</p><p class="sub-card-desc">Herramientas para monitoreo y gestión basada en datos.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Proyección de demanda y costos</p><p class="sub-card-desc">Análisis para planificación de recursos y presupuestos.</p></div>
+            </div>
+          </article>
+
+          <!-- S5 -->
+          <article class="content-section" id="s5" tabindex="-1">
+            <div class="cs-top">
+              <div class="cs-lnum" aria-hidden="true">L5</div>
+              <div class="cs-heading">
+                <div class="cs-icon" aria-hidden="true">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/></svg>
+                </div>
+                <h2 class="cs-title">Soporte institucional y política sanitaria</h2>
+              </div>
+            </div>
+            <p class="cs-desc">Acompañamos a organismos públicos, financiadores y organizaciones del sector salud en el diseño de marcos institucionales, análisis de política sanitaria y procesos de decisión robustos.</p>
+            <span class="sub-label">Sub-servicios</span>
+            <div class="sub-grid">
+              <div class="sub-card"><p class="sub-card-title">Diseño de marcos de cobertura</p><p class="sub-card-desc">Definición de criterios y procesos para incorporación de tecnologías.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Estrategias frente a judicialización</p><p class="sub-card-desc">Análisis y propuestas para abordar conflictos de acceso individuales.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Análisis de política sanitaria y regulación</p><p class="sub-card-desc">Evaluación del entorno institucional, legal y político.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Fortalecimiento de procesos de decisión</p><p class="sub-card-desc">Diseño de mecanismos deliberativos y criterios explícitos.</p></div>
+            </div>
+          </article>
+
+          <!-- S6 -->
+          <article class="content-section" id="s6" tabindex="-1">
+            <div class="cs-top">
+              <div class="cs-lnum" aria-hidden="true">L6</div>
+              <div class="cs-heading">
+                <div class="cs-icon" aria-hidden="true">
+                  <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/></svg>
+                </div>
+                <h2 class="cs-title">Capacitación y transferencia de conocimiento</h2>
+              </div>
+            </div>
+            <p class="cs-desc">Diseñamos e impartimos programas de formación en evaluación de tecnologías sanitarias, lectura crítica de evidencia, análisis económico en salud y toma de decisiones basada en evidencia.</p>
+            <span class="sub-label">Sub-servicios</span>
+            <div class="sub-grid">
+              <div class="sub-card"><p class="sub-card-title">Formación en evaluación de tecnologías sanitarias</p><p class="sub-card-desc">Programas para equipos técnicos y decisores.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Capacitación en análisis económico y evidencia</p><p class="sub-card-desc">Herramientas para lectura crítica y toma de decisiones informadas.</p></div>
+              <div class="sub-card"><p class="sub-card-title">Programas de fortalecimiento institucional</p><p class="sub-card-desc">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p></div>
+            </div>
+          </article>
+
+        </div><!-- /content-area -->
+      </div><!-- /services-layout -->
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-dark">
+    <div class="container">
+      <h2 class="cta-title reveal">¿Necesitás asesoramiento especializado?</h2>
+      <p class="cta-text reveal" style="transition-delay:0.1s">Nuestro equipo está preparado para brindarte la mejor solución.</p>
+      <a href="index.html#contacto" class="btn-cta reveal" style="transition-delay:0.2s">Contactar con nuestro equipo</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">
+      <a href="index.html" aria-label="Synapsis Health - Inicio">
+        <img src="./assets/icons/logo-light.png" alt="Synapsis Health">
+      </a>
+    </div>
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <a href="index.html">Inicio</a>
+      <a href="equipo.html">Equipo</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="articulos.html">Artículos</a>
+      <a href="index.html#contacto">Contacto</a>
+    </nav>
+    <div class="footer-copy">
+      <p>&copy; 2026 Synapsis Health. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/541168363610?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios."
+   class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+(function() {
+  // Navbar
+  const nav = document.getElementById('navbar');
+  const isDark = nav.hasAttribute('data-navbar-dark');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) { nav.classList.add('scrolled'); if (isDark) nav.classList.remove('navbar-dark'); }
+    else { nav.classList.remove('scrolled'); if (isDark) nav.classList.add('navbar-dark'); }
+  }, { passive: true });
+  if (isDark) nav.classList.add('navbar-dark');
+
+  // Mobile menu
+  const toggle = document.getElementById('menu-toggle');
+  const mmenu  = document.getElementById('mobile-menu');
+  const moverlay=document.getElementById('menu-overlay');
+  const mclose = document.getElementById('menu-close');
+  const mopen  = () => { mmenu.classList.add('open'); moverlay.classList.add('open'); document.body.style.overflow='hidden'; };
+  const mshut  = () => { mmenu.classList.remove('open'); moverlay.classList.remove('open'); document.body.style.overflow=''; };
+  toggle?.addEventListener('click', mopen);
+  mclose?.addEventListener('click', mshut);
+  moverlay?.addEventListener('click', mshut);
+  document.addEventListener('keydown', e => { if (e.key==='Escape') mshut(); });
+  mmenu.querySelectorAll('a').forEach(a => a.addEventListener('click', mshut));
+
+  // Scroll reveal
+  const obsRev = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obsRev.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => obsRev.observe(el));
+
+  // Sidebar click → smooth scroll
+  document.querySelectorAll('.sidebar-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Intersection Observer → highlight active sidebar item
+  const sections = document.querySelectorAll('.content-section');
+  const sidebarBtns = document.querySelectorAll('.sidebar-item');
+
+  function setActive(id) {
+    sidebarBtns.forEach(b => {
+      const isActive = b.dataset.target === id;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+    // Scroll active sidebar item into view on mobile
+    const activeBtn = document.querySelector('.sidebar-item.active');
+    if (activeBtn) activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  const obsSection = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) setActive(entry.target.id);
+    });
+  }, {
+    rootMargin: '-20% 0px -60% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(s => obsSection.observe(s));
+})();
+</script>
+</body>
+</html>
