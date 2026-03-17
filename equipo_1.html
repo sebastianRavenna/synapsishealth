@@ -1,0 +1,484 @@
+<!-- IMAGEN REQUERIDA: colocar la imagen del cliente en assets/img/equipo-bg.jpg -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipo — Opci&oacute;n B | Synapsis Health</title>
+  <meta name="description" content="Conoce al equipo interdisciplinario de Synapsis Health. Especialistas en evaluaci&oacute;n de tecnolog&iacute;as sanitarias, econom&iacute;a de la salud, epidemiolog&iacute;a y pol&iacute;ticas p&uacute;blicas.">
+  <link rel="icon" href="./assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Jost:wght@300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=cc7a96a0">
+  <style>
+    .split-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .split-image-col {
+      position: relative;
+      width: 42%;
+      flex-shrink: 0;
+    }
+
+    .split-image-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .split-image-sticky img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .split-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(17,17,17,0.55) 0%, rgba(17,17,17,0.70) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .split-image-overlay img {
+      width: 120px;
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .split-image-overlay h1 {
+      font-family: 'Playfair Display', serif;
+      color: #fff;
+      font-size: 1.75rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .split-content-col {
+      width: 58%;
+      flex-shrink: 0;
+      background: #FAFAFA;
+    }
+
+    .split-content-inner {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 8rem 3rem 5rem 3rem;
+    }
+
+    .section-block {
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid #E0E0E0;
+    }
+
+    .section-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #1A1A1A;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .section-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.975rem;
+      line-height: 1.75;
+      color: #4A4A4A;
+    }
+
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.5rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .specialty-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.6rem 0;
+    }
+
+    .specialty-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #E0E0E0;
+      border-radius: 6px;
+      color: #3D3D3D;
+    }
+
+    .specialty-icon svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .specialty-name {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #2D2D2D;
+      line-height: 1.3;
+    }
+
+    .alcance-list {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0 1.75rem 0;
+    }
+
+    .alcance-list li {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #4A4A4A;
+      padding: 0.4rem 0;
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .alcance-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #7A7A7A;
+    }
+
+    .quote-block {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: #3D3D3D;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    .quote-block::before {
+      content: '\201C';
+      font-size: 4rem;
+      font-style: normal;
+      color: #BCBCBC;
+      position: absolute;
+      top: 0.25rem;
+      left: -0.25rem;
+      line-height: 1;
+    }
+
+    .quote-block p {
+      padding-left: 1.5rem;
+    }
+
+    .cta-band {
+      background: #1A1A1A;
+      padding: 4.5rem 2rem;
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta-band p {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      color: #9A9A9A;
+      margin-bottom: 2rem;
+    }
+
+    .cta-band .cta-btn {
+      display: inline-block;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #1A1A1A;
+      background: #fff;
+      padding: 0.85rem 2.25rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .cta-band .cta-btn:hover {
+      background: #E0E0E0;
+    }
+
+    /* Mobile hero */
+    .mobile-hero {
+      display: none;
+    }
+
+    @media (max-width: 767px) {
+      .split-layout {
+        flex-direction: column;
+      }
+
+      .split-image-col {
+        display: none;
+      }
+
+      .mobile-hero {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        overflow: hidden;
+      }
+
+      .mobile-hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .mobile-hero .split-image-overlay {
+        position: absolute;
+        inset: 0;
+      }
+
+      .split-content-col {
+        width: 100%;
+      }
+
+      .split-content-inner {
+        padding: 3rem 1.5rem 3rem 1.5rem;
+      }
+
+      .specialty-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+      }
+
+      .quote-block {
+        font-size: 1.05rem;
+      }
+
+      .cta-band h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAFA] text-graphite-800 font-body antialiased">
+
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-navbar-dark aria-label="Navegaci&oacute;n principal">
+    <div class="container-site flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Synapsis Health - Inicio">
+        <img src="./assets/icons/logo-dark.png" alt="" class="h-30 logo-dark" aria-hidden="true">
+        <img src="./assets/icons/logo-light.png" alt="" class="h-30 logo-light hidden" aria-hidden="true">
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="equipo.html" class="nav-link active" aria-current="page">Equipo</a>
+        <a href="servicios.html" class="nav-link">Servicios</a>
+        <a href="articulos.html" class="nav-link">Art&iacute;culos</a>
+        <a href="index.html#contacto" class="nav-link">Contacto</a>
+        <button id="lang-toggle" class="flex items-center gap-1.5 text-xs font-heading tracking-wider uppercase text-graphite-400 hover:text-graphite-800 transition-colors duration-300 border border-graphite-200 rounded-md px-3 py-1.5" aria-label="Cambiar idioma">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/></svg>
+          <span id="lang-label">EN</span>
+        </button>
+        <a href="index.html#contacto" class="btn-primary text-xs py-2.5 px-6">Cont&aacute;ctanos</a>
+      </div>
+      <button id="menu-toggle" class="md:hidden p-2" aria-label="Abrir men&uacute;">
+        <svg class="w-6 h-6 text-graphite-800" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <div id="menu-overlay" class="hidden fixed inset-0 bg-graphite-900/50 z-50"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 h-full w-72 bg-white z-50 transform translate-x-full transition-transform duration-300 shadow-2xl" role="dialog" aria-label="Men&uacute; de navegaci&oacute;n">
+    <div class="flex justify-end p-6">
+      <button id="menu-close" aria-label="Cerrar men&uacute;"><svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    </div>
+    <div class="flex flex-col gap-6 px-8 pt-4">
+      <a href="index.html" class="font-heading text-lg text-graphite-500 tracking-wide">Inicio</a>
+      <a href="equipo.html" class="font-heading text-lg text-graphite-800 tracking-wide">Equipo</a>
+      <a href="servicios.html" class="font-heading text-lg text-graphite-500 tracking-wide">Servicios</a>
+      <a href="articulos.html" class="font-heading text-lg text-graphite-500 tracking-wide">Art&iacute;culos</a>
+      <a href="index.html#contacto" class="font-heading text-lg text-graphite-500 tracking-wide">Contacto</a>
+      <div class="pt-4 border-t border-graphite-100 flex flex-col gap-4">
+        <button id="lang-toggle-mobile" class="flex items-center justify-center gap-2 text-xs font-heading tracking-wider uppercase text-graphite-400 hover:text-graphite-800 transition-colors duration-300 border border-graphite-200 rounded-md px-3 py-2" aria-label="Cambiar idioma">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/></svg>
+          <span id="lang-label-mobile">EN</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile hero (visible < 768px) -->
+  <div class="mobile-hero">
+    <img src="./assets/img/equipo-bg.jpg" alt="Equipo interdisciplinario de Synapsis Health">
+    <div class="split-image-overlay">
+      <img src="./assets/icons/logo-light.png" alt="">
+      <h1>Equipo interdisciplinario</h1>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <div class="split-layout">
+      <!-- Left: Sticky image column (desktop) -->
+      <div class="split-image-col">
+        <div class="split-image-sticky">
+          <img src="./assets/img/equipo-bg.jpg" alt="Equipo interdisciplinario de Synapsis Health">
+          <div class="split-image-overlay">
+            <img src="./assets/icons/logo-light.png" alt="">
+            <h1>Equipo interdisciplinario</h1>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Scrollable content column -->
+      <div class="split-content-col">
+        <div class="split-content-inner">
+
+          <!-- Section 1: Especialidades -->
+          <section class="section-block">
+            <h2 class="section-title">Especialidades del equipo</h2>
+            <div class="specialty-grid">
+              <div class="specialty-item">
+                <span class="specialty-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5m-4.25-11.396c.251.023.501.05.75.082M12 21a8.966 8.966 0 005.982-2.275M12 21a8.966 8.966 0 01-5.982-2.275"/></svg>
+                </span>
+                <span class="specialty-name">Evaluaci&oacute;n de tecnolog&iacute;as sanitarias</span>
+              </div>
+              <div class="specialty-item">
+                <span class="specialty-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0zm3 0h.008v.008H18V10.5zm-12 0h.008v.008H6V10.5z"/></svg>
+                </span>
+                <span class="specialty-name">Econom&iacute;a de la salud</span>
+              </div>
+              <div class="specialty-item">
+                <span class="specialty-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
+                </span>
+                <span class="specialty-name">Epidemiolog&iacute;a y an&aacute;lisis de datos</span>
+              </div>
+              <div class="specialty-item">
+                <span class="specialty-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21"/></svg>
+                </span>
+                <span class="specialty-name">Pol&iacute;ticas p&uacute;blicas</span>
+              </div>
+              <div class="specialty-item">
+                <span class="specialty-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/></svg>
+                </span>
+                <span class="specialty-name">Gesti&oacute;n sanitaria</span>
+              </div>
+              <div class="specialty-item">
+                <span class="specialty-icon">
+                  <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>
+                </span>
+                <span class="specialty-name">Regulaci&oacute;n y acceso</span>
+              </div>
+            </div>
+            <p class="section-text">Este enfoque permite analizar las tecnolog&iacute;as sanitarias a lo largo de todo su ciclo de vida, desde la evidencia cl&iacute;nica hasta su impacto en la sostenibilidad del sistema.</p>
+          </section>
+
+          <!-- Section 2: Experiencia aplicada -->
+          <section class="section-block">
+            <h2 class="section-title">Experiencia aplicada</h2>
+            <p class="section-text">El equipo de Synapsis Health cuenta con una s&oacute;lida trayectoria en procesos de decisi&oacute;n, negociaci&oacute;n y dise&ntilde;o de pol&iacute;ticas sanitarias en contextos p&uacute;blicos y privados. Esta experiencia permite abordar problemas complejos con una comprensi&oacute;n realista de los factores t&eacute;cnicos, pol&iacute;ticos y operativos que condicionan la implementaci&oacute;n de soluciones.</p>
+          </section>
+
+          <!-- Section 3: Alcance de trabajo -->
+          <section class="section-block">
+            <h2 class="section-title">Alcance de trabajo</h2>
+            <p class="section-text">Synapsis Health colabora con:</p>
+            <ul class="alcance-list">
+              <li>Organismos p&uacute;blicos nacionales e internacionales</li>
+              <li>Financiadores del sistema de salud</li>
+              <li>Instituciones sanitarias</li>
+              <li>Industria farmac&eacute;utica y de tecnolog&iacute;as m&eacute;dicas</li>
+              <li>Organizaciones acad&eacute;micas</li>
+              <li>Organizaciones No Gubernamentales</li>
+            </ul>
+            <p class="section-text">Nuestra intervenci&oacute;n se adapta a la naturaleza institucional de cada proyecto y a las necesidades espec&iacute;ficas de los decisores.</p>
+          </section>
+
+          <!-- Section 4: Filosofia de trabajo -->
+          <section class="section-block">
+            <h2 class="section-title">Filosof&iacute;a de trabajo</h2>
+            <div class="quote-block">
+              <p>Creemos que las decisiones sanitarias m&aacute;s relevantes no dependen &uacute;nicamente de la calidad de la evidencia, sino de la capacidad de integrarla en marcos institucionales viables. Por eso, nuestro objetivo no es solo analizar tecnolog&iacute;as, sino contribuir a construir decisiones contextualizadas que puedan sostenerse en el tiempo.</p>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA band — full width -->
+    <section class="cta-band">
+      <h2>&iquest;Necesit&aacute;s asesoramiento especializado?</h2>
+      <p>Nuestro equipo est&aacute; preparado para brindarte la mejor soluci&oacute;n.</p>
+      <a href="index.html#contacto" class="cta-btn">Contactar con nuestro equipo</a>
+    </section>
+  </main>
+
+  <footer class="bg-graphite-950 text-graphite-400 py-16">
+    <div class="container-site">
+      <div class="flex justify-center mb-10">
+        <a href="index.html" class="flex flex-col items-center gap-3" aria-label="Synapsis Health - Inicio">
+          <img src="./assets/icons/logo-light.png" alt="" class="w-40 opacity-60" aria-hidden="true">
+        </a>
+      </div>
+      <nav class="flex justify-center gap-8 mb-10 text-sm font-heading tracking-wide" aria-label="Navegaci&oacute;n del pie de p&aacute;gina">
+        <a href="index.html" class="hover:text-graphite-200 transition-colors">Inicio</a>
+        <a href="equipo.html" class="hover:text-graphite-200 transition-colors">Equipo</a>
+        <a href="servicios.html" class="hover:text-graphite-200 transition-colors">Servicios</a>
+        <a href="articulos.html" class="hover:text-graphite-200 transition-colors">Art&iacute;culos</a>
+        <a href="index.html#contacto" class="hover:text-graphite-200 transition-colors">Contacto</a>
+      </nav>
+      <div class="border-t border-graphite-800 pt-8 text-center">
+        <p class="text-xs text-graphite-400">&copy; 2026 Synapsis Health. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/541168363610?text=Hola%2C%20me%20gustar%C3%ADa%20obtener%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script src="./js/i18n.js?v=4130b648" defer></script>
+  <script src="./js/main.js?v=b06ab680" defer></script>
+</body>
+</html>
