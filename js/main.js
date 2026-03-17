@@ -169,8 +169,8 @@ function initServiceTabs() {
     });
   });
 
-  // Pre-seleccionar ETES al cargar la página
-  activateTab("etes");
+  // Pre-seleccionar primer tab al cargar la página
+  activateTab("acceso");
 
   function fadeIn(el) {
     el.style.opacity = "0";
