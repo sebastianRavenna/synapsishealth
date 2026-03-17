@@ -54,12 +54,14 @@
 
     /* iOS / mobile fix for parallax */
     @media (max-width: 1024px) {
-      .hero-equipo {
+      .hero-equipo,
+      body {
         background-attachment: scroll;
       }
     }
     @supports (-webkit-touch-callout: none) {
-      .hero-equipo {
+      .hero-equipo,
+      body {
         background-attachment: scroll;
       }
     }
@@ -116,9 +118,26 @@
 
     /* Quote block (from equipo_0) */
     .quote-block {
-      border-left: 3px solid #7A7A7A;
+      border-left: 3px solid rgba(122, 122, 122, 0.7);
       padding-left: 1.75rem;
       font-style: italic;
+    }
+
+    /* Transparent sections — parallax image shows through */
+    .section-transparent {
+      position: relative;
+      background: transparent;
+    }
+    .section-transparent::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.75);
+      z-index: 0;
+    }
+    .section-transparent > .container-site {
+      position: relative;
+      z-index: 1;
     }
 
     @media (max-width: 767px) {
@@ -128,7 +147,7 @@
     }
   </style>
 </head>
-<body class="bg-background text-graphite-800 font-body antialiased">
+<body class="bg-background text-graphite-800 font-body antialiased" style="background-image: url('./assets/img/equipo-bg.jpg'); background-attachment: fixed; background-size: cover; background-position: center;">
 
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
@@ -253,13 +272,13 @@
     </section>
 
     <!-- Experiencia aplicada -->
-    <section class="py-20 md:py-28 bg-white">
+    <section class="py-20 md:py-28 section-transparent">
       <div class="container-site">
         <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-400 mb-4">Experiencia aplicada</p>
-        <div class="w-12 h-px bg-graphite-300 mb-12"></div>
+        <div class="w-12 h-px bg-graphite-500 mb-12"></div>
         <div class="max-w-3xl">
-          <p class="text-graphite-500 leading-relaxed mb-6">El equipo de Synapsis Health cuenta con una sólida trayectoria en procesos de decisión, negociación y diseño de políticas sanitarias en contextos públicos y privados.</p>
-          <p class="text-graphite-500 leading-relaxed">Esta experiencia permite abordar problemas complejos con una comprensión realista de los factores técnicos, políticos y operativos que condicionan la implementación de soluciones.</p>
+          <p class="text-graphite-200 leading-relaxed mb-6">El equipo de Synapsis Health cuenta con una sólida trayectoria en procesos de decisión, negociación y diseño de políticas sanitarias en contextos públicos y privados.</p>
+          <p class="text-graphite-200 leading-relaxed">Esta experiencia permite abordar problemas complejos con una comprensión realista de los factores técnicos, políticos y operativos que condicionan la implementación de soluciones.</p>
         </div>
       </div>
     </section>
@@ -301,7 +320,7 @@
     </section>
 
     <!-- Filosofía de trabajo -->
-    <section class="py-20 md:py-28 bg-graphite-900">
+    <section class="py-20 md:py-28 section-transparent">
       <div class="container-site">
         <div class="max-w-3xl mx-auto">
           <p class="text-xs font-heading tracking-[0.25em] uppercase text-graphite-400 mb-4">Filosofía de trabajo</p>
