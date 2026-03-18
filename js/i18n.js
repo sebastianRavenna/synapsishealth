@@ -153,7 +153,7 @@ const translations = {
     // Servicios page
     "servicesPage.heroOverline": "Nuestros servicios",
     "servicesPage.heroTitle": "Análisis y evaluación para decisiones en salud",
-    "servicesPage.sidebar": "Servicios",
+    "servicesPage.sidebar": "Nuestros servicios",
     "servicesPage.tab.acceso": "Acceso y financiamiento de tecnologías",
     "servicesPage.tab.evaluacion": "Evaluación estratégica",
     "servicesPage.tab.economia": "Economía y sostenibilidad",
@@ -409,7 +409,7 @@ const translations = {
     // Services page
     "servicesPage.heroOverline": "Our services",
     "servicesPage.heroTitle": "Analysis and assessment for health decisions",
-    "servicesPage.sidebar": "Services",
+    "servicesPage.sidebar": "Our services",
     "servicesPage.tab.acceso": "Technology access and financing",
     "servicesPage.tab.evaluacion": "Strategic assessment",
     "servicesPage.tab.economia": "Economics and sustainability",

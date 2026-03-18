@@ -39,24 +39,23 @@
     /* ── Tabs wrapper ── */
     .tabs-wrapper { position: relative; }
 
-    /* ── Tabs bar (scrollable on mobile) ── */
+    /* ── Tabs bar ── */
     .tabs-bar {
       position: relative;
       display: flex;
       gap: 0;
       border-bottom: 1px solid #E5E5E5;
-      overflow-x: auto;
-      overflow-y: visible;
-      scrollbar-width: none;
-      -ms-overflow-style: none;
     }
-    .tabs-bar::-webkit-scrollbar { display: none; }
 
     /* ── Tab button ── */
     .tab-btn {
-      flex-shrink: 0;
+      flex: 1;
       position: relative;
-      padding: 0.875rem 1.125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0.875rem 0.75rem;
       background: none;
       border: none;
       cursor: pointer;
@@ -64,7 +63,6 @@
       font-size: 0.8125rem;
       font-weight: 400;
       color: #909090;
-      white-space: nowrap;
       letter-spacing: 0.01em;
       transition: color 0.2s ease;
       outline: none;
@@ -205,7 +203,7 @@
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- ===== NAVBAR ===== -->
-  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" data-navbar-dark aria-label="Navegación principal">
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" aria-label="Navegación principal">
     <div class="container-site flex items-center justify-between h-20">
       <a href="index.html" class="flex items-center gap-3 group" aria-label="Synapsis Health - Inicio">
         <img src="./assets/icons/logo-dark.png" alt="" class="h-30 logo-dark" aria-hidden="true">
@@ -313,7 +311,7 @@
       <!-- Section header -->
       <div class="mb-10">
         <p class="section-label mb-4" data-i18n="servicesPage.sidebar">Nuestros servicios</p>
-        <h2 class="text-display-sm font-heading font-extralight text-graphite-800 max-w-lg">Análisis y evaluación para decisiones en salud</h2>
+        <h2 class="text-display font-heading font-extralight text-graphite-800 whitespace-nowrap" data-i18n="servicesPage.heroTitle">Análisis y evaluación para decisiones en salud</h2>
       </div>
 
       <!-- Tabs component -->
