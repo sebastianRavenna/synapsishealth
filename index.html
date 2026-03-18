@@ -676,6 +676,11 @@
         <!-- Form -->
         <div class="reveal">
           <form id="contact-form" class="space-y-5" novalidate>
+            <!-- Honeypot antispam: oculto para usuarios reales, visible para bots -->
+            <div style="position: absolute; left: -9999px;" aria-hidden="true">
+              <label for="website">No completar este campo</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-group">
               <label for="nombre" class="block text-sm font-heading text-graphite-600 mb-1.5" data-i18n="contact.form.name">
                 Nombre <span class="text-graphite-400" aria-label="obligatorio">*</span>
