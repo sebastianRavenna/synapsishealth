@@ -609,71 +609,72 @@
   <script src="./js/i18n.js?v=4130b648" defer></script>
   <script src="./js/main.js?v=b06ab680" defer></script>
 
-  <!-- Tabs JS — runs after defer scripts via DOMContentLoaded -->
+  <!-- Tabs JS -->
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var bar       = document.querySelector('.tabs-bar');
-      var panels    = document.querySelectorAll('.tab-panel');
-      var indicator = document.querySelector('.tab-indicator');
-      if (!bar || !indicator) return;
+    (function () {
+      function initTabs() {
+        var bar       = document.querySelector('.tabs-bar');
+        var panels    = document.querySelectorAll('.tab-panel');
+        var indicator = document.querySelector('.tab-indicator');
+        if (!bar || !indicator) return;
 
-      function moveIndicator(btn) {
-        indicator.style.left  = btn.offsetLeft + 'px';
-        indicator.style.width = btn.offsetWidth + 'px';
-      }
-
-      function activate(id) {
-        /* Update buttons */
-        bar.querySelectorAll('.tab-btn').forEach(function (b) {
-          var isActive = b.dataset.tab === id;
-          b.classList.toggle('active', isActive);
-          b.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        });
-        /* Update panels */
-        panels.forEach(function (p) {
-          p.classList.toggle('active', p.dataset.tabPanel === id);
-        });
-        /* Move indicator */
-        var activeBtn = bar.querySelector('.tab-btn.active');
-        if (activeBtn) {
-          moveIndicator(activeBtn);
-          activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        function moveIndicator(btn) {
+          indicator.style.left  = btn.offsetLeft + 'px';
+          indicator.style.width = btn.offsetWidth + 'px';
         }
-      }
 
-      /* Event delegation on tab bar */
-      bar.addEventListener('click', function (e) {
-        var btn = e.target.closest('.tab-btn');
-        if (btn) activate(btn.dataset.tab);
-      });
+        function activate(id) {
+          bar.querySelectorAll('.tab-btn').forEach(function (b) {
+            var isActive = b.dataset.tab === id;
+            b.classList.toggle('active', isActive);
+            b.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          });
+          panels.forEach(function (p) {
+            p.classList.toggle('active', p.dataset.tabPanel === id);
+          });
+          var activeBtn = bar.querySelector('.tab-btn.active');
+          if (activeBtn) {
+            moveIndicator(activeBtn);
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
 
-      /* Arrow key navigation */
-      bar.addEventListener('keydown', function (e) {
-        var btn = e.target.closest('.tab-btn');
-        if (!btn) return;
-        var all = Array.from(bar.querySelectorAll('.tab-btn'));
-        var idx = all.indexOf(btn);
-        var next = null;
-        if (e.key === 'ArrowRight') next = all[(idx + 1) % all.length];
-        if (e.key === 'ArrowLeft')  next = all[(idx - 1 + all.length) % all.length];
-        if (next) { e.preventDefault(); next.click(); next.focus(); }
-      });
+        bar.addEventListener('click', function (e) {
+          var btn = e.target.closest('.tab-btn');
+          if (btn) activate(btn.dataset.tab);
+        });
 
-      /* Init: position indicator */
-      var firstActive = bar.querySelector('.tab-btn.active');
-      if (firstActive) {
-        moveIndicator(firstActive);
-        requestAnimationFrame(function () {
-          requestAnimationFrame(function () { indicator.classList.add('ready'); });
+        bar.addEventListener('keydown', function (e) {
+          var btn = e.target.closest('.tab-btn');
+          if (!btn) return;
+          var all = Array.from(bar.querySelectorAll('.tab-btn'));
+          var idx = all.indexOf(btn);
+          var next = null;
+          if (e.key === 'ArrowRight') next = all[(idx + 1) % all.length];
+          if (e.key === 'ArrowLeft')  next = all[(idx - 1 + all.length) % all.length];
+          if (next) { e.preventDefault(); next.click(); next.focus(); }
+        });
+
+        var firstActive = bar.querySelector('.tab-btn.active');
+        if (firstActive) {
+          moveIndicator(firstActive);
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { indicator.classList.add('ready'); });
+          });
+        }
+
+        window.addEventListener('resize', function () {
+          var active = bar.querySelector('.tab-btn.active');
+          if (active) moveIndicator(active);
         });
       }
 
-      /* Re-position on resize */
-      window.addEventListener('resize', function () {
-        var active = bar.querySelector('.tab-btn.active');
-        if (active) moveIndicator(active);
-      });
-    });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTabs);
+      } else {
+        initTabs();
+      }
+    }());
   </script>
 </body>
 </html>
