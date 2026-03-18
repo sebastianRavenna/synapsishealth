@@ -5,12 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <!-- SEO -->
   <title>Servicios | Synapsis Health - Evaluación Sanitaria</title>
   <meta name="description" content="Evaluación estratégica, acceso gestionado y soporte institucional en tecnologías sanitarias. Modelos de riesgo compartido y acuerdos basados en valor.">
   <link rel="canonical" href="https://synapsishealth.vercel.app/servicios.html">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Servicios | Synapsis Health - Evaluación Sanitaria">
   <meta property="og:description" content="Evaluación estratégica, acceso gestionado y soporte institucional en tecnologías sanitarias.">
@@ -18,28 +16,188 @@
   <meta property="og:site_name" content="Synapsis Health">
   <meta property="og:locale" content="es_AR">
 
-  <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Servicios | Synapsis Health">
   <meta name="twitter:description" content="Evaluación estratégica, acceso gestionado y soporte institucional en tecnologías sanitarias.">
 
-  <!-- Fonts -->
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400&family=Jost:wght@200;300;400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=cc7a96a0">
 
-  <!-- Favicon -->
   <link rel="icon" href="./assets/icons/favicon.png" type="image/png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/icons/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <meta name="theme-color" content="#FAFAFA">
+
+  <style>
+    /* ── ACCORDION ── */
+    :root { --acc-accent: #0F766E; }
+
+    .acc-list { border-top: 1px solid #E0E0E0; }
+    .acc-item { border-bottom: 1px solid #E0E0E0; }
+
+    .acc-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      width: 100%;
+      padding: 1.625rem 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    /* Large decorative number */
+    .acc-lnum {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.75rem;
+      line-height: 1;
+      color: #E0E0E0;
+      min-width: 3.75rem;
+      letter-spacing: -0.04em;
+      transition: color 0.35s ease;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    @media (min-width: 480px) {
+      .acc-lnum { font-size: 3.5rem; min-width: 4.5rem; }
+    }
+    @media (min-width: 768px) {
+      .acc-lnum { font-size: 4.5rem; min-width: 5.5rem; }
+    }
+    .acc-item.open .acc-lnum { color: var(--acc-accent); }
+
+    /* Icon */
+    .acc-icon-wrap {
+      width: 2.625rem;
+      height: 2.625rem;
+      border-radius: 0.75rem;
+      background: #F2F2F2;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      color: #9A9A9A;
+      flex-shrink: 0;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+    @media (min-width: 480px) { .acc-icon-wrap { display: flex; } }
+    .acc-item.open .acc-icon-wrap { background: #1A1A1A; color: #fff; }
+
+    /* Title block */
+    .acc-title-group { flex: 1; min-width: 0; }
+
+    .acc-line-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #BCBCBC;
+      display: block;
+      margin-bottom: 0.25rem;
+      transition: color 0.35s ease;
+    }
+    .acc-item.open .acc-line-label { color: var(--acc-accent); }
+
+    .acc-title {
+      font-family: 'Jost', sans-serif;
+      font-size: clamp(0.875rem, 1.8vw + 0.25rem, 1.0625rem);
+      font-weight: 300;
+      color: #4A4A4A;
+      line-height: 1.35;
+      transition: color 0.35s ease;
+    }
+    .acc-item.open .acc-title { color: #1A1A1A; font-weight: 400; }
+
+    /* Chevron */
+    .acc-chevron {
+      width: 1.125rem;
+      height: 1.125rem;
+      color: #BCBCBC;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.4,0,0.2,1), color 0.3s;
+    }
+    .acc-item.open .acc-chevron { transform: rotate(180deg); color: #2D2D2D; }
+
+    /* Body */
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.55s cubic-bezier(0.4,0,0.2,1);
+    }
+    .acc-item.open .acc-body { max-height: 3000px; }
+
+    .acc-body-inner {
+      padding: 0.25rem 0 2.5rem 0;
+    }
+    @media (min-width: 480px) {
+      .acc-body-inner { padding: 0.25rem 0 2.75rem 4.5rem; }
+    }
+    @media (min-width: 768px) {
+      .acc-body-inner { padding: 0.5rem 0 3rem 6.75rem; }
+    }
+
+    .acc-panel-title {
+      font-family: 'Jost', sans-serif;
+      font-weight: 200;
+      font-size: clamp(1.125rem, 2.5vw + 0.25rem, 1.625rem);
+      color: #1A1A1A;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    .acc-descs { display: flex; flex-direction: column; gap: 0.875rem; margin-bottom: 2rem; }
+    .acc-descs p { color: #5C5C5C; font-size: 0.9375rem; line-height: 1.75; }
+
+    .acc-sub-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.6875rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #9A9A9A;
+      display: block;
+      margin-bottom: 1.25rem;
+    }
+
+    .acc-sub-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .acc-sub-grid { grid-template-columns: repeat(2, 1fr); gap: 0.875rem; }
+    }
+
+    .acc-sub-card {
+      background: #fff;
+      border: 1px solid #E0E0E0;
+      border-radius: 0.875rem;
+      padding: 1.25rem 1.5rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .acc-sub-card:hover { border-color: #9A9A9A; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+
+    .acc-sub-card-title {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #2D2D2D;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+    .acc-sub-card-desc { font-size: 0.8125rem; color: #5C5C5C; line-height: 1.65; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .acc-body, .acc-chevron, .acc-lnum, .acc-icon-wrap { transition: none; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Skip link -->
   <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
 
   <!-- ===== NAVBAR ===== -->
@@ -56,7 +214,6 @@
         <a href="servicios.html" class="nav-link active" data-i18n="nav.services" aria-current="page">Servicios</a>
         <a href="articulos.html" class="nav-link" data-i18n="nav.articles">Artículos</a>
         <a href="index.html#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
-        <!-- Language Toggle -->
         <button id="lang-toggle" class="flex items-center gap-1.5 text-xs font-heading tracking-wider uppercase text-graphite-400 hover:text-graphite-800 transition-colors duration-300 border border-graphite-200 rounded-md px-3 py-1.5" aria-label="Cambiar idioma">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 10.5a8.983 8.983 0 01-1.284 4.747"/>
@@ -94,11 +251,9 @@
     </div>
   </div>
 
-
-  <!-- ===== MAIN CONTENT ===== -->
   <main id="main-content">
 
-  <!-- ===== HERO SERVICIOS ===== -->
+  <!-- ===== HERO ===== -->
   <section class="relative pt-32 pb-16 bg-graphite-900 overflow-hidden">
     <div class="container-site relative z-10">
       <p class="section-label text-graphite-400 mb-4 reveal" data-i18n="servicesPage.heroOverline">Nuestros servicios</p>
@@ -109,7 +264,6 @@
     <div class="absolute right-0 top-0 h-full w-1/3 opacity-[0.04]" aria-hidden="true"></div>
   </section>
 
-
   <!-- ===== ÁREAS DE TRABAJO ===== -->
   <section class="py-20 md:py-30 bg-graphite-50 border-y border-graphite-100" id="areas-de-trabajo">
     <div class="container-site">
@@ -118,8 +272,6 @@
         <h2 class="text-display font-heading font-extralight text-graphite-800 reveal" data-i18n="services.title">Áreas de trabajo</h2>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-
-        <!-- Bloque 1 — Evaluación estratégica -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
@@ -133,8 +285,6 @@
             <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block1.item3">Evaluación de valor y priorización explícita</span></li>
           </ul>
         </div>
-
-        <!-- Bloque 2 — Acceso gestionado -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
@@ -148,8 +298,6 @@
             <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block2.item3">Soporte técnico en negociación de tecnologías complejas</span></li>
           </ul>
         </div>
-
-        <!-- Bloque 3 — Soporte institucional -->
         <div class="card reveal">
           <div class="w-12 h-12 rounded-xl bg-graphite-50 flex items-center justify-center mb-6">
             <svg class="w-6 h-6 text-graphite-600" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
@@ -163,259 +311,278 @@
             <li class="flex items-start gap-2"><span class="w-1 h-1 rounded-full bg-graphite-300 mt-2 shrink-0" aria-hidden="true"></span><span data-i18n="services.block3.item3">Construcción de capacidades públicas de decisión</span></li>
           </ul>
         </div>
-
       </div>
     </div>
   </section>
 
-
-  <!-- ===== CONTENIDO: SIDEBAR + DETALLE ===== -->
-  <section class="section">
+  <!-- ===== ACORDEÓN DE SERVICIOS ===== -->
+  <section class="py-20 md:py-28">
     <div class="container-site">
-      <div class="grid md:grid-cols-[280px_1fr] lg:grid-cols-[320px_1fr] gap-10">
 
-        <!-- SIDEBAR -->
-        <aside class="md:sticky md:top-24 md:self-start" aria-label="Navegación de servicios">
-          <p class="font-heading text-sm tracking-wider uppercase text-graphite-500 mb-4">Servicios</p>
-          <div class="flex flex-col gap-1" role="tablist" aria-label="Categorías de servicios">
-
-            <button data-service-tab="acceso" role="tab" aria-selected="true" aria-controls="panel-acceso"
-              class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
-                     bg-graphite-800 text-white">
-              Acceso y financiamiento de tecnologías
-            </button>
-
-            <button data-service-tab="evaluacion" role="tab" aria-selected="false" aria-controls="panel-evaluacion"
-              class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
-                     text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              Evaluación estratégica
-            </button>
-
-            <button data-service-tab="economia" role="tab" aria-selected="false" aria-controls="panel-economia"
-              class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
-                     text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              Economía y sostenibilidad
-            </button>
-
-            <button data-service-tab="datos" role="tab" aria-selected="false" aria-controls="panel-datos"
-              class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
-                     text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              Análisis de datos y gestión sanitaria
-            </button>
-
-            <button data-service-tab="soporte" role="tab" aria-selected="false" aria-controls="panel-soporte"
-              class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
-                     text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              Soporte institucional y política sanitaria
-            </button>
-
-            <button data-service-tab="capacitacion" role="tab" aria-selected="false" aria-controls="panel-capacitacion"
-              class="text-left px-5 py-3.5 rounded-xl text-sm font-heading tracking-wide transition-all duration-300
-                     text-graphite-500 hover:text-graphite-800 hover:bg-graphite-50">
-              Capacitación y transferencia de conocimiento
-            </button>
-
-          </div>
-        </aside>
-
-        <!-- PANELES DE DETALLE -->
-        <div>
-
-          <!-- Panel: Acceso y financiamiento -->
-          <div data-service-panel="acceso" id="panel-acceso" role="tabpanel">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
-              Acceso gestionado a tecnologías de alto impacto
-            </h2>
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/decisiones.webp?v=5e0b8c20" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p>
-                Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre.
-              </p>
-              <p>
-                Nuestro enfoque combina evaluación de valor, análisis económico, diseño de acuerdos basados en resultados, modelos de riesgo compartido y acompañamiento institucional en procesos de decisión y negociación.
-              </p>
-              <p>
-                Este servicio permite a financiadores y autoridades sanitarias facilitar el acceso a innovaciones terapéuticas sin comprometer la sostenibilidad del sistema.
-              </p>
-            </div>
-            <div class="mt-8 pt-8 border-t border-graphite-100">
-              <p class="section-label mb-6">Sub-servicios</p>
-              <div class="space-y-6">
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Diseño de acuerdos basados en valor</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Modelos de riesgo compartido</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Estrategias de financiamiento de tecnologías innovadoras</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Soporte técnico en procesos de negociación complejos</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel: Evaluación estratégica -->
-          <div data-service-panel="evaluacion" id="panel-evaluacion" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
-              Evaluación de Tecnologías Sanitarias (ETESA)
-            </h2>
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/etes.webp?v=d2146005" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="space-y-4 text-graphite-500 leading-relaxed">
-              <p>
-                Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías. Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria, financiadores, instituciones de salud y empresas del sector, proporcionando una base sólida y transparente para la toma de decisiones sobre la incorporación, financiamiento o desinversión de tecnologías.
-              </p>
-            </div>
-            <div class="mt-8 pt-8 border-t border-graphite-100">
-              <p class="section-label mb-6">Sub-servicios</p>
-              <div class="space-y-6">
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Evaluaciones rápidas para toma de decisión</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de impacto presupuestario</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Evaluación de valor y priorización</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Herramientas para comparar alternativas y orientar decisiones transparentes.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel: Economía y sostenibilidad -->
-          <div data-service-panel="economia" id="panel-economia" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
-              Economía y sostenibilidad
-            </h2>
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/eval_economicas.webp?v=39b6e13e" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="mt-0 pt-0">
-              <p class="section-label mb-6">Sub-servicios</p>
-              <div class="space-y-6">
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Evaluación económica en salud</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario que permiten evaluar el valor de las intervenciones sanitarias en relación con los recursos disponibles.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Modelización de escenarios y proyecciones</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Simulación de demanda, costos y resultados bajo distintos supuestos.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de sostenibilidad presupuestaria</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel: Análisis de datos -->
-          <div data-service-panel="datos" id="panel-datos" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
-              Análisis de datos y gestión sanitaria
-            </h2>
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/analisis_datos.webp?v=f269ba06" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="mt-0 pt-0">
-              <p class="section-label mb-6">Sub-servicios</p>
-              <div class="space-y-6">
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de utilización de servicios</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Identificación de patrones de uso, variabilidad y consumo de recursos.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Estudios de carga de enfermedad</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Diseño de tableros de indicadores</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Herramientas para monitoreo y gestión basada en datos.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Proyección de demanda y costos</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis para planificación de recursos y presupuestos.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel: Soporte institucional -->
-          <div data-service-panel="soporte" id="panel-soporte" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
-              Soporte institucional y política sanitaria
-            </h2>
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/pol_sanitarias.webp?v=20ba8dfa" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="mt-0 pt-0">
-              <p class="section-label mb-6">Sub-servicios</p>
-              <div class="space-y-6">
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Diseño de marcos de cobertura</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Definición de criterios y procesos para incorporación de tecnologías.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Estrategias frente a judicialización</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Análisis y propuestas para abordar conflictos de acceso individuales.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Análisis de política sanitaria y regulación</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Evaluación del entorno institucional, legal y político.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Fortalecimiento de procesos de decisión</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Diseño de mecanismos deliberativos y criterios explícitos.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Panel: Capacitación -->
-          <div data-service-panel="capacitacion" id="panel-capacitacion" role="tabpanel" class="hidden">
-            <h2 class="text-display-sm font-heading font-extralight text-graphite-800 mb-6">
-              Capacitación y transferencia de conocimiento
-            </h2>
-            <div class="aspect-video bg-graphite-50 rounded-2xl border border-graphite-100 overflow-hidden mb-8">
-              <img src="./assets/img/educacion.webp?v=8f7edfb4" class="w-full h-full object-cover" alt="">
-            </div>
-            <div class="mt-0 pt-0">
-              <p class="section-label mb-6">Sub-servicios</p>
-              <div class="space-y-6">
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Formación en evaluación de tecnologías sanitarias</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Programas para equipos técnicos y decisores.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Capacitación en análisis económico y evidencia</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Herramientas para lectura crítica y toma de decisiones informadas.</p>
-                </div>
-                <div>
-                  <h4 class="font-heading text-sm font-medium text-graphite-800 mb-1.5">Programas de fortalecimiento institucional</h4>
-                  <p class="text-sm text-graphite-500 leading-relaxed">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      <div class="mb-14 reveal">
+        <p class="section-label mb-4">Líneas de servicio</p>
+        <h2 class="text-display font-heading font-extralight text-graphite-800">Nuestros servicios en detalle</h2>
       </div>
+
+      <div class="acc-list">
+
+        <!-- ── L1: Acceso y financiamiento ── -->
+        <div class="acc-item open" data-acc-item>
+          <button class="acc-header" data-acc-trigger aria-expanded="true" aria-controls="acc-body-1">
+            <span class="acc-lnum" aria-hidden="true">L1</span>
+            <span class="acc-icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15.75 5.25a3 3 0 013 3m3 0a6 6 0 01-7.029 5.912c-.563-.097-1.159.026-1.563.43L10.5 17.25H8.25v2.25H6v2.25H2.25v-2.818c0-.597.237-1.17.659-1.591l6.499-6.499c.404-.404.527-1 .43-1.563A6 6 0 1121.75 8.25z"/>
+              </svg>
+            </span>
+            <span class="acc-title-group">
+              <span class="acc-line-label">Línea 1</span>
+              <span class="acc-title" data-i18n="servicesPage.tab.acceso">Acceso y financiamiento de tecnologías</span>
+            </span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+            </svg>
+          </button>
+          <div class="acc-body" id="acc-body-1" role="region" aria-labelledby="acc-btn-1">
+            <div class="acc-body-inner">
+              <h2 class="acc-panel-title" data-i18n="servicesPage.acceso.title">Acceso gestionado a tecnologías de alto impacto</h2>
+              <div class="acc-descs">
+                <p data-i18n="servicesPage.acceso.text1">Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre.</p>
+                <p data-i18n="servicesPage.acceso.text2">Nuestro enfoque combina evaluación de valor, análisis económico, diseño de acuerdos basados en resultados, modelos de riesgo compartido y acompañamiento institucional en procesos de decisión y negociación.</p>
+                <p data-i18n="servicesPage.acceso.text3">Este servicio permite a financiadores y autoridades sanitarias facilitar el acceso a innovaciones terapéuticas sin comprometer la sostenibilidad del sistema.</p>
+              </div>
+              <span class="acc-sub-label" data-i18n="servicesPage.subServicesLabel">Sub-servicios</span>
+              <div class="acc-sub-grid">
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.acceso.sub1.title">Diseño de acuerdos basados en valor</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.acceso.sub1.text">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.acceso.sub2.title">Modelos de riesgo compartido</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.acceso.sub2.text">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.acceso.sub3.title">Estrategias de financiamiento de tecnologías innovadoras</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.acceso.sub3.text">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.acceso.sub4.title">Soporte técnico en procesos de negociación complejos</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.acceso.sub4.text">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── L2: Evaluación estratégica ── -->
+        <div class="acc-item" data-acc-item>
+          <button class="acc-header" data-acc-trigger aria-expanded="false" aria-controls="acc-body-2">
+            <span class="acc-lnum" aria-hidden="true">L2</span>
+            <span class="acc-icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9zm3.75 11.625a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"/>
+              </svg>
+            </span>
+            <span class="acc-title-group">
+              <span class="acc-line-label">Línea 2</span>
+              <span class="acc-title" data-i18n="servicesPage.tab.evaluacion">Evaluación estratégica</span>
+            </span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+            </svg>
+          </button>
+          <div class="acc-body" id="acc-body-2" role="region" aria-labelledby="acc-btn-2">
+            <div class="acc-body-inner">
+              <h2 class="acc-panel-title" data-i18n="servicesPage.evaluacion.title">Evaluación de Tecnologías Sanitarias (ETESA)</h2>
+              <div class="acc-descs">
+                <p data-i18n="servicesPage.evaluacion.text1">Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías. Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria, financiadores, instituciones de salud y empresas del sector, proporcionando una base sólida y transparente para la toma de decisiones sobre la incorporación, financiamiento o desinversión de tecnologías.</p>
+              </div>
+              <span class="acc-sub-label" data-i18n="servicesPage.subServicesLabel">Sub-servicios</span>
+              <div class="acc-sub-grid">
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.evaluacion.sub1.title">Evaluaciones rápidas para toma de decisión</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.evaluacion.sub1.text">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.evaluacion.sub2.title">Análisis de impacto presupuestario</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.evaluacion.sub2.text">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.evaluacion.sub3.title">Evaluación de valor y priorización</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.evaluacion.sub3.text">Herramientas para comparar alternativas y orientar decisiones transparentes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── L3: Economía y sostenibilidad ── -->
+        <div class="acc-item" data-acc-item>
+          <button class="acc-header" data-acc-trigger aria-expanded="false" aria-controls="acc-body-3">
+            <span class="acc-lnum" aria-hidden="true">L3</span>
+            <span class="acc-icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/>
+              </svg>
+            </span>
+            <span class="acc-title-group">
+              <span class="acc-line-label">Línea 3</span>
+              <span class="acc-title" data-i18n="servicesPage.tab.economia">Economía y sostenibilidad</span>
+            </span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+            </svg>
+          </button>
+          <div class="acc-body" id="acc-body-3" role="region" aria-labelledby="acc-btn-3">
+            <div class="acc-body-inner">
+              <h2 class="acc-panel-title" data-i18n="servicesPage.economia.title">Economía y sostenibilidad</h2>
+              <span class="acc-sub-label" data-i18n="servicesPage.subServicesLabel">Sub-servicios</span>
+              <div class="acc-sub-grid">
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.economia.sub1.title">Evaluación económica en salud</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.economia.sub1.text">Realizamos estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario que permiten evaluar el valor de las intervenciones sanitarias en relación con los recursos disponibles.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.economia.sub2.title">Modelización de escenarios y proyecciones</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.economia.sub2.text">Simulación de demanda, costos y resultados bajo distintos supuestos.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.economia.sub3.title">Análisis de sostenibilidad presupuestaria</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.economia.sub3.text">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── L4: Análisis de datos ── -->
+        <div class="acc-item" data-acc-item>
+          <button class="acc-header" data-acc-trigger aria-expanded="false" aria-controls="acc-body-4">
+            <span class="acc-lnum" aria-hidden="true">L4</span>
+            <span class="acc-icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 2.625c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125m0-2.625v11.25"/>
+              </svg>
+            </span>
+            <span class="acc-title-group">
+              <span class="acc-line-label">Línea 4</span>
+              <span class="acc-title" data-i18n="servicesPage.tab.datos">Análisis de datos y gestión sanitaria</span>
+            </span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+            </svg>
+          </button>
+          <div class="acc-body" id="acc-body-4" role="region" aria-labelledby="acc-btn-4">
+            <div class="acc-body-inner">
+              <h2 class="acc-panel-title" data-i18n="servicesPage.datos.title">Análisis de datos y gestión sanitaria</h2>
+              <span class="acc-sub-label" data-i18n="servicesPage.subServicesLabel">Sub-servicios</span>
+              <div class="acc-sub-grid">
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.datos.sub1.title">Análisis de utilización de servicios</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.datos.sub1.text">Identificación de patrones de uso, variabilidad y consumo de recursos.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.datos.sub2.title">Estudios de carga de enfermedad</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.datos.sub2.text">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.datos.sub3.title">Diseño de tableros de indicadores</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.datos.sub3.text">Herramientas para monitoreo y gestión basada en datos.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.datos.sub4.title">Proyección de demanda y costos</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.datos.sub4.text">Análisis para planificación de recursos y presupuestos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── L5: Soporte institucional ── -->
+        <div class="acc-item" data-acc-item>
+          <button class="acc-header" data-acc-trigger aria-expanded="false" aria-controls="acc-body-5">
+            <span class="acc-lnum" aria-hidden="true">L5</span>
+            <span class="acc-icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>
+              </svg>
+            </span>
+            <span class="acc-title-group">
+              <span class="acc-line-label">Línea 5</span>
+              <span class="acc-title" data-i18n="servicesPage.tab.soporte">Soporte institucional y política sanitaria</span>
+            </span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+            </svg>
+          </button>
+          <div class="acc-body" id="acc-body-5" role="region" aria-labelledby="acc-btn-5">
+            <div class="acc-body-inner">
+              <h2 class="acc-panel-title" data-i18n="servicesPage.soporte.title">Soporte institucional y política sanitaria</h2>
+              <span class="acc-sub-label" data-i18n="servicesPage.subServicesLabel">Sub-servicios</span>
+              <div class="acc-sub-grid">
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.soporte.sub1.title">Diseño de marcos de cobertura</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.soporte.sub1.text">Definición de criterios y procesos para incorporación de tecnologías.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.soporte.sub2.title">Estrategias frente a judicialización</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.soporte.sub2.text">Análisis y propuestas para abordar conflictos de acceso individuales.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.soporte.sub3.title">Análisis de política sanitaria y regulación</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.soporte.sub3.text">Evaluación del entorno institucional, legal y político.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.soporte.sub4.title">Fortalecimiento de procesos de decisión</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.soporte.sub4.text">Diseño de mecanismos deliberativos y criterios explícitos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── L6: Capacitación ── -->
+        <div class="acc-item" data-acc-item>
+          <button class="acc-header" data-acc-trigger aria-expanded="false" aria-controls="acc-body-6">
+            <span class="acc-lnum" aria-hidden="true">L6</span>
+            <span class="acc-icon-wrap" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"/>
+              </svg>
+            </span>
+            <span class="acc-title-group">
+              <span class="acc-line-label">Línea 6</span>
+              <span class="acc-title" data-i18n="servicesPage.tab.capacitacion">Capacitación y transferencia de conocimiento</span>
+            </span>
+            <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M19.5 8.25l-7.5 7.5-7.5-7.5"/>
+            </svg>
+          </button>
+          <div class="acc-body" id="acc-body-6" role="region" aria-labelledby="acc-btn-6">
+            <div class="acc-body-inner">
+              <h2 class="acc-panel-title" data-i18n="servicesPage.capacitacion.title">Capacitación y transferencia de conocimiento</h2>
+              <span class="acc-sub-label" data-i18n="servicesPage.subServicesLabel">Sub-servicios</span>
+              <div class="acc-sub-grid">
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.capacitacion.sub1.title">Formación en evaluación de tecnologías sanitarias</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.capacitacion.sub1.text">Programas para equipos técnicos y decisores.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.capacitacion.sub2.title">Capacitación en análisis económico y evidencia</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.capacitacion.sub2.text">Herramientas para lectura crítica y toma de decisiones informadas.</p>
+                </div>
+                <div class="acc-sub-card">
+                  <p class="acc-sub-card-title" data-i18n="servicesPage.capacitacion.sub3.title">Programas de fortalecimiento institucional</p>
+                  <p class="acc-sub-card-desc" data-i18n="servicesPage.capacitacion.sub3.text">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /acc-list -->
     </div>
   </section>
-
 
   <!-- ===== CTA ===== -->
   <section class="section-dark">
@@ -432,8 +599,7 @@
     </div>
   </section>
 
-  </main><!-- /main-content -->
-
+  </main>
 
   <!-- ===== FOOTER ===== -->
   <footer class="bg-graphite-950 text-graphite-400 py-16">
@@ -467,10 +633,29 @@
   <script src="./js/i18n.js?v=4130b648" defer></script>
   <script src="./js/main.js?v=b06ab680" defer></script>
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const btn = document.querySelector('[data-service-tab="acceso"]');
-      if (btn) btn.click();
-    });
+    (function () {
+      var items = document.querySelectorAll('[data-acc-item]');
+      if (!items.length) return;
+      items.forEach(function (item) {
+        var trigger = item.querySelector('[data-acc-trigger]');
+        if (!trigger) return;
+        trigger.addEventListener('click', function () {
+          var isOpen = item.classList.contains('open');
+          // close all
+          items.forEach(function (i) {
+            i.classList.remove('open');
+            var t = i.querySelector('[data-acc-trigger]');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          });
+          // open clicked (toggle: if was closed, open it)
+          if (!isOpen) {
+            item.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    })();
   </script>
+
 </body>
 </html>
