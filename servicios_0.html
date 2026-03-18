@@ -608,34 +608,39 @@
   <script src="./js/i18n.js?v=4130b648" defer></script>
   <script src="./js/main.js?v=b06ab680" defer></script>
   <script>
-    /* Accordion — runs after all defer scripts via DOMContentLoaded */
-    document.addEventListener('DOMContentLoaded', function () {
-      var list = document.querySelector('.acc-list');
-      if (!list) return;
+    /* Accordion — DOM is available at bottom of body; run directly */
+    (function () {
+      function initAcc() {
+        var list = document.querySelector('.acc-list');
+        if (!list) return;
 
-      /* Event delegation: one listener on the list handles all headers */
-      list.addEventListener('click', function (e) {
-        var trigger = e.target.closest('[data-acc-trigger]');
-        if (!trigger) return;
-        var item = trigger.closest('[data-acc-item]');
-        if (!item) return;
+        list.addEventListener('click', function (e) {
+          var trigger = e.target.closest('button.acc-header');
+          if (!trigger) return;
+          var item = trigger.closest('.acc-item');
+          if (!item) return;
 
-        var isOpen = item.classList.contains('open');
+          var isOpen = item.classList.contains('open');
 
-        /* Close all items */
-        list.querySelectorAll('[data-acc-item]').forEach(function (i) {
-          i.classList.remove('open');
-          var t = i.querySelector('[data-acc-trigger]');
-          if (t) t.setAttribute('aria-expanded', 'false');
+          list.querySelectorAll('.acc-item').forEach(function (i) {
+            i.classList.remove('open');
+            var t = i.querySelector('button.acc-header');
+            if (t) t.setAttribute('aria-expanded', 'false');
+          });
+
+          if (!isOpen) {
+            item.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+          }
         });
+      }
 
-        /* If it was closed, open it */
-        if (!isOpen) {
-          item.classList.add('open');
-          trigger.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAcc);
+      } else {
+        initAcc();
+      }
+    }());
   </script>
 
 </body>
