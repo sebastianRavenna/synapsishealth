@@ -236,6 +236,9 @@ function initTeamTabs() {
 /* ============================================================
    CONTACT FORM
    ============================================================ */
+const RATE_LIMIT_KEY = "sh_form_last_submit";
+const RATE_LIMIT_MS  = 30_000; // 30 segundos entre envíos
+
 function initContactForm() {
   const form = document.getElementById("contact-form");
   if (!form) return;
@@ -249,7 +252,24 @@ function initContactForm() {
 
     const data = Object.fromEntries(new FormData(form).entries());
 
-    // Validación por campo
+    // 1. Honeypot: si el campo oculto "website" tiene valor → bot detectado
+    if (data.website && data.website.trim() !== "") {
+      // Respuesta falsa positiva para no alertar al bot
+      showFeedback(feedback, "Mensaje enviado. Nos pondremos en contacto pronto.", "success");
+      form.reset();
+      return;
+    }
+
+    // 2. Rate limiting: bloquear si pasó menos de 30s desde el último envío
+    const lastSubmit = parseInt(localStorage.getItem(RATE_LIMIT_KEY) || "0", 10);
+    const now = Date.now();
+    if (now - lastSubmit < RATE_LIMIT_MS) {
+      const secsLeft = Math.ceil((RATE_LIMIT_MS - (now - lastSubmit)) / 1000);
+      showFeedback(feedback, `Por favor esperá ${secsLeft} segundos antes de volver a enviar.`, "error");
+      return;
+    }
+
+    // 3. Validación de campos
     let hasErrors = false;
     if (!data.nombre || data.nombre.trim().length < 2) {
       setFieldError("nombre", "El nombre es obligatorio (mínimo 2 caracteres).");
@@ -265,6 +285,9 @@ function initContactForm() {
     if (!data.telefono || data.telefono.trim().length < 8) {
       setFieldError("telefono", "El celular es obligatorio (mínimo 8 dígitos).");
       hasErrors = true;
+    } else if (!/^[\d\s+\-().]{8,}$/.test(data.telefono.trim())) {
+      setFieldError("telefono", "El celular solo puede contener dígitos, espacios y los caracteres + - ( ).");
+      hasErrors = true;
     }
     if (!data.mensaje || data.mensaje.trim().length < 10) {
       setFieldError("mensaje", "El mensaje es obligatorio (mínimo 10 caracteres).");
@@ -276,9 +299,6 @@ function initContactForm() {
     btn.textContent = "Enviando...";
 
     try {
-      /* =============================================
-         CONFIGURAR: URL del endpoint real del backend
-         ============================================= */
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -286,6 +306,7 @@ function initContactForm() {
       });
       if (!res.ok) throw new Error("Server error");
 
+      localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
       showFeedback(feedback, "Mensaje enviado. Nos pondremos en contacto pronto.", "success");
       form.reset();
     } catch (err) {

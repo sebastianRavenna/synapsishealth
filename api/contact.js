@@ -281,6 +281,11 @@ module.exports = async function handler(req, res) {
   }
 
   try {
+    // Honeypot check — si el campo "website" tiene valor, es un bot
+    if (req.body.website || req.body.website === 0) {
+      return res.status(200).json({ success: true, message: "Mensaje enviado correctamente" });
+    }
+
     const { nombre, email, telefono, organizacion, mensaje } = req.body;
 
     // Validacion
