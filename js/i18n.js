@@ -40,8 +40,8 @@ const translations = {
     "about.cta": "Conoce Nuestro Equipo",
 
     // Pilares
-    "pillars.overline": "Pilares",
-    "pillars.title": "Nuestro enfoque",
+    "pillars.overline": "Alcance de trabajo",
+    "pillars.title": "Alcance de trabajo",
     "pillars.evidence.title": "Evidencia",
     "pillars.evidence.text": "Evaluación rigurosa de tecnologías sanitarias basada en estándares internacionales, adaptada a contextos reales de decisión.",
     "pillars.governance.title": "Gobernanza",
@@ -296,8 +296,8 @@ const translations = {
     "about.cta": "Meet Our Team",
 
     // Pillars
-    "pillars.overline": "Our approach",
-    "pillars.title": "Our approach",
+    "pillars.overline": "Work scope",
+    "pillars.title": "Work scope",
     "pillars.evidence.title": "Evidence",
     "pillars.evidence.text": "Rigorous health technology assessment based on international standards, adapted to real decision-making contexts.",
     "pillars.governance.title": "Governance",
