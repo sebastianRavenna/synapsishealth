@@ -11,7 +11,7 @@ const path = require("path");
 
 const ROOT = path.resolve(__dirname, "..");
 
-const ASSETS = ["styles.css", "js/main.js", "js/i18n.js"];
+const ASSETS = ["styles.css", "js/main.js", "js/i18n.js", "js/servicios-tabs.js"];
 const HTML_FILES = [
   "index.html",
   "equipo.html",
