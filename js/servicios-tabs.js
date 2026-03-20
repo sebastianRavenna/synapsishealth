@@ -104,16 +104,14 @@
         panels.forEach(closePanel);
         if (!isOpen) {
           openPanel(panel);
-          // After the expand animation finishes, scroll the button into view
-          // so the user sees the content they just opened (not the footer).
-          var body = panel.querySelector('.accordion-body');
-          if (body) {
-            body.addEventListener('transitionend', function onScroll(e) {
-              if (e.propertyName !== 'max-height') return;
-              body.removeEventListener('transitionend', onScroll);
-              btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-          }
+          // After the expand animation (350ms), scroll so the button
+          // sits just below the fixed navbar instead of hidden behind it.
+          setTimeout(function () {
+            var nav = document.getElementById('navbar');
+            var offset = nav ? nav.offsetHeight : 0;
+            var top = btn.getBoundingClientRect().top + window.scrollY - offset - 12;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }, 380);
         }
       });
     });
