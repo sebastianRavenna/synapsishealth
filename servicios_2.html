@@ -102,21 +102,29 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── Panel 2-col layout ── */
+    /* ── Panel layout: 1 col mobile, 2×2 grid desktop ── */
     .tab-panel-inner {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 0.875rem;
     }
     @media (min-width: 1024px) {
       .tab-panel-inner {
         grid-template-columns: 1fr 1fr;
-        gap: 2.5rem;
+        grid-template-areas:
+          "img   text"
+          "subs-l subs-r";
+        column-gap: 2.5rem;
+        row-gap: 0.875rem;
         align-items: start;
       }
+      .tab-panel-image-col  { grid-area: img; }
+      .tab-panel-text       { grid-area: text; }
+      .tab-panel-subs-left  { grid-area: subs-l; }
+      .tab-panel-subs-right { grid-area: subs-r; }
     }
 
-    /* Left column: image + bottom cards */
+    /* Left column: image only */
     .tab-panel-image-col {
       display: flex;
       flex-direction: column;
@@ -223,6 +231,7 @@
       gap: 0.5rem;
       outline: none;
       transition: color 0.2s ease;
+      scroll-margin-top: 90px;
     }
     .tab-panel-accordion-btn.open { color: var(--t-accent); font-weight: 500; }
     .acc-chevron {
@@ -407,7 +416,7 @@
         <!-- Panels -->
         <div class="tabs-panels">
 
-          <!-- Panel: Acceso -->
+          <!-- Panel: Acceso | subs-left: sub1+sub2 | subs-right: sub3+sub4 -->
           <div class="tab-panel active" id="panel-acceso" data-tab-panel="acceso" role="tabpanel">
             <button class="tab-panel-accordion-btn" aria-expanded="false">
               <span data-i18n="servicesPage.tab.acceso">Acceso y financiamiento</span>
@@ -425,30 +434,32 @@
                   <p class="tab-panel-desc" data-i18n="servicesPage.acceso.text1">Diseñamos e implementamos estrategias integrales para la incorporación sostenible de tecnologías sanitarias de alto costo o alta incertidumbre.</p>
                   <p class="tab-panel-desc" data-i18n="servicesPage.acceso.text2">Nuestro enfoque combina evaluación de valor, análisis económico, diseño de acuerdos basados en resultados, modelos de riesgo compartido y acompañamiento institucional.</p>
                   <p class="tab-panel-desc" data-i18n="servicesPage.acceso.text3">Este servicio permite a financiadores y autoridades sanitarias facilitar el acceso a innovaciones terapéuticas sin comprometer la sostenibilidad del sistema.</p>
-                  <div class="tab-side-subs">
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub1.title">Diseño de acuerdos basados en valor</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub1.text">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub2.title">Modelos de riesgo compartido</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub2.text">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub3.title">Estrategias de financiamiento de tecnologías innovadoras</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub3.text">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub4.title">Soporte técnico en negociaciones complejas</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub4.text">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p>
-                    </div>
+                </div>
+                <div class="tab-panel-subs-left tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub1.title">Diseño de acuerdos basados en valor</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub1.text">Desarrollo de esquemas de pago vinculados a resultados clínicos, desempeño o utilización real.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub2.title">Modelos de riesgo compartido</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub2.text">Diseño de mecanismos contractuales que distribuyen la incertidumbre entre financiadores y proveedores.</p>
+                  </div>
+                </div>
+                <div class="tab-panel-subs-right tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub3.title">Estrategias de financiamiento de tecnologías innovadoras</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub3.text">Análisis de alternativas de cobertura y financiamiento adaptadas a distintos contextos institucionales.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.acceso.sub4.title">Soporte técnico en negociaciones complejas</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.acceso.sub4.text">Acompañamiento analítico y estratégico en negociaciones entre financiadores, industria y autoridades sanitarias.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Panel: Evaluación -->
+          <!-- Panel: Evaluación | subs-left: sub1 | subs-right: sub2+sub3 -->
           <div class="tab-panel" id="panel-evaluacion" data-tab-panel="evaluacion" role="tabpanel">
             <button class="tab-panel-accordion-btn" aria-expanded="false">
               <span data-i18n="servicesPage.tab.evaluacion">Evaluación estratégica</span>
@@ -464,26 +475,28 @@
                 <div class="tab-panel-text">
                   <h3 class="tab-panel-title" data-i18n="servicesPage.evaluacion.title">Evaluación de Tecnologías Sanitarias (ETESA)</h3>
                   <p class="tab-panel-desc" data-i18n="servicesPage.evaluacion.text1">Evaluación estructurada de evidencia clínica, impacto sanitario y valor de las tecnologías. Nuestros informes están diseñados para ser utilizados por decisores de política sanitaria, financiadores e instituciones de salud, proporcionando una base sólida y transparente para la toma de decisiones.</p>
-                  <div class="tab-side-subs">
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.evaluacion.sub1.title">Evaluaciones rápidas para toma de decisión</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.evaluacion.sub1.text">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.evaluacion.sub2.title">Análisis de impacto presupuestario</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.evaluacion.sub2.text">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.evaluacion.sub3.title">Evaluación de valor y priorización</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.evaluacion.sub3.text">Herramientas para comparar alternativas y orientar decisiones transparentes.</p>
-                    </div>
+                </div>
+                <div class="tab-panel-subs-left tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.evaluacion.sub1.title">Evaluaciones rápidas para toma de decisión</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.evaluacion.sub1.text">Análisis de evidencia abreviados cuando los tiempos institucionales requieren respuestas ágiles y robustas.</p>
+                  </div>
+                </div>
+                <div class="tab-panel-subs-right tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.evaluacion.sub2.title">Análisis de impacto presupuestario</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.evaluacion.sub2.text">Estimación del costo esperado de la incorporación de una tecnología en distintos escenarios.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.evaluacion.sub3.title">Evaluación de valor y priorización</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.evaluacion.sub3.text">Herramientas para comparar alternativas y orientar decisiones transparentes.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Panel: Economía -->
+          <!-- Panel: Economía | subs-left: sub1 | subs-right: sub2+sub3 -->
           <div class="tab-panel" id="panel-economia" data-tab-panel="economia" role="tabpanel">
             <button class="tab-panel-accordion-btn" aria-expanded="false">
               <span data-i18n="servicesPage.tab.economia">Economía y sostenibilidad</span>
@@ -498,26 +511,28 @@
                 </div>
                 <div class="tab-panel-text">
                   <h3 class="tab-panel-title" data-i18n="servicesPage.economia.title">Economía y sostenibilidad</h3>
-                  <div class="tab-side-subs">
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.economia.sub1.title">Evaluación económica en salud</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.economia.sub1.text">Estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario para evaluar el valor de las intervenciones sanitarias.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.economia.sub2.title">Modelización de escenarios y proyecciones</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.economia.sub2.text">Simulación de demanda, costos y resultados bajo distintos supuestos.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.economia.sub3.title">Análisis de sostenibilidad presupuestaria</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.economia.sub3.text">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p>
-                    </div>
+                </div>
+                <div class="tab-panel-subs-left tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.economia.sub1.title">Evaluación económica en salud</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.economia.sub1.text">Estudios de costo-efectividad, costo-utilidad y análisis de impacto presupuestario para evaluar el valor de las intervenciones sanitarias.</p>
+                  </div>
+                </div>
+                <div class="tab-panel-subs-right tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.economia.sub2.title">Modelización de escenarios y proyecciones</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.economia.sub2.text">Simulación de demanda, costos y resultados bajo distintos supuestos.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.economia.sub3.title">Análisis de sostenibilidad presupuestaria</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.economia.sub3.text">Evaluación del impacto de decisiones sanitarias en el mediano y largo plazo.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Panel: Datos -->
+          <!-- Panel: Datos | subs-left: sub1+sub2 | subs-right: sub3+sub4 -->
           <div class="tab-panel" id="panel-datos" data-tab-panel="datos" role="tabpanel">
             <button class="tab-panel-accordion-btn" aria-expanded="false">
               <span data-i18n="servicesPage.tab.datos">Análisis de datos</span>
@@ -532,30 +547,32 @@
                 </div>
                 <div class="tab-panel-text">
                   <h3 class="tab-panel-title" data-i18n="servicesPage.datos.title">Análisis de datos y gestión sanitaria</h3>
-                  <div class="tab-side-subs">
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub1.title">Análisis de utilización de servicios</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub1.text">Identificación de patrones de uso, variabilidad y consumo de recursos.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub2.title">Estudios de carga de enfermedad</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub2.text">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub3.title">Diseño de tableros de indicadores</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub3.text">Herramientas para monitoreo y gestión basada en datos.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub4.title">Proyección de demanda y costos</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub4.text">Análisis para planificación de recursos y presupuestos.</p>
-                    </div>
+                </div>
+                <div class="tab-panel-subs-left tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub1.title">Análisis de utilización de servicios</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub1.text">Identificación de patrones de uso, variabilidad y consumo de recursos.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub2.title">Estudios de carga de enfermedad</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub2.text">Estimación del impacto sanitario de patologías o grupos de tecnologías.</p>
+                  </div>
+                </div>
+                <div class="tab-panel-subs-right tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub3.title">Diseño de tableros de indicadores</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub3.text">Herramientas para monitoreo y gestión basada en datos.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.datos.sub4.title">Proyección de demanda y costos</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.datos.sub4.text">Análisis para planificación de recursos y presupuestos.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Panel: Soporte -->
+          <!-- Panel: Soporte | subs-left: sub1+sub2 | subs-right: sub3+sub4 -->
           <div class="tab-panel" id="panel-soporte" data-tab-panel="soporte" role="tabpanel">
             <button class="tab-panel-accordion-btn" aria-expanded="false">
               <span data-i18n="servicesPage.tab.soporte">Soporte institucional</span>
@@ -570,30 +587,32 @@
                 </div>
                 <div class="tab-panel-text">
                   <h3 class="tab-panel-title" data-i18n="servicesPage.soporte.title">Soporte institucional y política sanitaria</h3>
-                  <div class="tab-side-subs">
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub1.title">Diseño de marcos de cobertura</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub1.text">Definición de criterios y procesos para incorporación de tecnologías.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub2.title">Estrategias frente a judicialización</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub2.text">Análisis y propuestas para abordar conflictos de acceso individuales.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub3.title">Análisis de política sanitaria y regulación</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub3.text">Evaluación del entorno institucional, legal y político.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub4.title">Fortalecimiento de procesos de decisión</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub4.text">Diseño de mecanismos deliberativos y criterios explícitos.</p>
-                    </div>
+                </div>
+                <div class="tab-panel-subs-left tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub1.title">Diseño de marcos de cobertura</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub1.text">Definición de criterios y procesos para incorporación de tecnologías.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub2.title">Estrategias frente a judicialización</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub2.text">Análisis y propuestas para abordar conflictos de acceso individuales.</p>
+                  </div>
+                </div>
+                <div class="tab-panel-subs-right tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub3.title">Análisis de política sanitaria y regulación</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub3.text">Evaluación del entorno institucional, legal y político.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.soporte.sub4.title">Fortalecimiento de procesos de decisión</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.soporte.sub4.text">Diseño de mecanismos deliberativos y criterios explícitos.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Panel: Capacitación -->
+          <!-- Panel: Capacitación | subs-left: sub1 | subs-right: sub2+sub3 -->
           <div class="tab-panel" id="panel-capacitacion" data-tab-panel="capacitacion" role="tabpanel">
             <button class="tab-panel-accordion-btn" aria-expanded="false">
               <span data-i18n="servicesPage.tab.capacitacion">Capacitación</span>
@@ -608,19 +627,21 @@
                 </div>
                 <div class="tab-panel-text">
                   <h3 class="tab-panel-title" data-i18n="servicesPage.capacitacion.title">Capacitación y transferencia de conocimiento</h3>
-                  <div class="tab-side-subs">
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.capacitacion.sub1.title">Formación en evaluación de tecnologías sanitarias</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.capacitacion.sub1.text">Programas para equipos técnicos y decisores.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.capacitacion.sub2.title">Capacitación en análisis económico y evidencia</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.capacitacion.sub2.text">Herramientas para lectura crítica y toma de decisiones informadas.</p>
-                    </div>
-                    <div class="tab-sub-card">
-                      <p class="tab-sub-card-title" data-i18n="servicesPage.capacitacion.sub3.title">Programas de fortalecimiento institucional</p>
-                      <p class="tab-sub-card-text" data-i18n="servicesPage.capacitacion.sub3.text">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p>
-                    </div>
+                </div>
+                <div class="tab-panel-subs-left tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.capacitacion.sub1.title">Formación en evaluación de tecnologías sanitarias</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.capacitacion.sub1.text">Programas para equipos técnicos y decisores.</p>
+                  </div>
+                </div>
+                <div class="tab-panel-subs-right tab-side-subs">
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.capacitacion.sub2.title">Capacitación en análisis económico y evidencia</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.capacitacion.sub2.text">Herramientas para lectura crítica y toma de decisiones informadas.</p>
+                  </div>
+                  <div class="tab-sub-card">
+                    <p class="tab-sub-card-title" data-i18n="servicesPage.capacitacion.sub3.title">Programas de fortalecimiento institucional</p>
+                    <p class="tab-sub-card-text" data-i18n="servicesPage.capacitacion.sub3.text">Desarrollo de capacidades organizacionales para gestionar tecnologías.</p>
                   </div>
                 </div>
               </div>

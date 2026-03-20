@@ -80,11 +80,15 @@
         panels.forEach(closePanel);
         if (!isOpen) {
           openPanel(panel);
+          // Wait for collapse animation (400ms) to finish before checking position
           setTimeout(function () {
-            var navH = (document.getElementById('navbar') || {}).offsetHeight || 0;
-            var top = panel.getBoundingClientRect().top + window.scrollY - navH - 8;
-            window.scrollTo({ top: top, behavior: 'smooth' });
-          }, 50);
+            var navH = (document.getElementById('navbar') || {}).offsetHeight || 80;
+            var btnTop = btn.getBoundingClientRect().top;
+            // Only scroll if the button is hidden behind the navbar
+            if (btnTop < navH + 4) {
+              window.scrollTo({ top: window.scrollY + btnTop - navH - 4, behavior: 'smooth' });
+            }
+          }, 420);
         }
       });
     });
