@@ -102,9 +102,19 @@
       btn.addEventListener('click', function () {
         var isOpen = panel.classList.contains('accordion-open');
         panels.forEach(closePanel);
-        if (!isOpen) openPanel(panel);
-        // No auto-scroll: the button is already visible when clicked.
-        // Scrolling while the animation runs causes the bounce effect.
+        if (!isOpen) {
+          openPanel(panel);
+          // After the expand animation finishes, scroll the button into view
+          // so the user sees the content they just opened (not the footer).
+          var body = panel.querySelector('.accordion-body');
+          if (body) {
+            body.addEventListener('transitionend', function onScroll(e) {
+              if (e.propertyName !== 'max-height') return;
+              body.removeEventListener('transitionend', onScroll);
+              btn.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+          }
+        }
       });
     });
   }
