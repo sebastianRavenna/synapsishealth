@@ -250,9 +250,9 @@
     .accordion-body {
       overflow: hidden;
       max-height: 0;
-      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .tab-panel.accordion-open .accordion-body { max-height: 3000px; }
+    /* max-height al abrir se setea dinámicamente por JS usando scrollHeight */
 
     /* ── Mobile (< 1024px): modo acordeón ── */
     @media (max-width: 1023px) {
