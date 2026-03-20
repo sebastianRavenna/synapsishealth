@@ -61,15 +61,39 @@
     var panels = document.querySelectorAll('.tab-panel');
 
     function openPanel(panel) {
-      var btn = panel.querySelector('.tab-panel-accordion-btn');
+      var btn  = panel.querySelector('.tab-panel-accordion-btn');
+      var body = panel.querySelector('.accordion-body');
       panel.classList.add('accordion-open');
       if (btn) { btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+      if (body) {
+        // Animate to the real content height (no giant placeholder)
+        body.style.maxHeight = body.scrollHeight + 'px';
+        // Once the transition ends, free up max-height so content can reflow freely
+        function onOpen(e) {
+          if (e.propertyName !== 'max-height') return;
+          body.removeEventListener('transitionend', onOpen);
+          if (panel.classList.contains('accordion-open')) body.style.maxHeight = 'none';
+        }
+        body.addEventListener('transitionend', onOpen);
+      }
     }
 
     function closePanel(panel) {
-      var btn = panel.querySelector('.tab-panel-accordion-btn');
+      var btn  = panel.querySelector('.tab-panel-accordion-btn');
+      var body = panel.querySelector('.accordion-body');
       panel.classList.remove('accordion-open');
       if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+      if (body) {
+        // Pin the current height explicitly before animating to 0
+        // (necessary when max-height was set to 'none')
+        if (!body.style.maxHeight || body.style.maxHeight === 'none') {
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+        // Double rAF: let the browser paint the explicit height, then transition to 0
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () { body.style.maxHeight = '0'; });
+        });
+      }
     }
 
     panels.forEach(function (panel) {
@@ -78,18 +102,9 @@
       btn.addEventListener('click', function () {
         var isOpen = panel.classList.contains('accordion-open');
         panels.forEach(closePanel);
-        if (!isOpen) {
-          openPanel(panel);
-          // Wait for collapse animation (400ms) to finish before checking position
-          setTimeout(function () {
-            var navH = (document.getElementById('navbar') || {}).offsetHeight || 80;
-            var btnTop = btn.getBoundingClientRect().top;
-            // Only scroll if the button is hidden behind the navbar
-            if (btnTop < navH + 4) {
-              window.scrollTo({ top: window.scrollY + btnTop - navH - 4, behavior: 'smooth' });
-            }
-          }, 420);
-        }
+        if (!isOpen) openPanel(panel);
+        // No auto-scroll: the button is already visible when clicked.
+        // Scrolling while the animation runs causes the bounce effect.
       });
     });
   }
