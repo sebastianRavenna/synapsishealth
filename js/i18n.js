@@ -41,7 +41,7 @@ const translations = {
 
     // Pilares
     "pillars.overline": "Alcance de trabajo",
-    "pillars.title": "Alcance de trabajo",
+    "pillars.title": "Synapsis Health colabora con:",
     "pillars.evidence.title": "Evidencia",
     "pillars.evidence.text": "Evaluación rigurosa de tecnologías sanitarias basada en estándares internacionales, adaptada a contextos reales de decisión.",
     "pillars.governance.title": "Gobernanza",
@@ -297,7 +297,7 @@ const translations = {
 
     // Pillars
     "pillars.overline": "Work scope",
-    "pillars.title": "Work scope",
+    "pillars.title": "Synapsis Health collaborates with:",
     "pillars.evidence.title": "Evidence",
     "pillars.evidence.text": "Rigorous health technology assessment based on international standards, adapted to real decision-making contexts.",
     "pillars.governance.title": "Governance",
