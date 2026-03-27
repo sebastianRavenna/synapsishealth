@@ -1,5 +1,37 @@
 # Auditoría UX/UI y SEO — Synapsis Health
-## Parte 02: SEO Técnico (PRIORIDAD ALTA)
+## Parte 02: SEO Técnico (PRIORIDAD CRÍTICA)
+
+**Fecha original:** 2026-02-14
+**Última actualización:** 2026-03-27
+**Sitio:** https://synapsishealth.vercel.app
+**Estado de indexación:** ❌ La página NO aparece en Google, ni siquiera buscando "Synapsis Health"
+
+---
+
+## ⚠️ DIAGNÓSTICO: ¿POR QUÉ LA PÁGINA NO APARECE EN GOOGLE?
+
+### Causas principales identificadas (por orden de impacto):
+
+| # | Causa | Impacto | Estado |
+|---|---|---|---|
+| 1 | **No se ha registrado en Google Search Console** | CRÍTICO | ❌ Pendiente |
+| 2 | **Dominio propio (synapsishealth.com.ar) no apunta al sitio** | CRÍTICO | ❌ El canonical en coming-soon.html y enconstruccion/index.html apunta a `synapsishealth.com.ar` pero el sitio vive en `synapsishealth.vercel.app` |
+| 3 | **Sitemap desactualizado y incompleto** | ALTO | ❌ Solo 3 URLs, lastmod de 2025-02-14 |
+| 4 | **og:image comentado en todas las páginas** | ALTO | ❌ Sin imagen de preview social |
+| 5 | **Imágenes de contenido sin alt text** | ALTO | ❌ 9+ imágenes con `alt=""` |
+| 6 | **equipo.html sin canonical, sin OG tags, sin favicon** | ALTO | ❌ Página incompleta para SEO |
+| 7 | **Sin hreflang para contenido bilingüe** | MEDIO | ❌ Sitio ES/EN sin señalización |
+| 8 | **Sin meta robots explícito en páginas indexables** | BAJO | ❌ Funciona por defecto pero no es explícito |
+| 9 | **Inconsistencia de emails en Schema vs HTML** | MEDIO | ❌ Schema dice contacto@synapsishealth.com, HTML dice info@synapsishealth.com.ar |
+
+### Plan de acción inmediato para aparecer en Google:
+
+1. **Registrar en Google Search Console** → Verificar propiedad del dominio
+2. **Enviar sitemap.xml actualizado** → Con TODAS las URLs y fechas correctas
+3. **Solicitar indexación manual** de las páginas principales
+4. **Configurar dominio propio** (synapsishealth.com.ar) con redirección a Vercel
+5. **Descomentar og:image** con imagen real de 1200×630px
+6. **Agregar alt text** a todas las imágenes de contenido
 
 ---
 
@@ -9,11 +41,12 @@
 
 **Estado:** ✅ CORRECTO
 
-| Página | H1 | Línea | Chars |
-|---|---|---|---|
-| `index.html` | "Transformamos evidencia en decisiones sanitarias eficientes." | 142 | 60 |
-| `equipo.html` | "Nuestro Equipo" | 96 | 14 |
-| `servicios.html` | "Análisis y evaluación para decisiones en salud" | 97-98 | 47 |
+| Página | H1 | Chars |
+|---|---|---|
+| `index.html` | "Transformamos evidencia en decisiones sanitarias eficientes." | 60 |
+| `equipo.html` | "Equipo interdisciplinario" | 25 |
+| `servicios.html` | "Análisis y evaluación para decisiones en salud" | 47 |
+| `articulos.html` | "Artículos y análisis" | 20 |
 
 Cada página tiene exactamente un `<h1>`. ✅
 
@@ -21,190 +54,114 @@ Cada página tiene exactamente un `<h1>`. ✅
 
 ### 3.2 Jerarquía de headings
 
-**Estado:** ⚠️ ADVERTENCIA
+**Estado:** ✅ CORRECTO (mejorado desde última auditoría)
 
-**index.html:** H1 → H2 → H3 ✅
-```
-H1: Transformamos evidencia...
-  H2: La complejidad ya no es técnica...
-  H2: Arquitectura de decisión sanitaria
-  H2: Nuestro enfoque
-    H3: Evidencia / Gobernanza / Acceso
-  H2: Áreas de trabajo
-    H3: Evaluación estratégica / Acceso gestionado / Soporte institucional
-  H2: Por qué Synapsis
-  H2: Producción de conocimiento...
-  H2: Equipo fundador
-  H2: Independencia y transparencia
-  H2: Contacto institucional
-```
-Jerarquía correcta, sin saltos. ✅
-
-**equipo.html:** ⚠️ Problema menor
-```
-H1: Nuestro Equipo
-  H2: Nombre Apellido (×4 en paneles) — OK
-  H2: ¿Necesitás asesoramiento? — OK
-```
-Correcto. ✅
-
-**servicios.html:** ⚠️ Problema
-```
-H1: Análisis y evaluación para decisiones en salud
-  H2: Servicios (sidebar label, línea 112) — esto es un label, no un heading real
-  H2: Evaluación de Tecnologías Sanitarias (×6 paneles)
-  H2: ¿Necesitás asesoramiento?
-```
-
-**Hallazgo:** `servicios.html:112` — El `<h2>` "Servicios" en el sidebar es meramente un label visual. Podría ser un `<p>` o `<span>` con clase visual.
-
-**Recomendación:**
-```html
-<!-- ACTUAL (servicios.html:112) -->
-<h2 class="font-heading text-sm tracking-wider uppercase text-graphite-300 mb-4">Servicios</h2>
-
-<!-- RECOMENDADO: no necesita ser h2, es un label de navegación -->
-<p class="font-heading text-sm tracking-wider uppercase text-graphite-300 mb-4">Servicios</p>
-```
-
-**Impacto:** Bajo — No afecta significativamente el SEO, pero ensucia la jerarquía semántica.
+**index.html:** H1 → H2 → H3 — sin saltos ✅
+**equipo.html:** H1 → H2 ✅
+**servicios.html:** H1 → H2 → H3 ✅
+**articulos.html:** H1 → H2 ✅
 
 ---
 
 ### 3.3 Meta title en cada página (50-60 chars)
 
-**Estado:** ✅ CORRECTO
+**Estado:** ⚠️ ADVERTENCIA PARCIAL
 
-| Página | Title | Chars |
-|---|---|---|
-| `index.html` | "Synapsis Health \| Evaluación de Tecnologías Sanitarias - Argentina" | 68 |
-| `equipo.html` | "Equipo \| Synapsis Health - Expertos en Evaluación de Tecnologías Sanitarias" | 77 |
-| `servicios.html` | "Servicios \| Synapsis Health - Evaluación y Acceso a Tecnologías Sanitarias" | 76 |
+| Página | Title | Chars | Estado |
+|---|---|---|---|
+| `index.html` | "Synapsis Health \| Evaluación de Tecnologías Sanitarias" | 57 | ✅ OK |
+| `servicios.html` | "Servicios \| Synapsis Health - Evaluación Sanitaria" | 52 | ✅ OK |
+| `equipo.html` | "Equipo — Opción F \| Synapsis Health" | 36 | ❌ **PROBLEMA**: contiene "Opción F" que es irrelevante para el usuario |
+| `articulos.html` | "Artículos \| Synapsis Health - Publicaciones" | 46 | ✅ OK |
+| `articulo.html` | "Artículo \| Synapsis Health" | 28 | ⚠️ Genérico, debería ser dinámico |
 
-⚠️ Los tres títulos superan los 60 caracteres recomendados. Google truncará a ~55-60 chars en SERPs.
-
-**Recomendación:**
+**Corrección requerida para equipo.html:**
 ```html
-<!-- index.html — ACTUAL: 68 chars -->
-<title>Synapsis Health | Evaluación de Tecnologías Sanitarias - Argentina</title>
-<!-- RECOMENDADO: 57 chars -->
-<title>Synapsis Health | Evaluación de Tecnologías Sanitarias</title>
-
-<!-- equipo.html — ACTUAL: 77 chars -->
-<title>Equipo | Synapsis Health - Expertos en Evaluación de Tecnologías Sanitarias</title>
-<!-- RECOMENDADO: 53 chars -->
+<!-- ACTUAL -->
+<title>Equipo — Opción F | Synapsis Health</title>
+<!-- RECOMENDADO -->
 <title>Equipo | Synapsis Health - Tecnologías Sanitarias</title>
-
-<!-- servicios.html — ACTUAL: 76 chars -->
-<title>Servicios | Synapsis Health - Evaluación y Acceso a Tecnologías Sanitarias</title>
-<!-- RECOMENDADO: 55 chars -->
-<title>Servicios | Synapsis Health - Evaluación Sanitaria</title>
 ```
 
-**Impacto:** Medio — Títulos truncados pierden información en los resultados de búsqueda.
+**Impacto:** Alto — "Opción F" en el title confunde a Google y a usuarios.
 
 ---
 
 ### 3.4 Meta description en cada página (150-160 chars)
 
-**Estado:** ✅ CORRECTO (con ajuste menor)
+**Estado:** ✅ CORRECTO
 
-| Página | Chars |
-|---|---|
-| `index.html` | 195 |
-| `equipo.html` | 152 |
-| `servicios.html` | 131 |
-
-**Hallazgo:** `index.html` meta description excede los 160 chars. Google truncará.
-
-**Recomendación para index.html:**
-```html
-<!-- ACTUAL: 195 chars -->
-<meta name="description" content="Plataforma estratégica de Evaluación de Tecnologías Sanitarias. Integramos evidencia científica, análisis económico y gobernanza institucional para decisiones sanitarias de alto impacto en Latinoamérica.">
-
-<!-- RECOMENDADO: 155 chars -->
-<meta name="description" content="Plataforma estratégica de Evaluación de Tecnologías Sanitarias. Integramos evidencia científica, análisis económico y gobernanza para decisiones de alto impacto.">
-```
-
-`servicios.html` tiene 131 chars — podría expandirse un poco para aprovechar el espacio disponible.
-
-**Impacto:** Medio.
+| Página | Chars | Estado |
+|---|---|---|
+| `index.html` | 155 | ✅ Dentro del rango |
+| `servicios.html` | 131 | ⚠️ Podría ser más largo |
+| `equipo.html` | 152 | ✅ OK |
+| `articulos.html` | 126 | ⚠️ Podría ser más largo |
+| `articulo.html` | 74 | ❌ Muy corto, genérico |
 
 ---
 
 ### 3.5 Meta keywords
 
-**Estado:** ❌ PROBLEMA
-
-**Hallazgo:** Las 3 páginas incluyen `<meta name="keywords">`:
-- `index.html:11`
-- `equipo.html:11`
-- `servicios.html:11`
-
-`meta keywords` es **obsoleto**. Google lo ignora desde 2009. Puede ser señal de sobre-optimización.
-
-**Recomendación:** Eliminar de las 3 páginas.
-```html
-<!-- ELIMINAR estas líneas -->
-<meta name="keywords" content="evaluación tecnologías sanitarias, ETS, ...">
-```
-
-**Impacto:** Bajo — No causa daño directo, pero no aporta valor y ocupa espacio.
+**Estado:** ✅ CORRECTO — Eliminados de todas las páginas (eran obsoletos). ✅
 
 ---
 
 ### 3.6 Canonical tags
 
-**Estado:** ✅ CORRECTO
+**Estado:** ❌ PROBLEMA
 
-| Página | Canonical |
-|---|---|
-| `index.html:12` | `https://synapsishealth.vercel.app/` |
-| `equipo.html:12` | `https://synapsishealth.vercel.app/equipo.html` |
-| `servicios.html:12` | `https://synapsishealth.vercel.app/servicios.html` |
+| Página | Canonical | Estado |
+|---|---|---|
+| `index.html` | `https://synapsishealth.vercel.app/` | ✅ |
+| `servicios.html` | `https://synapsishealth.vercel.app/servicios.html` | ✅ |
+| `equipo.html` | **AUSENTE** | ❌ **No tiene canonical** |
+| `articulos.html` | `https://synapsishealth.vercel.app/articulos.html` | ✅ |
+| `articulo.html` | `https://synapsishealth.vercel.app/articulo.html` | ✅ |
+| `servicios_0.html` | apunta a `servicios.html` | ✅ (correctamente) |
+| `servicios_2.html` | apunta a `servicios.html` | ✅ |
+| `servicios_3.html` | apunta a `servicios.html` | ✅ |
+| `coming-soon.html` | apunta a `synapsishealth.com.ar` | ⚠️ Dominio diferente |
+| `enconstruccion/` | apunta a `synapsishealth.com.ar` | ⚠️ Dominio diferente |
 
-Cada página tiene canonical único que apunta a sí misma. ✅
+**Problema crítico:** `equipo.html` no tiene tag canonical. Esto puede causar problemas de contenido duplicado.
 
-**Nota:** El redirect en `vercel.json` de `/index.html` → `/` es coherente con el canonical de index.
+**Recomendación:**
+```html
+<!-- Agregar en equipo.html <head> -->
+<link rel="canonical" href="https://synapsishealth.vercel.app/equipo.html">
+```
+
+**Impacto:** Alto — Canonical ausente = Google podría no indexar correctamente.
 
 ---
 
 ### 3.7 Meta viewport
 
-**Estado:** ✅ CORRECTO
-
-Las 3 páginas tienen:
-```html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-```
+**Estado:** ✅ CORRECTO — Todas las páginas tienen `width=device-width, initial-scale=1.0`.
 
 ---
 
 ### 3.8 Lang attribute en `<html>`
 
-**Estado:** ✅ CORRECTO
+**Estado:** ✅ CORRECTO — `<html lang="es">` en todas las páginas. El i18n.js actualiza dinámicamente al cambiar idioma.
 
+**Problema pendiente:** No hay `hreflang` para indicar la versión en inglés.
+
+**Recomendación:**
 ```html
-<html lang="es">
+<link rel="alternate" hreflang="es" href="https://synapsishealth.vercel.app/">
+<link rel="alternate" hreflang="en" href="https://synapsishealth.vercel.app/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://synapsishealth.vercel.app/">
 ```
 
-Presente en las 3 páginas. Además, el sistema i18n actualiza dinámicamente:
-```javascript
-// i18n.js:389
-document.documentElement.lang = lang === "es" ? "es" : "en";
-```
+**Impacto:** Medio — Google podría no entender que el sitio tiene contenido en dos idiomas.
 
 ---
 
 ### 3.9 Charset UTF-8
 
-**Estado:** ✅ CORRECTO
-
-```html
-<meta charset="UTF-8">
-```
-
-Primera línea del `<head>` en las 3 páginas. ✅
+**Estado:** ✅ CORRECTO — `<meta charset="UTF-8">` en todas las páginas.
 
 ---
 
@@ -212,66 +169,61 @@ Primera línea del `<head>` en las 3 páginas. ✅
 
 ### 4.1 og:title, og:description, og:image, og:url
 
-**Estado:** ⚠️ ADVERTENCIA
+**Estado:** ❌ PROBLEMA CRÍTICO (og:image)
 
-| Propiedad | index.html | equipo.html | servicios.html |
-|---|---|---|---|
-| og:type | ✅ website | ✅ website | ✅ website |
-| og:title | ✅ | ✅ | ✅ |
-| og:description | ✅ | ✅ | ✅ |
-| og:url | ✅ | ✅ | ✅ |
-| og:site_name | ✅ | ✅ | ✅ |
-| og:locale | ✅ es_AR | ✅ es_AR | ✅ es_AR |
-| **og:image** | ❌ Comentado | ❌ Ausente | ❌ Ausente |
+| Propiedad | index.html | equipo.html | servicios.html | articulos.html |
+|---|---|---|---|---|
+| og:type | ✅ website | ❌ **Ausente** | ✅ website | ✅ website |
+| og:title | ✅ | ❌ **Ausente** | ✅ | ✅ |
+| og:description | ✅ | ❌ **Ausente** | ✅ | ✅ |
+| og:url | ✅ | ❌ **Ausente** | ✅ | ✅ |
+| og:site_name | ✅ | ❌ **Ausente** | ✅ | ✅ |
+| og:locale | ✅ es_AR | ❌ **Ausente** | ✅ es_AR | ✅ es_AR |
+| **og:image** | ❌ **Comentado** | ❌ **Ausente** | ❌ **Ausente** | ❌ **Ausente** |
 
-**Hallazgo crítico:** `og:image` está **comentado** en index.html (línea 21) y **ausente** en equipo.html y servicios.html.
+**Hallazgo crítico:**
+- `og:image` está **comentado** en index.html (línea 21) y **ausente** en el resto.
+- `equipo.html` no tiene **ningún** tag Open Graph.
 
+Sin `og:image`, cuando alguien comparta el sitio en LinkedIn/Facebook/Twitter, no aparecerá imagen preview. Esto reduce significativamente el CTR de las comparticiones sociales.
+
+**Nota:** Existen archivos de OG image en `assets/icons/`:
+- `og-image Synapsis (3).png`
+- `Copia de Copia de og-image Synapsis.png`
+
+Estos podrían usarse inmediatamente pero tienen nombres de archivo inadecuados.
+
+**Recomendación inmediata:**
+1. Renombrar `og-image Synapsis (3).png` a `og-image.png`
+2. Verificar que sea 1200×630px
+3. Descomentar/agregar en TODAS las páginas:
 ```html
-<!-- index.html:21 — COMENTADO -->
-<!-- <meta property="og:image" content="https://synapsishealth.vercel.app/images/og-image.jpg"> -->
-```
-
-Sin `og:image`, cuando alguien comparta el sitio en LinkedIn/Facebook/Twitter, no aparecerá imagen preview.
-
-**Recomendación:** Crear una imagen OG de 1200x630px y descomentar/agregar en las 3 páginas:
-```html
-<meta property="og:image" content="https://synapsishealth.vercel.app/assets/img/og-image.jpg">
+<meta property="og:image" content="https://synapsishealth.vercel.app/assets/icons/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Synapsis Health - Evaluación de Tecnologías Sanitarias">
 ```
 
-**Impacto:** Alto — Fundamental para visibilidad en redes sociales.
+**Impacto:** CRÍTICO — Fundamental para visibilidad en redes sociales y SEO indirecto.
 
 ---
 
 ### 4.2 og:type
 
-**Estado:** ✅ CORRECTO — `website` en las 3 páginas.
+**Estado:** ✅ CORRECTO en páginas que lo tienen — `website` para páginas, `article` para artículos.
 
 ---
 
 ### 4.3 Twitter Cards
 
-**Estado:** ⚠️ ADVERTENCIA
+**Estado:** ❌ PROBLEMA
 
 | Propiedad | index.html | equipo.html | servicios.html |
 |---|---|---|---|
-| twitter:card | ✅ summary_large_image | ✅ | ✅ |
-| twitter:title | ✅ | ✅ | ✅ |
-| twitter:description | ✅ | ✅ | ✅ |
-| **twitter:image** | ❌ Comentado | ❌ Ausente | ❌ Ausente |
-| twitter:site | ❌ Ausente | ❌ Ausente | ❌ Ausente |
-
-**Hallazgo:** `twitter:image` está comentado en index.html (línea 27). `twitter:site` (handle de Twitter/X) está ausente.
-
-**Recomendación:**
-```html
-<meta name="twitter:image" content="https://synapsishealth.vercel.app/assets/img/twitter-card.jpg">
-<meta name="twitter:image:alt" content="Synapsis Health - Evaluación de Tecnologías Sanitarias">
-<!-- Si tienen cuenta de X/Twitter: -->
-<meta name="twitter:site" content="@SynapsisHealth">
-```
+| twitter:card | ✅ summary_large_image | ❌ Ausente | ✅ |
+| twitter:title | ✅ | ❌ Ausente | ✅ |
+| twitter:description | ✅ | ❌ Ausente | ✅ |
+| **twitter:image** | ❌ **Comentado** | ❌ Ausente | ❌ Ausente |
 
 **Impacto:** Medio — `summary_large_image` sin imagen funciona como `summary`.
 
@@ -279,12 +231,7 @@ Sin `og:image`, cuando alguien comparta el sitio en LinkedIn/Facebook/Twitter, n
 
 ### 4.4 Dimensiones og:image y rutas absolutas
 
-**Estado:** ⚠️ PENDIENTE — No hay imagen OG todavía.
-
-**Recomendación:** Cuando se cree, asegurar:
-- Tamaño: 1200x630px (Facebook/LinkedIn) o 1200x675px (Twitter)
-- Formato: JPG o PNG (<5MB)
-- Ruta absoluta con dominio completo
+**Estado:** ❌ PENDIENTE — No hay imagen OG activa. Archivos candidatos existen en `assets/icons/` pero con nombres inadecuados.
 
 ---
 
@@ -292,81 +239,45 @@ Sin `og:image`, cuando alguien comparta el sitio en LinkedIn/Facebook/Twitter, n
 
 ### 5.1 Schema Organization
 
-**Estado:** ✅ CORRECTO (con mejoras posibles)
+**Estado:** ✅ CORRECTO (con problemas menores)
 
-`index.html:720-748` implementa JSON-LD Organization:
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Synapsis Health",
-  "description": "...",
-  "url": "https://synapsishealth.vercel.app",
-  "logo": "https://synapsishealth.vercel.app/images/logo.png",
-  "foundingDate": "2024",
-  "address": { "@type": "PostalAddress", ... },
-  "areaServed": { "@type": "Place", "name": "Latinoamérica" },
-  "contactPoint": { "@type": "ContactPoint", ... },
-  "sameAs": ["https://linkedin.com/company/synapsishealth"]
-}
-```
+`index.html:841-871` implementa JSON-LD Organization con:
+- `@id` para referenciabilidad ✅
+- `name`, `description`, `url` ✅
+- `logo` apunta a `assets/icons/logo-full.png` → ✅ Archivo existe
+- `address` con Buenos Aires, CABA, AR ✅
+- `areaServed`: Latinoamérica ✅
+- `contactPoint` con email y idiomas ✅
+- `sameAs` con LinkedIn ✅
 
-**Problemas encontrados:**
-1. `"logo"` apunta a `/images/logo.png` que **no existe** (el logo es un SVG inline)
-2. `"foundingDate": "2024"` debería ser formato ISO: `"2024-01-01"` o al menos `"2024"`  (aceptable)
-3. Falta `"@id"` para referenciabilidad
+**Problema:** Email en Schema (`contacto@synapsishealth.com`) ≠ Email en HTML (`info@synapsishealth.com.ar`). Google podría marcar inconsistencia.
 
-**Recomendación:**
-```json
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "@id": "https://synapsishealth.vercel.app/#organization",
-  "name": "Synapsis Health",
-  "logo": "https://synapsishealth.vercel.app/assets/icons/logo.svg",
-  ...
-}
-```
-
-**Impacto:** Medio — El logo referenciado no existe, Google podría marcar un error.
+**Recomendación:** Unificar al email real de contacto en ambos lugares.
 
 ---
 
-### 5.2 Schema LocalBusiness
+### 5.2 Schema LocalBusiness / ProfessionalService
 
-**Estado:** ⚠️ ADVERTENCIA
+**Estado:** ⚠️ AUSENTE (recomendado)
 
-No hay Schema LocalBusiness. Synapsis Health tiene dirección en Buenos Aires pero opera regionalmente, así que `Organization` es más apropiado que `LocalBusiness`. Sin embargo, podría beneficiarse de `ProfessionalService`:
+No hay Schema ProfessionalService. Para una consultora especializada sería beneficioso:
 
-**Recomendación (opcional):**
 ```json
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Synapsis Health",
-  "serviceType": "Health Technology Assessment",
-  ...
+  "serviceType": "Health Technology Assessment Consulting",
+  "areaServed": "Latin America",
+  "provider": { "@id": "https://synapsishealth.vercel.app/#organization" }
 }
 ```
-
-**Impacto:** Bajo — `Organization` es suficiente para el caso de uso.
 
 ---
 
 ### 5.3 Schema ContactPoint
 
-**Estado:** ✅ IMPLEMENTADO en el JSON-LD de Organization.
-
-```json
-"contactPoint": {
-  "@type": "ContactPoint",
-  "email": "contacto@synapsishealth.com",
-  "contactType": "Consultas institucionales",
-  "availableLanguage": ["es", "en"]
-}
-```
-
-Falta `"telephone"` (no hay teléfono público, así que es aceptable).
+**Estado:** ✅ IMPLEMENTADO en Organization. Falta teléfono (aceptable si no es público).
 
 ---
 
@@ -374,7 +285,7 @@ Falta `"telephone"` (no hay teléfono público, así que es aceptable).
 
 **Estado:** ❌ AUSENTE
 
-No hay Schema para los servicios individuales. Esto sería beneficioso para SEO de servicios.
+No hay Schema para los servicios. Esto sería beneficioso para SEO de servicios específicos.
 
 **Recomendación para `servicios.html`:**
 ```html
@@ -382,12 +293,9 @@ No hay Schema para los servicios individuales. Esto sería beneficioso para SEO 
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Synapsis Health",
+  "name": "Synapsis Health - Servicios",
   "url": "https://synapsishealth.vercel.app/servicios.html",
-  "provider": {
-    "@type": "Organization",
-    "@id": "https://synapsishealth.vercel.app/#organization"
-  },
+  "provider": { "@id": "https://synapsishealth.vercel.app/#organization" },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Servicios de Evaluación de Tecnologías Sanitarias",
@@ -397,7 +305,15 @@ No hay Schema para los servicios individuales. Esto sería beneficioso para SEO 
         "itemOffered": {
           "@type": "Service",
           "name": "Evaluación de Tecnologías Sanitarias (ETES)",
-          "description": "Proceso multidisciplinario que analiza las implicaciones médicas, económicas, sociales y éticas de tecnologías en salud."
+          "description": "Proceso multidisciplinario de análisis de tecnologías en salud"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Acceso Gestionado",
+          "description": "Diseño de acuerdos de riesgo compartido y modelos de cobertura"
         }
       }
     ]
@@ -406,7 +322,7 @@ No hay Schema para los servicios individuales. Esto sería beneficioso para SEO 
 </script>
 ```
 
-**Impacto:** Medio — Mejoraría la aparición en búsquedas de servicios específicos.
+**Impacto:** Medio — Mejoraría aparición en búsquedas de servicios específicos.
 
 ---
 
@@ -418,7 +334,7 @@ No hay Schema para los servicios individuales. Esto sería beneficioso para SEO 
 
 **Estado:** ✅ CORRECTO — JSON válido, sin errores de sintaxis.
 
-⚠️ **Nota:** No hay JSON-LD en `equipo.html` ni `servicios.html`.
+⚠️ **Nota:** No hay JSON-LD en `equipo.html`, `servicios.html`, ni `articulos.html`.
 
 ---
 
@@ -428,15 +344,9 @@ No hay Schema para los servicios individuales. Esto sería beneficioso para SEO 
 
 **Estado:** ✅ CORRECTO
 
-```
-/               → index.html (redirect 301)
-/equipo.html    → Equipo
-/servicios.html → Servicios
-```
-
 URLs descriptivas, lowercase. El `.html` es aceptable para sitios estáticos.
 
-⚠️ Idealmente serían `/equipo/` y `/servicios/` (sin extensión), pero requeriría configuración adicional en Vercel.
+⚠️ Idealmente serían `/equipo/` y `/servicios/` (sin extensión) mediante rewrite en Vercel.
 
 ---
 
@@ -448,91 +358,87 @@ URLs descriptivas, lowercase. El `.html` es aceptable para sitios estáticos.
 
 ### 6.3 Trailing slashes consistentes
 
-**Estado:** ✅ CORRECTO — Solo la raíz usa trailing slash (`/`). Las subpáginas no (`/equipo.html`).
+**Estado:** ✅ CORRECTO
 
 ---
 
 ### 6.4 Enlaces internos (absolutos vs relativos)
 
-**Estado:** ✅ CORRECTO
-
-Todos los enlaces internos usan rutas relativas consistentes:
-```html
-<a href="index.html">
-<a href="equipo.html">
-<a href="servicios.html">
-<a href="#contacto">
-<a href="index.html#contacto">  <!-- desde subpáginas -->
-```
+**Estado:** ✅ CORRECTO — Todos usan rutas relativas consistentes.
 
 ---
 
 ### 6.5 Links con title apropiado
 
-**Estado:** ⚠️ ADVERTENCIA
-
-Ningún enlace tiene atributo `title`. No es obligatorio pero es útil para accesibilidad y SEO.
-
-**Recomendación:** Agregar `title` en enlaces clave:
-```html
-<a href="equipo.html" class="nav-link" title="Conocer al equipo de Synapsis Health">Equipo</a>
-```
-
-**Impacto:** Bajo — `title` en links es opcional y tiene valor marginal.
+**Estado:** ⚠️ ADVERTENCIA — Ningún enlace tiene `title`. Impacto marginal.
 
 ---
 
 ### 6.6 Enlaces rotos o href="#"
 
-**Estado:** ✅ CORRECTO
-
-No hay enlaces con `href="#"` vacío. Todos los anchors apuntan a IDs válidos:
-- `#contacto` → existe en index.html
-- `#pilares` → existe en index.html
-- `#que-hacemos` → existe en index.html
-- `#main-content` → existe en las 3 páginas
+**Estado:** ✅ CORRECTO — No hay `href="#"` vacíos. Todos los anchors apuntan a IDs válidos.
 
 ---
 
 ### 6.7 Links externos con rel="noopener"
 
-**Estado:** ⚠️ ADVERTENCIA
-
-**Hallazgo:** No hay links externos visibles en el HTML (el único link externo es `sameAs` en el JSON-LD que apunta a LinkedIn). Sin embargo, el enlace `mailto:` no necesita `noopener`.
-
-Si se agregan links externos en el futuro:
-```html
-<a href="https://linkedin.com/company/synapsishealth" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-```
-
-**Impacto:** N/A actualmente — Tener en cuenta al agregar links externos.
+**Estado:** ✅ CORRECTO — Todos los links externos (WhatsApp) tienen `rel="noopener noreferrer"` y `target="_blank"`.
 
 ---
 
 ## 7. IMÁGENES SEO
 
-### 7.1-7.5 Alt text, nombres de archivo, figcaption
+### 7.1 Alt text descriptivo
 
-**Estado:** ⚠️ PENDIENTE — No hay imágenes `<img>` en el proyecto.
+**Estado:** ❌ PROBLEMA CRÍTICO
 
-Todos los SVG decorativos tienen `aria-hidden="true"` correctamente. ✅
+**Imágenes de contenido con `alt=""` vacío:**
 
-Cuando se agreguen imágenes:
-```html
-<!-- RECOMENDADO -->
-<figure>
-  <img src="assets/img/equipo-synapsis-reunión-estrategica.webp"
-       alt="Equipo de Synapsis Health en una reunión de evaluación de tecnologías sanitarias"
-       loading="lazy" width="800" height="600">
-  <figcaption>Nuestro equipo en una sesión de evaluación estratégica</figcaption>
-</figure>
-```
+| Archivo | Imagen | alt actual | alt recomendado |
+|---|---|---|---|
+| `index.html:213` | quienes_somos.webp | `""` | "Equipo de Synapsis Health en sesión estratégica de evaluación sanitaria" |
+| `index.html:447` | diferencial.webp | `""` | "Enfoque diferencial de Synapsis Health en tecnologías sanitarias" |
+| `index.html:508` | academico.webp | `""` | "Producción académica y formación en evaluación de tecnologías sanitarias" |
+| `index.html:163` | logo-full.png (decorativo) | `""` | Aceptable (es decorativo, pero falta `aria-hidden="true"`) |
+| `servicios.html:398` | decisiones.webp | `""` | "Evaluación estratégica para decisiones en salud" |
+| `servicios.html:437` | etes.webp | `""` | "Evaluación de Tecnologías Sanitarias ETES" |
+| `servicios.html:470` | eval_economicas.webp | `""` | "Evaluaciones económicas en salud" |
+| `servicios.html:500` | analisis_datos.webp | `""` | "Análisis de datos en salud y economía sanitaria" |
+| `servicios.html:534` | pol_sanitarias.webp | `""` | "Políticas sanitarias y gobernanza en salud" |
+| `servicios.html:568` | educacion.webp | `""` | "Capacitación y formación en tecnologías sanitarias" |
 
-**Checklist para cuando se agreguen imágenes:**
-- [ ] Alt text descriptivo y específico (no "imagen" ni "foto")
-- [ ] Nombres de archivo descriptivos con guiones (`equipo-reunión.webp`, no `IMG_1234.jpg`)
-- [ ] `<figcaption>` donde sea apropiado (secciones principales)
-- [ ] `title` attribute opcional
+**Nota:** Las imágenes de logo con `alt=""` + `aria-hidden="true"` son correctas (decorativas). ✅
+
+**Impacto:** CRÍTICO — Google usa alt text para entender el contenido de las imágenes. Imágenes sin alt text son invisibles para SEO y accesibilidad.
+
+---
+
+### 7.2 Nombres de archivo descriptivos
+
+**Estado:** ⚠️ MIXTO
+
+| Archivo | Estado |
+|---|---|
+| `quienes_somos.webp` | ✅ Descriptivo |
+| `diferencial.webp` | ✅ Descriptivo |
+| `academico.webp` | ✅ Descriptivo |
+| `etes.webp` | ✅ Descriptivo |
+| `eval_economicas.webp` | ✅ Descriptivo |
+| `analisis_datos.webp` | ✅ Descriptivo |
+| `pol_sanitarias.webp` | ✅ Descriptivo |
+| `educacion.webp` | ✅ Descriptivo |
+| `equipo-bg.jpg` | ✅ Descriptivo |
+| `Diseño sin título (6).jpg` | ❌ Nombre genérico con espacios |
+| `og-image Synapsis (3).png` | ❌ Nombre genérico con espacios y paréntesis |
+| `Logo 1 off.png` | ❌ Nombre con espacios |
+
+**Impacto:** Bajo — Los nombres de archivo afectan marginalmente al SEO de imágenes.
+
+---
+
+### 7.3 figcaption donde sea apropiado
+
+**Estado:** ⚠️ AUSENTE — Ninguna imagen usa `<figure>/<figcaption>`. Recomendado para imágenes principales.
 
 ---
 
@@ -551,74 +457,135 @@ Disallow: /*?*
 Sitemap: https://synapsishealth.vercel.app/sitemap.xml
 ```
 
-Bien configurado. Bloquea JSON files y parámetros. Referencia al sitemap. ✅
-
-⚠️ Nota: `/*.json$` bloqueará `site.webmanifest`? No, porque tiene extensión `.webmanifest`, no `.json`.
-
 ---
 
 ### 8.2 Meta robots
 
 **Estado:** ⚠️ ADVERTENCIA
 
-No hay `<meta name="robots">` en ninguna página. Por defecto, esto equivale a `index, follow` (correcto), pero es buena práctica ser explícito.
+- Páginas principales (index, equipo, servicios, articulos): **Sin meta robots** → por defecto `index, follow` (OK)
+- `coming-soon.html`: `noindex, nofollow` ✅
+- `enconstruccion/index.html`: `noindex, nofollow` ✅
 
-**Recomendación:**
+**Recomendación:** Agregar explícitamente en páginas indexables:
 ```html
 <meta name="robots" content="index, follow">
 ```
-
-**Impacto:** Bajo — El comportamiento por defecto es correcto.
 
 ---
 
 ### 8.3 sitemap.xml
 
-**Estado:** ✅ CORRECTO
+**Estado:** ❌ PROBLEMA CRÍTICO
 
+**Problemas:**
+1. **Solo 3 URLs** — Faltan: `articulos.html`, `articulo.html`
+2. **lastmod desactualizado**: `2025-02-14` (más de 1 año atrás)
+3. **Páginas dinámicas no incluidas** (equipo_0-5.html, servicios_0-3.html) — aunque las que tienen canonical a otra página no deberían estar
+
+**Sitemap actual:**
 ```xml
+<url><loc>https://synapsishealth.vercel.app/</loc><lastmod>2025-02-14</lastmod></url>
+<url><loc>https://synapsishealth.vercel.app/equipo.html</loc><lastmod>2025-02-14</lastmod></url>
+<url><loc>https://synapsishealth.vercel.app/servicios.html</loc><lastmod>2025-02-14</lastmod></url>
+```
+
+**Sitemap recomendado:**
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://synapsishealth.vercel.app/</loc><priority>1.0</priority></url>
-  <url><loc>https://synapsishealth.vercel.app/equipo.html</loc><priority>0.8</priority></url>
-  <url><loc>https://synapsishealth.vercel.app/servicios.html</loc><priority>0.8</priority></url>
+  <url>
+    <loc>https://synapsishealth.vercel.app/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://synapsishealth.vercel.app/equipo.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://synapsishealth.vercel.app/servicios.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://synapsishealth.vercel.app/articulos.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
 ```
 
-Incluye las 3 páginas con prioridades razonables. Referenciado desde robots.txt. ✅
-
-⚠️ `lastmod: 2025-02-14` — Debería actualizarse cuando cambie el contenido.
+**Impacto:** CRÍTICO — Un sitemap desactualizado/incompleto dificulta el rastreo de Google.
 
 ---
 
 ### 8.4 Contenido duplicado
 
-**Estado:** ✅ CORRECTO — Canonical tags implementados en las 3 páginas. No hay contenido duplicado detectable.
+**Estado:** ⚠️ ADVERTENCIA
+
+- Las páginas `servicios_0.html`, `servicios_2.html`, `servicios_3.html` tienen canonical correcto hacia `servicios.html` ✅
+- Las páginas `equipo_0.html` a `equipo_5.html` **NO tienen canonical** → ❌ Potencial contenido duplicado
+- `articulo.html` tiene canonical genérico sin ser dinámico ⚠️
 
 ---
 
-## RESUMEN SEO TÉCNICO
+## 9. PROBLEMAS ESPECÍFICOS DE equipo.html
 
-| Ítem | Estado | Impacto |
-|---|---|---|
-| H1 único por página | ✅ | — |
-| Jerarquía headings | ⚠️ h2 label en servicios | Bajo |
-| Meta titles | ⚠️ >60 chars | Medio |
-| Meta descriptions | ⚠️ index >160 chars | Medio |
-| Meta keywords (obsoleto) | ❌ Presente | Bajo |
-| Canonical tags | ✅ | — |
-| Viewport | ✅ | — |
-| Lang attribute | ✅ | — |
-| Charset | ✅ | — |
-| og:image | ❌ Ausente/comentado | Alto |
-| twitter:image | ❌ Ausente/comentado | Medio |
-| Schema Organization | ✅ (logo roto) | Medio |
-| Schema Services | ❌ Ausente | Medio |
-| JSON-LD en subpáginas | ❌ Ausente | Medio |
-| URLs estructura | ✅ | — |
-| Links rotos | ✅ Ninguno | — |
-| robots.txt | ✅ | — |
-| sitemap.xml | ✅ | — |
+**Estado:** ❌ MÚLTIPLES PROBLEMAS
 
-**Errores Críticos:** 3 (og:image, meta keywords obsoleto, logo en Schema roto)
-**Advertencias:** 6
-**Correctos:** 12
+`equipo.html` es la página con más problemas SEO:
+
+| Problema | Estado |
+|---|---|
+| Title contiene "Opción F" (irrelevante) | ❌ |
+| Sin canonical tag | ❌ |
+| Sin Open Graph tags (ninguno) | ❌ |
+| Sin Twitter Card tags | ❌ |
+| Sin favicon tags | ❌ |
+| Sin dns-prefetch | ❌ |
+| Carga TODOS los pesos de Google Fonts (no optimizado como index.html) | ⚠️ |
+| Sin theme-color meta | ❌ |
+| Sin manifest link | ❌ |
+| Background image de 1.2MB sin optimizar | ⚠️ |
+
+**Recomendación:** Alinear el `<head>` de equipo.html con el de index.html.
+
+---
+
+## RESUMEN SEO TÉCNICO (actualizado 2026-03-27)
+
+| Ítem | Estado anterior (02/14) | Estado actual (03/27) | Impacto |
+|---|---|---|---|
+| H1 único por página | ✅ | ✅ | — |
+| Jerarquía headings | ⚠️ | ✅ Corregido | — |
+| Meta titles | ⚠️ >60 chars | ✅ Corregido (excepto equipo.html) | Alto |
+| Meta descriptions | ⚠️ index >160 | ✅ Corregido | — |
+| Meta keywords (obsoleto) | ❌ Presente | ✅ Eliminados | — |
+| Canonical tags | ✅ | ❌ Falta en equipo.html | Alto |
+| Viewport | ✅ | ✅ | — |
+| Lang attribute | ✅ | ✅ (falta hreflang) | Medio |
+| Charset | ✅ | ✅ | — |
+| og:image | ❌ Comentado | ❌ **Sigue comentado** | CRÍTICO |
+| twitter:image | ❌ Comentado | ❌ **Sigue comentado** | Medio |
+| equipo.html OG/Twitter | — (no reportado) | ❌ **Totalmente ausente** | Alto |
+| Schema Organization | ✅ (logo roto) | ✅ Logo corregido (email inconsistente) | Medio |
+| Schema Services | ❌ Ausente | ❌ **Sigue ausente** | Medio |
+| JSON-LD en subpáginas | ❌ Ausente | ❌ **Sigue ausente** | Medio |
+| URLs estructura | ✅ | ✅ | — |
+| Links rotos | ✅ | ✅ | — |
+| robots.txt | ✅ | ✅ | — |
+| sitemap.xml | ✅ | ❌ **Desactualizado e incompleto** | CRÍTICO |
+| Alt text en imágenes | ⚠️ Pendiente | ❌ **Imágenes reales sin alt** | CRÍTICO |
+| Google Search Console | — | ❌ **No registrado** | CRÍTICO |
+| hreflang bilingüe | — | ❌ **Ausente** | Medio |
+
+**Errores Críticos:** 6 (og:image, sitemap, alt text, equipo.html incompleto, Search Console, canonical faltante)
+**Advertencias:** 5
+**Correctos:** 10
+**Corregidos desde última auditoría:** 4 (titles, descriptions, keywords eliminados, logo Schema)
