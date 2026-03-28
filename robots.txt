@@ -7,4 +7,4 @@ Disallow: /*.json$
 Disallow: /*?*
 
 # Sitemap
-Sitemap: https://synapsishealth.vercel.app/sitemap.xml
+Sitemap: https://synapsishealth.com.ar/sitemap.xml
