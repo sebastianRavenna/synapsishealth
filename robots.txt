@@ -7,4 +7,4 @@ Disallow: /*.json$
 Disallow: /*?*
 
 # Sitemap
-Sitemap: https://synapsishealth.com.ar/sitemap.xml
+Sitemap: https://www.synapsishealth.com.ar/sitemap.xml
